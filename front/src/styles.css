@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Style nav-bar */
+
+/* Insertion d'une marge entre l'icône et le texte */
+app-nav-bar .glyphicon {
+  margin-right: 10px;
+}
+
+/* Taille de police */
+app-nav-bar .navbar-nav > li {
+  font-size: 16px;
+}
+app-nav-bar .navbar-brand {
+  font-size: 16px;
+}
+app-nav-bar .dropdown-menu {
+  font-size: 16px;
+}
+
+/* Espacement entre les items du menu */
+app-nav-bar li{
+  margin-left: 10px;
+  margin-right: 10px;
+}
