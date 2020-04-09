@@ -32,21 +32,28 @@ Les surfaces en dur constituant 75% du total. Les 10% restant sont répartis ent
 </p>
 
 > 4. **Quel est le profil des joueurs de tennis ?**
-> - <u>*Le Licencié</u>
-> Un licencié est un joueur classé étant affilié à une fédération. Il a l’esprit de compétition et participe à des tournois qui lui permet d’être classé au niveau National ou International.
-> -- 30 % de licencié féminine
-> -- 70 % de licencié masculine
-> -- Age moyen du licencié de 17 ans (53%)
-> -- Profil type : jeune homme âgé de moins de 17 ans*
-> - <u>*Le pratiquant</u>
-> Un pratiquant est un joueur loisir - éloigné de la compétition – à la recherche de convivialité et de détente.
-> -- 52 % de femme joueurs occasionnels
-> -- 48% d’homme joueurs occasionnels
-> -- 16-29 représentent 25% des pratiquants
-> -- Plus d’un million de pratiquants à + de 50 ans
-> -- Profil type : jeune femmes de 16 à 29 ans*
-> 
+> - <u>Le Licencié</u>
+>   Un licencié est un joueur classé étant affilié à une fédération. Il a l’esprit de compétition et participe à des tournois qui lui permet d’être classé au niveau National ou International.
+>
+>   - 30 % de licencié féminine
+>
+>   - 70 % de licencié masculine
+>
+>   - Age moyen du licencié de 17 ans (53%)
+>
+>   - Profil type : jeune homme âgé de moins de 17 ans*
+> - <u>Le pratiquant</u>
+>   Un pratiquant est un joueur loisir - éloigné de la compétition – à la recherche de convivialité et de détente.
+>
+>   - 52 % de femme joueurs occasionnels
+>   - 48% d’homme joueurs occasionnels
+>   - 16-29 représentent 25% des pratiquants
+>   - Plus d’un million de pratiquants à + de 50 ans
+>   - Profil type : jeune femmes de 16 à 29 ans*
+>
 > 5. **Comment participer à une session d'entraînement ?**
+>
+>    Le nombre de places étant limité par le nombre de courts disponibles, le joueur licencié doit s'inscrire pour la prochaine session selon l'entraînement hebdomadaire qu'il a opté.
 
 ### Synthèse
 
