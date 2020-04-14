@@ -76,7 +76,7 @@ afin de ... (Bénéfice)
 
 > 1. En tant que joueur, je veux être notifié par email de l'ouverture de l'inscription à la prochaine session d'entraînement afin de m'y inscrire.
 > 2. En tant que joueur, je veux pouvoir m'inscrire sur l'application à la prochaine session d'entraînement afin d'y participer.
-> 3. En tant que joueur, je veux être notifié par email de mon inscription définitif ou d'être mis en liste d'attente afin de me déplacer ou non à la prochaine session d'entraînement.
+> 3. En tant que joueur, je veux être notifié par email de mon inscription définitive ou d'être mis en liste d'attente afin de me déplacer ou non à la prochaine session d'entraînement.
 > 4. En tant que joueur inscrit, je veux pouvoir consulter la liste des participants à la prochaine session d'entraînement afin de connaître son.ses partenaire.s de jeu.
 > 5. En tant que joueur, je veux avoir la liste des contacts du club afin de pouvoir communiquer avec un autre joueur par email.
 > 6. En tant que joueur, je veux pouvoir modifier mon profil/mes préférences afin d'actualiser mes données.
