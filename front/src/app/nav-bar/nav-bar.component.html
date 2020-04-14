@@ -2,12 +2,12 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
 
   <!--  Highlight the brand/logo/project name of your page-->
-  <a class="navbar-brand" href="/"><span><i class="glyphicon glyphicon-home"></i></span>ASC Tennis</a>
+  <a class="navbar-brand" [routerLink]="['/']"><span><i class="glyphicon glyphicon-home"></i></span>ASC Tennis</a>
 
   <!--  A standard navigation bar-->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="#"><i class="glyphicon glyphicon-th-list"></i>Entraînements</a>
+      <a class="nav-link" [routerLink]="['/training-sessions-list']"><i class="glyphicon glyphicon-th-list"></i>Entraînements</a>
     </li>
     <li class="nav-item dropdown">
       <!-- Dropdown link-->
@@ -20,7 +20,6 @@
     <li class="nav-item">
       <a class="nav-link" href="#"><i class="glyphicon glyphicon-flag"></i>Matches</a>
     </li>
-    <li><a [routerLink]="['/training-sessions-list']">Test</a></li>
   </ul>
 
   <!--  A navigation bar with icons on right and dropdown-->
