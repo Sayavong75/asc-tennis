@@ -9,13 +9,13 @@ app-nav-bar .glyphicon {
 
 /* Taille de police */
 app-nav-bar .navbar-nav > li {
-  font-size: 16px;
+  font-size: 14px;
 }
 app-nav-bar .navbar-brand {
-  font-size: 16px;
+  font-size: 14px;
 }
 app-nav-bar .dropdown-menu {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* Espacement entre les items du menu */
