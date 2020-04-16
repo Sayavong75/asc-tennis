@@ -1,6 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Style nav-bar */
+/* ====================
+   Style général
+   ====================*/
+
+  /* Style de la ligne séparateur */
+  hr{
+    height: 1px;
+    color: dimgrey;
+    background-color: dimgrey;
+    border: none;
+  }
+
+  /* Alignement centré du titre */
+  .center-div
+  {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+/* ====================
+   Style nav-bar
+   ====================*/
 
   /* Insertion d'une marge entre l'icône et le texte */
   app-nav-bar .glyphicon {
@@ -24,18 +45,32 @@
     margin-right: 10px;
   }
 
-/* Style user-profile */
+/* ====================
+   Style user-profile
+   ====================*/
 
   /* Style de police */
   app-user-profile .form-control, .input-group-text, .btn {
     font-size: 14px;
   }
-
   app-user-profile .input-group-text {
     font-weight: bold;
   }
 
-  app-user-profile #login {
+  /* Survol du curseur sur le champ login */
+  app-user-profile #login, #FormControlSelectGroup {
     cursor: not-allowed;
   }
 
+  /* Alignement centré des blocs entrées (inputs) */
+  app-user-profile .center-block {
+    display: table;  /* Instead of display:block */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Longueur fixe des blocs intitulés des entrées (labels) */
+  app-user-profile span {
+    display: inline-block;
+    width: 140px;
+  }
