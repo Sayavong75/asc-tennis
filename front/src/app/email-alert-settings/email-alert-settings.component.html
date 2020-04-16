@@ -4,17 +4,36 @@
     <h2>Mes alertes email</h2>
   </div>
 
-  <!-- SEPARATEUR -->
+  <!-- SÉPARATEUR -->
   <hr/>
 
-  <div class="checkbox">
-    <label>Emails généraux<input type="checkbox" value="" disabled></label>
+  <!-- EMAILS GÉNÉRAUX -->
+  <div class="center-block w-50">
+    <div class="checkbox checkbox-warning">
+      <input id="checkbox1" class="styled" type="checkbox" disabled checked>
+      <label for="checkbox1" id="label-checkbox1">
+        Emails généraux
+      </label>
+    </div>
   </div>
-  <div class="checkbox disabled">
-    <label>Les autres adhérents peuvent me contacter<input type="checkbox" value=""></label>
+
+  <!-- EMAILS DES AUTRES ADHÉRENTS -->
+  <div class="center-block w-50">
+    <div class="checkbox checkbox-success">
+      <input id="checkbox2" class="styled" type="checkbox">
+      <label for="checkbox2">
+        Les autres adhérents peuvent me contacter
+      </label>
+    </div>
   </div>
-  <button type="button" class="btn btn-secondary btn-lg">Annuler</button>
-  <button type="button" class="btn btn-primary btn-lg">Valider</button>
+
+  <br/>
+  <!-- BOUTONS -->
+  <div class="center-block">
+        <button type="button" class="btn btn-secondary btn-lg mr-3">Annuler</button>
+        <button type="button" class="btn btn-primary btn-lg">Valider</button>
+  </div>
+
 </div>
 
 
