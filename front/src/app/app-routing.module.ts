@@ -3,10 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { TrainingSessionsListComponent } from './training-sessions-list/training-sessions-list.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { EmailAlertSettingsComponent } from './email-alert-settings/email-alert-settings.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'training-sessions-list', component: TrainingSessionsListComponent }
+  { path: 'training-sessions-list', component: TrainingSessionsListComponent },
+  { path: 'user-profile', component: UserProfileComponent },
+  { path: 'email-alert-settings', component: EmailAlertSettingsComponent }
 ];
 
 @NgModule({

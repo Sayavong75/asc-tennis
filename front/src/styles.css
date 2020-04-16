@@ -2,24 +2,40 @@
 
 /* Style nav-bar */
 
-/* Insertion d'une marge entre l'icône et le texte */
-app-nav-bar .glyphicon {
-  margin-right: 10px;
-}
+  /* Insertion d'une marge entre l'icône et le texte */
+  app-nav-bar .glyphicon {
+    margin-right: 10px;
+  }
 
-/* Taille de police */
-app-nav-bar .navbar-nav > li {
-  font-size: 14px;
-}
-app-nav-bar .navbar-brand {
-  font-size: 14px;
-}
-app-nav-bar .dropdown-menu {
-  font-size: 14px;
-}
+  /* Taille de police */
+  app-nav-bar .navbar-nav > li {
+    font-size: 14px;
+  }
+  app-nav-bar .navbar-brand {
+    font-size: 14px;
+  }
+  app-nav-bar .dropdown-menu {
+    font-size: 14px;
+  }
 
-/* Espacement entre les items du menu */
-app-nav-bar li{
-  margin-left: 10px;
-  margin-right: 10px;
-}
+  /* Espacement entre les items du menu */
+  app-nav-bar li {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+/* Style user-profile */
+
+  /* Style de police */
+  app-user-profile .form-control, .input-group-text, .btn {
+    font-size: 14px;
+  }
+
+  app-user-profile .input-group-text {
+    font-weight: bold;
+  }
+
+  app-user-profile #login {
+    cursor: not-allowed;
+  }
+
