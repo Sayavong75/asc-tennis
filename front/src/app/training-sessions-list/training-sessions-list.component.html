@@ -9,18 +9,26 @@
 
   <table class="table table-hover">
     <thead>
-    <tr>
-      <th>Date / Lieu</th>
-      <th>Statut</th>
-      <th>Entraîneur</th>
-    </tr>
+      <tr>
+        <th>Date / Lieu</th>
+        <th>Statut</th>
+        <th>Entraîneur</th>
+        <th></th>
+      </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>Jeudi 16 avril 2020 <br> 21h00 (Ligue : Hauts de Seine)</td>
-      <td>Inscriptions ouvertes <br> Liste finale le 15/04/2020</td>
-      <td><i class="glyphicon glyphicon-thumbs-up"></i> Présent</td>
-    </tr>
+      <tr>
+        <td>Jeudi 16 avril 2020 <br> 21h00 (Ligue : Hauts de Seine)</td>
+        <td>Inscriptions ouvertes <br> Liste finale le 15/04/2020</td>
+        <td><i class="glyphicon glyphicon-thumbs-up"></i> Présent</td>
+        <td>
+          <button type="button"
+            (click)="registerRule()"
+            [ngClass]="{'btn btn-success':toggle, 'btn btn-danger':!toggle}">
+            {{status}}
+          </button>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
