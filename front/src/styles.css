@@ -5,7 +5,7 @@
    ====================*/
 
   /* Style de la ligne séparateur */
-  hr{
+  hr {
     height: 1px;
     color: dimgrey;
     background-color: dimgrey;
@@ -13,10 +13,54 @@
   }
 
   /* Alignement centré du titre */
-  .center-div
-  {
+  .center-div {
     margin: 0 auto;
     text-align: center;
+  }
+
+  /* Alignement centré des blocs */
+  .center-block {
+    display: table;  /* Instead of display:block */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Style ombré sur les boutons */
+  .btn-default, .btn-primary {
+    box-shadow: 1px 2px 5px #000000;
+  }
+
+  /* Style survol sur les boutons */
+  .btn-default:hover {
+    background: #808080;
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background: #0033cc;
+    color: #fff;
+  }
+
+/* ====================
+   Style app-root
+   ====================*/
+
+  /* Insertion d'une image background  */
+  app-root .image {
+    background: url('/assets/images/tennis-1280.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+
+/* ====================
+   Style app-home
+   ====================*/
+
+  /* Taille de police du paragraphe */
+  app-home p {
+    font-size: 16px;
+    font-weight: bold;
   }
 
 /* ====================
@@ -39,6 +83,10 @@
     font-size: 14px;
   }
 
+  /*app-nav-bar .nav-item {*/
+  /*  display: none;*/
+  /*}*/
+
   /* Espacement entre les items du menu */
   app-nav-bar li {
     margin-left: 10px;
@@ -60,13 +108,6 @@
   /* Survol du curseur sur le champ login */
   app-user-profile #login, #FormControlSelectGroup {
     cursor: not-allowed;
-  }
-
-  /* Alignement centré des blocs entrées (inputs) */
-  app-user-profile .center-block {
-    display: table;  /* Instead of display:block */
-    margin-left: auto;
-    margin-right: auto;
   }
 
   /* Longueur fixe des blocs intitulés des entrées (labels) */
@@ -169,6 +210,8 @@
     cursor: not-allowed;
   }
 
-
+/* ====================
+   Style training-sessions-list
+   ====================*/
 
 
