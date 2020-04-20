@@ -20,13 +20,14 @@
   <!-- BOUTONS -->
   <div class="center-block">
     <div class="btn-group-vertical">
-      <button type="button" class="btn btn-default btn-lg mb-3" (click)="hideNavBar()"><span class="glyphicon glyphicon-wrench"></span>&nbsp;Administrateur</button>
-      <button type="button" class="btn btn-primary btn-lg mb-3" (click)="displayNavBar()"><span class="glyphicon glyphicon-user"></span>&nbsp;Adhérent</button>
-    </div>
-  </div>
+      <!-- Bouton Administrateur -->
+      <button type="button" class="btn btn-default btn-lg mb-3" [routerLink]="['/home']"
+        (click)="displayNavBarAdmin()"><span class="glyphicon glyphicon-wrench"></span>&nbsp;Administrateur</button>
 
-  <div class="center-block">
-    <div class = "g-signin2" data-onsuccess = "onSignIn" data-theme = "dark"> </div>
+      <!-- Bouton Adhérent -->
+      <button type="button" class="btn btn-primary btn-lg mb-3" [routerLink]="['/home']"
+        (click)="displayNavBar()"><span class="glyphicon glyphicon-user"></span>&nbsp;Adhérent</button>
+    </div>
   </div>
 
 </div>
