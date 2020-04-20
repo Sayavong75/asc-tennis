@@ -12,6 +12,11 @@
     border: none;
   }
 
+  /* Masquage du menu Admin */
+  .hide{
+    display:none;
+  }
+
   /* Alignement centré du titre */
   .center-div {
     margin: 0 auto;
@@ -98,8 +103,9 @@
   }
 
   /*app-nav-bar .nav-item {*/
-  /*  display: none;*/
-  /*}*/
+  #admin a {
+    color: #00FFFF;
+  }
 
   /* Espacement entre les items du menu */
   app-nav-bar li {
