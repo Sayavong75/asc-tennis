@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavBarService } from '../nav-bar.service';
+import { NavAdminService} from '../nav-admin.service';
 
 @Component({
   selector: 'app-login',
@@ -8,12 +9,20 @@ import { NavBarService } from '../nav-bar.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor( public nav: NavBarService ) { }
+  constructor(
+    public nav: NavBarService,
+    private navAdminService: NavAdminService
+  ) { }
 
   displayNavBar() {
     console.log('display navbar');
     this.nav.show();
-    // this.nav.hide();
+  }
+
+  displayNavBarAdmin() {
+    console.log('display navbarAdmin');
+    this.nav.show();
+    this.navAdminService.addAdminMenu();
   }
 
   hideNavBar() {
