@@ -30,7 +30,8 @@
       </li>
 
       <!-- ADMINISTRATION -->
-      <li class="nav-item">
+      <li class="nav-item" id="admin" *ngIf ="hide">
+        <a class="nav-link" [routerLink]="['/admin']"><i class="glyphicon glyphicon-font" style="color:#00FFFF"></i>Admin</a>
       </li>
 
     </ul>

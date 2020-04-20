@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavBarService } from '../nav-bar.service';
+import { NavAdminService} from '../nav-admin.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,14 +8,36 @@ import { NavBarService } from '../nav-bar.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  public hide = false;
 
-  constructor( public nav: NavBarService ) { }
+  constructor(
+    public nav: NavBarService,
+    private navAdminService: NavAdminService
+  ) { }
 
+  ngOnInit(): void {
+    // tslint:disable-next-line:triple-equals
+    if (this.navAdminService.subsVar == undefined) {
+      this.navAdminService.subsVar = this.navAdminService.
+        invokeAdminFunction.subscribe(() => {
+        this.showAdminFunction();
+        console.log('show admin');
+      });
+    }
+  }
+  // Fonction pour masquer la barre de navigation
   hideNavBar() {
     console.log('hide navbar');
+    this.hideAdminFunction();
     this.nav.hide();
   }
-  ngOnInit(): void {
+  // Fonction pour afficher le menu Admin dans la nav-bar
+  showAdminFunction(): void {
+    this.hide = true;
+  }
+  // Fonction pour masquer le menu Admin dans la nav-bar
+  hideAdminFunction(): void {
+    this.hide = false;
   }
 
 }
