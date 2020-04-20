@@ -64,13 +64,17 @@
   }
 
 /* ====================
-   Style app-login
+   Style app-home
    ====================*/
 
   /* Taille de police du paragraphe */
   app-home p {
     font-size: 16px;
     font-weight: bold;
+  }
+
+  app-home #photo_snoopy {
+    text-align: center;
   }
 
 /* ====================
