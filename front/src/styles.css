@@ -54,7 +54,17 @@
   }
 
 /* ====================
-   Style app-home
+   Style app-login
+   ====================*/
+
+  /* Taille de police du paragraphe */
+  app-login p {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+/* ====================
+   Style app-login
    ====================*/
 
   /* Taille de police du paragraphe */
