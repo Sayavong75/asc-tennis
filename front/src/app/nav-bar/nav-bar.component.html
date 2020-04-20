@@ -1,10 +1,10 @@
 <div class="container">
   <!-- Navigation header that is placed at the top of the page -->
 <!--  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">-->
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed" *ngIf="nav.visible">
 
     <!-- Highlight the brand/logo/project name of your page -->
-    <a class="navbar-brand" [routerLink]="['/']"><span><i class="glyphicon glyphicon-home"></i></span>ASC Tennis</a>
+    <a class="navbar-brand" [routerLink]="['/home']"><span><i class="glyphicon glyphicon-home" ></i></span>ASC Tennis</a>
 
     <!-- A standard navigation bar -->
     <ul class="navbar-nav">
@@ -17,16 +17,20 @@
       <!-- MESSAGERIE -->
       <li class="nav-item dropdown">
         <!-- Dropdown link-->
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="glyphicon glyphicon-envelope"></i>Messagerie</a>
+        <a class="nav-link dropdown-toggle" [routerLink]="['/home']" data-toggle="dropdown"><i class="glyphicon glyphicon-envelope"></i>Messagerie</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-user"></span> Mes contacts</a>
-          <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-inbox"></span> Mes messages</a>
+          <a class="dropdown-item" [routerLink]="['/home']"><span class="glyphicon glyphicon-user"></span> Mes contacts</a>
+          <a class="dropdown-item" [routerLink]="['/home']"><span class="glyphicon glyphicon-inbox"></span> Mes messages</a>
         </div>
       </li>
 
       <!-- MATCHES PAR ÉQUIPES -->
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="glyphicon glyphicon-flag"></i>Matches</a>
+        <a class="nav-link" [routerLink]="['/home']"><i class="glyphicon glyphicon-flag"></i>Matches</a>
+      </li>
+
+      <!-- ADMINISTRATION -->
+      <li class="nav-item">
       </li>
 
     </ul>
@@ -35,16 +39,15 @@
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item dropdown">
 
-
         <!-- Dropdown link-->
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
           <i class="glyphicon glyphicon-cog"></i>
         </a>
         <!-- Right-aligned menu-->
         <div class="dropdown-menu dropdown-menu-right">
 
           <!-- LOGOUT -->
-          <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-off"></span> Déconnexion</a>
+          <a class="dropdown-item" [routerLink]="['login']" (click)="hideNavBar()"><span class="glyphicon glyphicon-off"></span> Déconnexion</a>
 
           <!-- SÉPARATEUR -->
           <div class="dropdown-divider"></div>
