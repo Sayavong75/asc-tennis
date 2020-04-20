@@ -108,6 +108,10 @@
   }
 
 /* ====================
+  Style training-sessions-list
+  ====================*/
+
+/* ====================
    Style user-profile
    ====================*/
 
@@ -225,7 +229,13 @@
   }
 
 /* ====================
-   Style training-sessions-list
+   Media queries
+   Extra small devices (portrait phones, less than 576px)
    ====================*/
 
-
+  /* Small devices (landscape phones, 576px and up) */
+  @media screen and (max-width: 576px) {
+    app-home img {
+      width: 100%;
+    }
+  }
