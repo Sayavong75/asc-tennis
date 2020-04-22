@@ -7,4 +7,101 @@
   <!-- SÉPARATEUR -->
   <hr/>
 
+  <div class="center-block">
+    <table class="table table-hover w-auto">
+
+      <thead class="thead-dark">
+      <tr>
+        <th>Gestion</th>
+        <th></th>
+        <th>Action(s)</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr>
+        <td>Adhérent</td>
+        <td></td>
+        <td>
+          <i class="material-icons" style="color:green;" title="Ajouter" data-toggle="modal" data-target="#modalAddUser">add_circle</i>
+          <i class="material-icons" title="Éditer">create</i>
+          <i class="material-icons" style="color:red;" title="Supprimer">delete_forever</i>
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal fade" id="modalAddUser" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+            <i class="material-icons" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+          <h4 class="modal-title w-100 font-weight-bold">Ajouter un adhérent</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- PRÉNOM -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserFirstName">Prénom</label>
+            <input type="text" id="formUserFirstName" class="form-control" placeholder="Prénom">
+          </div>
+
+          <!-- NOM -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserLastName">Nom</label>
+            <input type="text" id="formUserLastName" class="form-control" placeholder="Nom">
+          </div>
+
+          <!-- CLASSEMENT -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserRank">Classement</label>
+            <input type="text" id="formUserRank" class="form-control" placeholder="Classement">
+          </div>
+
+          <!-- LOGIN -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserlogin">Login</label>
+            <input type="text" id="formUserlogin" class="form-control" placeholder="Login">
+          </div>
+
+          <!-- EMAIL 1 -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserEmail1">E-mail 1</label>
+            <input type="email" id="formUserEmail1" class="form-control" placeholder="E-mail 1">
+          </div>
+
+          <!-- EMAIL 2 -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserEmail2">E-mail 2</label>
+            <input type="email" id="formUserEmail2" class="form-control" placeholder="E-mail 2">
+          </div>
+
+          <!-- PHONE 1 -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserPhone1">Téléphone 1</label>
+            <input type="email" id="formUserPhone1" class="form-control" placeholder="Téléphone 1">
+          </div>
+
+          <!-- PHONE 2 -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserPhone2">Téléphone 2</label>
+            <input type="email" id="formUserPhone2" class="form-control" placeholder="Téléphone 2">
+          </div>
+
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary">Valider</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEST -->
+
 </div>
