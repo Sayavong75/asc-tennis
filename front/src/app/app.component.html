@@ -14,8 +14,18 @@
       <div class="card-body p-5">
         <router-outlet></router-outlet>
         <div style="height: 700px"></div>
-        <p class="lead mb-0">You've reached the end!</p>
+        <p class="lead mb-0">
+          You've reached the end!
+          <a class="navbar-brand" [routerLink]="['/login']" (click)="topFunction()">
+            <span><i class="glyphicon glyphicon-refresh"></i></span>
+          </a>
+        </p>
+        <!-- Bouton de défilement vers le haut -->
+        <button *ngIf="isShow" (click)="topFunction()" id="myBtn">
+          <i class="material-icons" style="font-size:32px;">arrow_upward</i>
+        </button>
       </div>
+
     </div>
   </div>
 </div>
