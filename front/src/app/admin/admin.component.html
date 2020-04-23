@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="center-div">
-    <h2>Administration</h2>
+    <h2>Administrateur</h2>
   </div>
 
   <!-- SÉPARATEUR -->
@@ -18,36 +18,64 @@
       </tr>
       </thead>
 
+      <!-- GESTION DES ADHÉRENTS -->
       <tbody>
       <tr>
         <td>Adhérent</td>
         <td></td>
         <td>
-          <i class="material-icons" style="color:green;" title="Ajouter" data-toggle="modal" data-target="#modalAddUser">add_circle</i>
-          <i class="material-icons" title="Éditer">create</i>
-          <i class="material-icons" style="color:red;" title="Supprimer">delete_forever</i>
+          <i class="material-icons hover" style="color:green;" title="Ajouter" data-toggle="modal" data-target="#modalAddUser">add_circle</i>
+          <i class="material-icons hover" title="Liste" [routerLink]="['/admin-members-list']">view_list</i>
         </td>
+      </tr>
+      </tbody>
+
+      <!-- GESTION DES CLASSEMENTS -->
+      <tbody>
+      <tr>
+        <td>Classement</td>
+        <td></td>
+        <td>
+          <i class="material-icons hover" style="color:green;" title="Ajouter" data-toggle="modal" data-target="#modalAddUser">add_circle</i>
+        </td>
+      </tr>
+      </tbody>
+
+      <!-- GESTION DES GROUPES SEMAINE -->
+      <tbody>
+      <tr>
+      <tr>
+        <td>Groupe semaine</td>
+        <td></td>
+        <td>
+          <i class="material-icons hover" style="color:green;" title="Ajouter" data-toggle="modal" data-target="#modalAddUser">add_circle</i>
+        </td>
+      </tr>
+      </tbody>
+
+      <!-- GESTION DES ENTRAÎNEMENTS -->
+      <tbody>
+      <tr>
+      <tr>
+        <td>Session d'entraînement</td>
+        <td></td>
+        <td>
+          <i class="material-icons hover" title="Éditer">create</i></td>
       </tr>
       </tbody>
 
     </table>
   </div>
 
-  <!-- MODAL -->
+  <!-- MODAL GESTION DES ADHÉRENTS - AJOUTER -->
   <div class="modal fade" id="modalAddUser" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header text-center">
-            <i class="material-icons" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+            <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
           <h4 class="modal-title w-100 font-weight-bold">Ajouter un adhérent</h4>
         </div>
         <div class="modal-body">
-
-          <!-- PRÉNOM -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserFirstName">Prénom</label>
-            <input type="text" id="formUserFirstName" class="form-control" placeholder="Prénom">
-          </div>
 
           <!-- NOM -->
           <div class="form-group">
@@ -55,10 +83,10 @@
             <input type="text" id="formUserLastName" class="form-control" placeholder="Nom">
           </div>
 
-          <!-- CLASSEMENT -->
+          <!-- PRÉNOM -->
           <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserRank">Classement</label>
-            <input type="text" id="formUserRank" class="form-control" placeholder="Classement">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserFirstName">Prénom</label>
+            <input type="text" id="formUserFirstName" class="form-control" placeholder="Prénom">
           </div>
 
           <!-- LOGIN -->
@@ -91,17 +119,20 @@
             <input type="email" id="formUserPhone2" class="form-control" placeholder="Téléphone 2">
           </div>
 
+          <!-- CLASSEMENT -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserRank">Classement</label>
+            <input type="text" id="formUserRank" class="form-control" placeholder="Classement">
+          </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-            <button type="button" class="btn btn-primary">Valider</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btn-success">Valider</button>
           </div>
 
         </div>
       </div>
     </div>
   </div>
-
-  <!-- TEST -->
 
 </div>

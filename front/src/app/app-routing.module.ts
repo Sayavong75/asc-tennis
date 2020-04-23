@@ -7,6 +7,7 @@ import { TrainingSessionsListComponent } from './training-sessions-list/training
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EmailAlertSettingsComponent } from './email-alert-settings/email-alert-settings.component';
 import { AdminComponent} from './admin/admin.component';
+import { AdminMembersListComponent } from './admin-members-list/admin-members-list.component';
 
 const routes: Routes = [
   { path: '',
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'training-sessions-list', component: TrainingSessionsListComponent },
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'email-alert-settings', component: EmailAlertSettingsComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin-members-list', component: AdminMembersListComponent }
 ];
 
 @NgModule({

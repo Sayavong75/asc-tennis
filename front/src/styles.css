@@ -13,7 +13,7 @@
   }
 
   /* Masquage du menu Admin */
-  .hide{
+  .hide {
     display:none;
   }
 
@@ -31,21 +31,15 @@
   }
 
   /* Style ombré sur les boutons */
-  .btn-default, .btn-primary {
+  .btn-default, .btn-primary, .btn-info, .btn-danger, .btn-success {
     box-shadow: 1px 2px 5px #000000;
   }
 
-  /* Style survol sur les boutons */
-  .btn-default:hover {
-    background: #808080;
-    color: #fff;
+  /* Style survol sur les boutons material-icons */
+  .material-icons {
+    cursor: pointer;
   }
-  .btn-primary:hover {
-    background: #0033cc;
-    color: #fff;
-  }
-
-  .material-icons:hover {
+  .material-icons.hover:hover {
     background: #C0C0C0;
   }
 
@@ -64,9 +58,32 @@
     padding: 15px; /* Some padding */
     border-radius: 10px; /* Rounded corners */
     font-size: 20px; /* Increase font size */
+    width: 60px;
+    height: 60px;
   }
   #myBtn:hover {
     background-color: #555; /* Add a dark-grey background on hover */
+  }
+
+  /* Style icône Statut - Gestion des Adhérents */
+  .status {
+    font-size: 40px;
+    margin: 2px 2px 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 10px;
+  }
+  .text-success {
+    color: #10c469;
+  }
+  .text-info {
+    color: #62c9e8;
+  }
+  .text-warning {
+    color: #FFC107;
+  }
+  .text-danger {
+    color: #ff5b5b;
   }
 
 /* ====================
@@ -102,6 +119,7 @@
     font-weight: bold;
   }
 
+  /* Alignement centré de l'image */
   app-home #photo_snoopy {
     text-align: center;
   }
@@ -271,11 +289,6 @@
   /* Style de police pour les labels */
   app-admin .form-control-label {
     font-weight: bold;
-  }
-
-  /* Style survol sur les boutons */
-  app-admin .material-icons {
-    cursor: pointer;
   }
 
 /* ====================

@@ -15,6 +15,7 @@ import { EmailAlertSettingsComponent } from './email-alert-settings/email-alert-
 import { AdminComponent } from './admin/admin.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AdminMembersListComponent } from './admin-members-list/admin-members-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AppRoutingModule } from './app-routing.module';
     TrainingSessionsListComponent,
     UserProfileComponent,
     EmailAlertSettingsComponent,
-    AdminComponent
+    AdminComponent,
+    AdminMembersListComponent
   ],
   imports: [
     BrowserModule,
