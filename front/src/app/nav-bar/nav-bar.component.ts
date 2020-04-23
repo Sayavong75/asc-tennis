@@ -8,7 +8,7 @@ import { NavAdminService} from '../nav-admin.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  public hide = false;
+  public isAdmin = false;
 
   constructor(
     public nav: NavBarService,
@@ -33,11 +33,11 @@ export class NavBarComponent implements OnInit {
   }
   // Fonction pour afficher le menu Admin dans la nav-bar
   showAdminFunction(): void {
-    this.hide = true;
+    this.isAdmin = true;
   }
   // Fonction pour masquer le menu Admin dans la nav-bar
   hideAdminFunction(): void {
-    this.hide = false;
+    this.isAdmin = false;
   }
 
 }

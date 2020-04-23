@@ -1,6 +1,6 @@
 <div class="container">
   <!-- Navigation header that is placed at the top of the page -->
-<!--  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">-->
+  <!--  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">-->
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed" *ngIf="nav.visible">
 
     <!-- Highlight the brand/logo/project name of your page -->
@@ -30,7 +30,7 @@
       </li> -->
 
       <!-- ADMINISTRATION -->
-      <li class="nav-item" id="admin" *ngIf ="hide">
+      <li class="nav-item" id="admin" *ngIf ="isAdmin">
         <a class="nav-link" [routerLink]="['/admin']"><i class="glyphicon glyphicon-font" style="color:#00FFFF"></i>Admin</a>
       </li>
 

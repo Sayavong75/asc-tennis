@@ -1,7 +1,21 @@
 <div class="container">
 
-  <div class="center-div">
-    <h2>Administrateur - Gestion des adhérents</h2>
+  <div class="table-title">
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-8">
+        <div class="center-div">
+          <h2>Administrateur - Gestion des adhérents</h2>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-success btn-lg" title="Ajouter" data-toggle="modal"
+                data-target="#modalAddUser">
+          <span class="glyphicon glyphicon-plus-sign"></span>
+          &nbsp;Adhérent</button>
+      </div>
+    </div>
   </div>
 
   <!-- SÉPARATEUR -->
@@ -26,10 +40,10 @@
       <td>Wick</td>
       <td>John</td>
       <td>jwick</td>
-      <td>NC</td>
+      <td>Lundi</td>
       <td><i class="status text-success">&bull;</i> Actif</td>
       <td>
-        <i class="material-icons hover" style="color:olive;" title="Éditer">create</i>
+        <i class="material-icons hover" style="color:dimgray;" title="Éditer">create</i>
         <i class="material-icons hover" style="color:orangered;" title="Désactiver" data-toggle="modal"
            data-target="#modalDeactivateUser">delete_forever</i>
       </td>
@@ -40,10 +54,10 @@
       <td>Bonisseur de La Bath</td>
       <td>Hubert</td>
       <td>hbonisseurdelabath</td>
-      <td>15</td>
+      <td>Mardi</td>
       <td><i class="status text-success">&bull;</i> Actif</td>
       <td>
-        <i class="material-icons hover" style="color:olive;" title="Éditer">create</i>
+        <i class="material-icons hover" style="color:dimgray;" title="Éditer">create</i>
         <i class="material-icons hover" style="color:orangered;" title="Désactiver">delete_forever</i>
       </td>
     </tr>
@@ -53,23 +67,23 @@
       <td>La Menace</td>
       <td>Max</td>
       <td>mlamenace</td>
-      <td>30/1</td>
+      <td>Jeudi</td>
       <td><i class="status text-success">&bull;</i> Actif</td>
       <td>
-        <i class="material-icons hover" style="color:olive;" title="Éditer">create</i>
+        <i class="material-icons hover" style="color:dimgray;" title="Éditer">create</i>
         <i class="material-icons hover" style="color:orangered;" title="Désactiver">delete_forever</i>
       </td>
     </tr>
 
     <tr>
       <td>4</td>
-      <td>Smith</td>
-      <td>Agent</td>
-      <td>asmith</td>
-      <td>0</td>
+      <td>Croft</td>
+      <td>Lara</td>
+      <td>lcroft</td>
+      <td>Mardi</td>
       <td><i class="status text-danger">&bull;</i> Inactif</td>
       <td>
-        <i class="material-icons hover" style="color:olive;" title="Éditer">create</i>
+        <i class="material-icons hover" style="color:dimgray;" title="Éditer">create</i>
         <i class="material-icons hover" style="color:orangered;" title="Désactiver">delete_forever</i>
       </td>
     </tr>
@@ -79,10 +93,10 @@
       <td>Anderson</td>
       <td>Thomas</td>
       <td>tanderson</td>
-      <td>40</td>
+      <td>Lundi</td>
       <td><i class="status text-success">&bull;</i> Actif</td>
       <td>
-        <i class="material-icons hover" style="color:olive;" title="Éditer">create</i>
+        <i class="material-icons hover" style="color:dimgray;" title="Éditer">create</i>
         <i class="material-icons hover" style="color:orangered;" title="Désactiver">delete_forever</i>
       </td>
     </tr>
@@ -99,6 +113,111 @@
     <li class="page-item"><a class="page-link" [routerLink]="['/admin-members-list']">Next</a></li>
   </ul>
 
+  <!-- MODAL GESTION DES ADHÉRENTS - AJOUTER -->
+  <div class="modal fade" id="modalAddUser" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+          <h4 class="modal-title w-100 font-weight-bold">Ajouter un adhérent</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- NOM -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserLastName">Nom</label>
+            <input type="text" id="formUserLastName" class="form-control" placeholder="Nom">
+          </div>
+
+          <!-- PRÉNOM -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserFirstName">Prénom</label>
+            <input type="text" id="formUserFirstName" class="form-control" placeholder="Prénom">
+          </div>
+
+          <!-- LOGIN -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserlogin">Login</label>
+            <input type="text" id="formUserlogin" class="form-control" placeholder="Login">
+          </div>
+
+          <!-- EMAIL 1 -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserEmail1">E-mail 1</label>
+            <input type="email" id="formUserEmail1" class="form-control" placeholder="E-mail 1">
+          </div>
+
+          <!-- EMAIL 2 -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserEmail2">E-mail 2</label>
+            <input type="email" id="formUserEmail2" class="form-control" placeholder="E-mail 2">
+          </div>
+
+          <!-- PHONE 1 -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserPhone1">Téléphone 1</label>
+            <input type="email" id="formUserPhone1" class="form-control" placeholder="Téléphone 1">
+          </div>
+
+          <!-- PHONE 2 -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserPhone2">Téléphone 2</label>
+            <input type="email" id="formUserPhone2" class="form-control" placeholder="Téléphone 2">
+          </div>
+
+          <!-- CLASSEMENT -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formSelectUserRank">Classement</label>
+            <select class="form-control" id="formSelectUserRank">
+              <option value="0" selected>NC</option>
+              <option value="1" >40</option>
+              <option value="2" >30/5</option>
+              <option value="3" >30/4</option>
+              <option value="4" >30/3</option>
+              <option value="5" >30/2</option>
+              <option value="6" >30/1</option>
+              <option value="7" >30</option>
+              <option value="8" >15/5</option>
+              <option value="9" >15/4</option>
+              <option value="10" >15/3</option>
+              <option value="11" >15/2</option>
+              <option value="12" >15/1</option>
+              <option value="13" >15</option>
+              <option value="24" >5/6</option>
+              <option value="14" >4/6</option>
+              <option value="14" >3/6</option>
+              <option value="15" >2/6</option>
+              <option value="16" >1/6</option>
+              <option value="17" >0</option>
+              <option value="18" >-2/6</option>
+              <option value="19" >-4/6</option>
+              <option value="20" >-15</option>
+              <option value="22" >Promotion</option>
+            </select>
+          </div>
+
+          <!-- CLASSEMENT -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formSelectUserRank">Classement</label>
+              <select class="form-control" id="formSelectWeekGroup">
+                <option value="" selected>-- En attente d'affectation --</option>
+                <option value="1" >Lundi</option>
+                <option value="2" >Mardi</option>
+                <option value="3" >Jeudi</option>
+              </select>
+          </div>
+
+          <!-- PIED DE PAGE - BOUTONS -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btn-success">Valider</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL GESTION DES ADHÉRENTS - SUPPRIMER -->
   <div class="modal fade" id="modalDeactivateUser" role="dialog">
     <div class="modal-dialog" role="document">
@@ -109,8 +228,8 @@
         </div>
         <div class="modal-body">
           <div class="modal-body">
-            <p>Voulez-vous désactiver <b>John Wick [login: jwick - id: 1]</b> ?
-              <br/>La personne ne pourra plus accéder au site.</p>
+            Voulez-vous désactiver <b>John Wick [login: jwick - id: 1]</b> ?
+              <br/>La personne ne pourra plus accéder au site.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
