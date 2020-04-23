@@ -24,8 +24,7 @@
         <td>Adhérent</td>
         <td></td>
         <td>
-          <i class="material-icons hover" style="color:green;" title="Ajouter" data-toggle="modal" data-target="#modalAddUser">add_circle</i>
-          <i class="material-icons hover" title="Liste" [routerLink]="['/admin-members-list']">view_list</i>
+          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-members-list']">view_list</i>
         </td>
       </tr>
       </tbody>
@@ -36,7 +35,8 @@
         <td>Classement</td>
         <td></td>
         <td>
-          <i class="material-icons hover" style="color:green;" title="Ajouter" data-toggle="modal" data-target="#modalAddUser">add_circle</i>
+          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-members-list']">view_list</i>
+<!--          <i class="material-icons hover" style="color:green;" title="Ajouter" data-toggle="modal" data-target="#modalAddUser">add_circle</i>-->
         </td>
       </tr>
       </tbody>
@@ -48,7 +48,7 @@
         <td>Groupe semaine</td>
         <td></td>
         <td>
-          <i class="material-icons hover" style="color:green;" title="Ajouter" data-toggle="modal" data-target="#modalAddUser">add_circle</i>
+          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-members-list']">view_list</i>
         </td>
       </tr>
       </tbody>
@@ -60,79 +60,11 @@
         <td>Session d'entraînement</td>
         <td></td>
         <td>
-          <i class="material-icons hover" title="Éditer">create</i></td>
+          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-members-list']">view_list</i>
       </tr>
       </tbody>
 
     </table>
-  </div>
-
-  <!-- MODAL GESTION DES ADHÉRENTS - AJOUTER -->
-  <div class="modal fade" id="modalAddUser" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-            <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
-          <h4 class="modal-title w-100 font-weight-bold">Ajouter un adhérent</h4>
-        </div>
-        <div class="modal-body">
-
-          <!-- NOM -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserLastName">Nom</label>
-            <input type="text" id="formUserLastName" class="form-control" placeholder="Nom">
-          </div>
-
-          <!-- PRÉNOM -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserFirstName">Prénom</label>
-            <input type="text" id="formUserFirstName" class="form-control" placeholder="Prénom">
-          </div>
-
-          <!-- LOGIN -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserlogin">Login</label>
-            <input type="text" id="formUserlogin" class="form-control" placeholder="Login">
-          </div>
-
-          <!-- EMAIL 1 -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserEmail1">E-mail 1</label>
-            <input type="email" id="formUserEmail1" class="form-control" placeholder="E-mail 1">
-          </div>
-
-          <!-- EMAIL 2 -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserEmail2">E-mail 2</label>
-            <input type="email" id="formUserEmail2" class="form-control" placeholder="E-mail 2">
-          </div>
-
-          <!-- PHONE 1 -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserPhone1">Téléphone 1</label>
-            <input type="email" id="formUserPhone1" class="form-control" placeholder="Téléphone 1">
-          </div>
-
-          <!-- PHONE 2 -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserPhone2">Téléphone 2</label>
-            <input type="email" id="formUserPhone2" class="form-control" placeholder="Téléphone 2">
-          </div>
-
-          <!-- CLASSEMENT -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formUserRank">Classement</label>
-            <input type="text" id="formUserRank" class="form-control" placeholder="Classement">
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-            <button type="button" class="btn btn-success">Valider</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
   </div>
 
 </div>

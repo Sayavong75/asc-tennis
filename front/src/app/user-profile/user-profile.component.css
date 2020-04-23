@@ -1,0 +1,11 @@
+/* Survol du curseur sur le champ login */
+#login, #FormControlSelectGroup {
+  cursor: not-allowed;
+}
+
+/* Longueur fixe des blocs intitulés des entrées (labels) */
+span {
+  display: inline-block;
+  width: 140px;
+}
+

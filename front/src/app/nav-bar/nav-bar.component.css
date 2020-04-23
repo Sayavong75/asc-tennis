@@ -1,1 +1,20 @@
+/* Insertion d'une marge entre l'icône et le texte */
+.glyphicon {
+  margin-right: 10px;
+}
 
+/* Taille de police */
+.navbar-nav > li, .navbar-brand, .dropdown-menu {
+  font-size: 14px;
+}
+
+/*app-nav-bar .nav-item {*/
+#admin a {
+  color: #00FFFF;
+}
+
+/* Espacement entre les items du menu */
+li {
+  margin-left: 10px;
+  margin-right: 10px;
+}
