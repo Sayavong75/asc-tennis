@@ -1,0 +1,124 @@
+<div class="container">
+
+  <div class="center-div">
+    <h2>Administrateur - Gestion des adhérents</h2>
+  </div>
+
+  <!-- SÉPARATEUR -->
+  <hr/>
+
+  <table class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th>Id</th>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Login</th>
+      <th>Groupe semaine</th>
+      <th>Statut</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>Wick</td>
+      <td>John</td>
+      <td>jwick</td>
+      <td>NC</td>
+      <td><i class="status text-success">&bull;</i> Actif</td>
+      <td>
+        <i class="material-icons hover" style="color:olive;" title="Éditer">create</i>
+        <i class="material-icons hover" style="color:orangered;" title="Désactiver" data-toggle="modal"
+           data-target="#modalDeactivateUser">delete_forever</i>
+      </td>
+    </tr>
+
+    <tr>
+      <td>2</td>
+      <td>Bonisseur de La Bath</td>
+      <td>Hubert</td>
+      <td>hbonisseurdelabath</td>
+      <td>15</td>
+      <td><i class="status text-success">&bull;</i> Actif</td>
+      <td>
+        <i class="material-icons hover" style="color:olive;" title="Éditer">create</i>
+        <i class="material-icons hover" style="color:orangered;" title="Désactiver">delete_forever</i>
+      </td>
+    </tr>
+
+    <tr>
+      <td>3</td>
+      <td>La Menace</td>
+      <td>Max</td>
+      <td>mlamenace</td>
+      <td>30/1</td>
+      <td><i class="status text-success">&bull;</i> Actif</td>
+      <td>
+        <i class="material-icons hover" style="color:olive;" title="Éditer">create</i>
+        <i class="material-icons hover" style="color:orangered;" title="Désactiver">delete_forever</i>
+      </td>
+    </tr>
+
+    <tr>
+      <td>4</td>
+      <td>Smith</td>
+      <td>Agent</td>
+      <td>asmith</td>
+      <td>0</td>
+      <td><i class="status text-danger">&bull;</i> Inactif</td>
+      <td>
+        <i class="material-icons hover" style="color:olive;" title="Éditer">create</i>
+        <i class="material-icons hover" style="color:orangered;" title="Désactiver">delete_forever</i>
+      </td>
+    </tr>
+
+    <tr>
+      <td>5</td>
+      <td>Anderson</td>
+      <td>Thomas</td>
+      <td>tanderson</td>
+      <td>40</td>
+      <td><i class="status text-success">&bull;</i> Actif</td>
+      <td>
+        <i class="material-icons hover" style="color:olive;" title="Éditer">create</i>
+        <i class="material-icons hover" style="color:orangered;" title="Désactiver">delete_forever</i>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
+  <!-- PAGINATION Center-aligned -->
+  <ul class="pagination justify-content-center" style="margin:20px 0">
+    <li class="page-item disabled"><a class="page-link" [routerLink]="['/admin-members-list']">Previous</a></li>
+    <li class="page-item active"><a class="page-link" [routerLink]="['/admin-members-list']">1</a></li>
+    <li class="page-item"><a class="page-link" [routerLink]="['/admin-members-list']">2</a></li>
+    <li class="page-item"><a class="page-link" [routerLink]="['/admin-members-list']">3</a></li>
+    <li class="page-item"><a class="page-link" [routerLink]="['/admin-members-list']">Next</a></li>
+  </ul>
+
+  <!-- MODAL GESTION DES ADHÉRENTS - SUPPRIMER -->
+  <div class="modal fade" id="modalDeactivateUser" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+          <h4 class="modal-title w-100 font-weight-bold">Désactiver un adhérent</h4>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body">
+            <p>Voulez-vous désactiver <b>John Wick [login: jwick - id: 1]</b> ?
+              <br/>La personne ne pourra plus accéder au site.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btn-danger">Désactiver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
