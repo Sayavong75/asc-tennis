@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { CdkTableModule } from '@angular/cdk/table';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -13,10 +17,11 @@ import { TrainingSessionsListComponent } from './training-sessions-list/training
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EmailAlertSettingsComponent } from './email-alert-settings/email-alert-settings.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdminMembersListComponent } from './admin-members-list/admin-members-list.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AdminMembersListComponent } from './admin-members-list/admin-members-list.component';
-import * as $ from 'jquery';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,13 @@ import * as $ from 'jquery';
     BrowserModule,
     RouterModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    CdkTableModule,
+    MatFormFieldModule
   ],
   providers: [
     NavBarService,

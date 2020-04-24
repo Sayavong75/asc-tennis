@@ -21,18 +21,18 @@
   <!-- SÉPARATEUR -->
   <hr/>
 
-  <nav class="navbar">
-    <input class="form-control" type="text" name="search">
-  </nav>
-  <table class="table table-hover">
-    <thead class="thead-dark">
-    <tr>
-      <!-- En-tête de colonne au format "proper name" et icône de tri -->
-      <th *ngFor="let head of headElements; let i = index" (click)="sort(head)">{{ head | titlecase }}
-        <span class="glyphicon glyphicon-sort"></span>
-      </th>
-    </tr>
-    </thead>
+<!--  <nav class="navbar">-->
+<!--    <input class="form-control" type="text" name="search">-->
+<!--  </nav>-->
+<!--  <table class="table table-hover">-->
+<!--    <thead class="thead-dark">-->
+<!--    <tr>-->
+<!--      &lt;!&ndash; En-tête de colonne au format "proper name" et icône de tri &ndash;&gt;-->
+<!--      <th *ngFor="let head of headElements; let i = index" (click)="sort(head)">{{ head | titlecase }}-->
+<!--        <span class="glyphicon glyphicon-sort"></span>-->
+<!--      </th>-->
+<!--    </tr>-->
+<!--    </thead>-->
 
 <!--    <tbody>-->
 <!--    <tr *ngFor="let el of elements; let i = index">-->
@@ -43,43 +43,90 @@
 <!--    </tr>-->
 <!--    </tbody>-->
 
-    <tbody>
+<!--    <tbody>-->
 
-    <tr *ngFor="let member of members; let i = index">
-      <!-- ID -->
-      <td>{{ member.id }}</td>
-      <!-- NOM -->
-      <td>{{ member.lastname }}</td>
-      <!-- PRÉNOM -->
-      <td>{{ member.firstname }}</td>
-      <!-- LOGIN -->
-      <td>{{ member.login }}</td>
-      <!-- GROUPE SEMAINE -->
-      <td>{{ member.group }}</td>
+<!--    <tr *ngFor="let member of members; let i = index">-->
+<!--      &lt;!&ndash; ID &ndash;&gt;-->
+<!--      <td>{{ member.id }}</td>-->
+<!--      &lt;!&ndash; NOM &ndash;&gt;-->
+<!--      <td>{{ member.lastname }}</td>-->
+<!--      &lt;!&ndash; PRÉNOM &ndash;&gt;-->
+<!--      <td>{{ member.firstname }}</td>-->
+<!--      &lt;!&ndash; LOGIN &ndash;&gt;-->
+<!--      <td>{{ member.login }}</td>-->
+<!--      &lt;!&ndash; GROUPE SEMAINE &ndash;&gt;-->
+<!--      <td>{{ member.group }}</td>-->
 
-      <!-- STATUT -->
-      <!-- Affichage de l'icône actif/inactif en fonction du statut du membre -->
-      <td *ngIf="member.status === 'Actif'; then activeBlock else inactiveBlock">Toto</td>
+<!--      &lt;!&ndash; STATUT &ndash;&gt;-->
+<!--      &lt;!&ndash; Affichage de l'icône actif/inactif en fonction du statut du membre &ndash;&gt;-->
+<!--      <td *ngIf="member.status === 'Actif'; then activeBlock else inactiveBlock">Toto</td>-->
 
-        <ng-template #activeBlock>
-          <td><i class="status text-success">&bull;</i> {{ member.status }}</td>
-        </ng-template>
+<!--        <ng-template #activeBlock>-->
+<!--          <td><i class="status text-success">&bull;</i> {{ member.status }}</td>-->
+<!--        </ng-template>-->
 
-        <ng-template #inactiveBlock>
-          <td><i class="status text-danger">&bull;</i> {{ member.status }}</td>
-        </ng-template>
+<!--        <ng-template #inactiveBlock>-->
+<!--          <td><i class="status text-danger">&bull;</i> {{ member.status }}</td>-->
+<!--        </ng-template>-->
 
-      <!-- ACTION icônes Editer + Désactiver -->
-      <td>
-        <i class="material-icons hover" style="color:dimgray;" title="Éditer" data-toggle="modal"
-           data-target="#modalEditUser">create</i>
-        <i class="material-icons hover" style="color:orangered;" title="Désactiver" data-toggle="modal"
-           data-target="#modalDeactivateUser">delete_forever</i>
-      </td>
-    </tr>
+<!--      &lt;!&ndash; ACTION icônes Editer + Désactiver &ndash;&gt;-->
+<!--      <td>-->
+<!--        <i class="material-icons hover" style="color:dimgray;" title="Éditer" data-toggle="modal"-->
+<!--           data-target="#modalEditUser">create</i>-->
+<!--        <i class="material-icons hover" style="color:orangered;" title="Désactiver" data-toggle="modal"-->
+<!--           data-target="#modalDeactivateUser">delete_forever</i>-->
+<!--      </td>-->
+<!--    </tr>-->
 
-    </tbody>
-  </table>
+<!--    </tbody>-->
+<!--  </table>-->
+
+
+<!--  <mat-form-field>-->
+<!--    <mat-label>Filter</mat-label>-->
+<!--    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia">-->
+<!--  </mat-form-field>-->
+
+<!--  <div class="mat-elevation-z8">-->
+<!--    <table mat-table [dataSource]="dataSource" matSort>-->
+
+<!--      &lt;!&ndash; ID Column &ndash;&gt;-->
+<!--      <ng-container matColumnDef="id">-->
+<!--        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>-->
+<!--        <td mat-cell *matCellDef="let row"> {{row.id}} </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Progress Column &ndash;&gt;-->
+<!--      <ng-container matColumnDef="progress">-->
+<!--        <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>-->
+<!--        <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Name Column &ndash;&gt;-->
+<!--      <ng-container matColumnDef="name">-->
+<!--        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>-->
+<!--        <td mat-cell *matCellDef="let row"> {{row.name}} </td>-->
+<!--      </ng-container>-->
+
+<!--      &lt;!&ndash; Color Column &ndash;&gt;-->
+<!--      <ng-container matColumnDef="color">-->
+<!--        <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>-->
+<!--        <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>-->
+<!--      </ng-container>-->
+
+<!--      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+<!--      <tr mat-row *matRowDef="let row; columns: displayedColumns;">-->
+<!--      </tr>-->
+<!--    </table>-->
+
+<!--    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>-->
+<!--  </div>-->
+
+
+  <!-- Copyright 2019 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+
 
   <!-- PAGINATION Center-aligned -->
   <ul class="pagination justify-content-center" style="margin:20px 0">
