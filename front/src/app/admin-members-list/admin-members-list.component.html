@@ -21,27 +21,55 @@
   <!-- SÉPARATEUR -->
   <hr/>
 
+  <nav class="navbar">
+    <input class="form-control" type="text" name="search">
+  </nav>
   <table class="table table-hover">
     <thead class="thead-dark">
     <tr>
-      <th>Id</th>
-      <th>Nom</th>
-      <th>Prénom</th>
-      <th>Login</th>
-      <th>Groupe semaine</th>
-      <th>Statut</th>
-      <th>Action</th>
+      <!-- En-tête de colonne au format "proper name" et icône de tri -->
+      <th *ngFor="let head of headElements; let i = index" (click)="sort(head)">{{ head | titlecase }}
+        <span class="glyphicon glyphicon-sort"></span>
+      </th>
     </tr>
     </thead>
 
+<!--    <tbody>-->
+<!--    <tr *ngFor="let el of elements; let i = index">-->
+<!--      <th scope="row">{{el.id}}</th>-->
+<!--      <td>{{el.first}}</td>-->
+<!--      <td>{{el.last}}</td>-->
+<!--      <td>{{el.handle}}</td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+
     <tbody>
-    <tr>
-      <td>1</td>
-      <td>Wick</td>
-      <td>John</td>
-      <td>jwick</td>
-      <td>Lundi</td>
-      <td><i class="status text-success">&bull;</i> Actif</td>
+
+    <tr *ngFor="let member of members; let i = index">
+      <!-- ID -->
+      <td>{{ member.id }}</td>
+      <!-- NOM -->
+      <td>{{ member.lastname }}</td>
+      <!-- PRÉNOM -->
+      <td>{{ member.firstname }}</td>
+      <!-- LOGIN -->
+      <td>{{ member.login }}</td>
+      <!-- GROUPE SEMAINE -->
+      <td>{{ member.group }}</td>
+
+      <!-- STATUT -->
+      <!-- Affichage de l'icône actif/inactif en fonction du statut du membre -->
+      <td *ngIf="member.status === 'Actif'; then activeBlock else inactiveBlock">Toto</td>
+
+        <ng-template #activeBlock>
+          <td><i class="status text-success">&bull;</i> {{ member.status }}</td>
+        </ng-template>
+
+        <ng-template #inactiveBlock>
+          <td><i class="status text-danger">&bull;</i> {{ member.status }}</td>
+        </ng-template>
+
+      <!-- ACTION icônes Editer + Désactiver -->
       <td>
         <i class="material-icons hover" style="color:dimgray;" title="Éditer" data-toggle="modal"
            data-target="#modalEditUser">create</i>
@@ -50,60 +78,8 @@
       </td>
     </tr>
 
-    <tr>
-      <td>2</td>
-      <td>Bonisseur de La Bath</td>
-      <td>Hubert</td>
-      <td>hbonisseurdelabath</td>
-      <td>Mardi</td>
-      <td><i class="status text-success">&bull;</i> Actif</td>
-      <td>
-        <i class="material-icons hover" style="color:dimgray;" title="Éditer">create</i>
-        <i class="material-icons hover" style="color:orangered;" title="Désactiver">delete_forever</i>
-      </td>
-    </tr>
-
-    <tr>
-      <td>3</td>
-      <td>La Menace</td>
-      <td>Max</td>
-      <td>mlamenace</td>
-      <td>Jeudi</td>
-      <td><i class="status text-success">&bull;</i> Actif</td>
-      <td>
-        <i class="material-icons hover" style="color:dimgray;" title="Éditer">create</i>
-        <i class="material-icons hover" style="color:orangered;" title="Désactiver">delete_forever</i>
-      </td>
-    </tr>
-
-    <tr>
-      <td>4</td>
-      <td>Croft</td>
-      <td>Lara</td>
-      <td>lcroft</td>
-      <td>Mardi</td>
-      <td><i class="status text-danger">&bull;</i> Inactif</td>
-      <td>
-        <i class="material-icons hover" style="color:dimgray;" title="Éditer">create</i>
-        <i class="material-icons hover" style="color:orangered;" title="Désactiver">delete_forever</i>
-      </td>
-    </tr>
-
-    <tr>
-      <td>5</td>
-      <td>Anderson</td>
-      <td>Thomas</td>
-      <td>tanderson</td>
-      <td>Lundi</td>
-      <td><i class="status text-success">&bull;</i> Actif</td>
-      <td>
-        <i class="material-icons hover" style="color:dimgray;" title="Éditer">create</i>
-        <i class="material-icons hover" style="color:orangered;" title="Désactiver">delete_forever</i>
-      </td>
-    </tr>
     </tbody>
   </table>
-
 
   <!-- PAGINATION Center-aligned -->
   <ul class="pagination justify-content-center" style="margin:20px 0">

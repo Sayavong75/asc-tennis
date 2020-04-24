@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   hideNavBar() {
     console.log('hide navbar');
-    this.nav.hide();
+    this.nav.hidden();
   }
 
   ngOnInit(): void {

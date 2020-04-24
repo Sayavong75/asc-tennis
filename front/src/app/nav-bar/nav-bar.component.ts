@@ -29,7 +29,7 @@ export class NavBarComponent implements OnInit {
   hideNavBar() {
     console.log('hide navbar');
     this.hideAdminFunction();
-    this.nav.hide();
+    this.nav.hidden();
   }
   // Fonction pour afficher le menu Admin dans la nav-bar
   showAdminFunction(): void {

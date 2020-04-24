@@ -16,6 +16,7 @@ import { AdminComponent } from './admin/admin.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AdminMembersListComponent } from './admin-members-list/admin-members-list.component';
+import * as $ from 'jquery';
 
 @NgModule({
   declarations: [
