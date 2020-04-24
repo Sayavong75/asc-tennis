@@ -37,3 +37,11 @@
 .pagination li.disabled {
   cursor: no-drop;
 }
+
+/* Style survol sur les boutons material-icons */
+.glyphicon-sort {
+  cursor: pointer;
+}
+.glyphicon-sort:hover {
+  color: yellow;
+}
