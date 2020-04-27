@@ -74,27 +74,6 @@
     background-color: #555; /* Add a dark-grey background on hover */
   }
 
-  /* Style icône Statut - Gestion des Adhérents */
-  .status {
-    font-size: 40px;
-    margin: 2px 2px 0 0;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 10px;
-  }
-  .text-success {
-    color: #10c469;
-  }
-  .text-info {
-    color: #62c9e8;
-  }
-  .text-warning {
-    color: #FFC107;
-  }
-  .text-danger {
-    color: #ff5b5b;
-  }
-
   /* Taille de police du paragraphe */
   p {
     font-size: 16px;
