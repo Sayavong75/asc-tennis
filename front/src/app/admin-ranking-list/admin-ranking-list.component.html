@@ -1,0 +1,100 @@
+<div class="container">
+
+  <div class="table-title">
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-8">
+        <div class="center-div">
+          <h2>Administrateur - Gestion des classements</h2>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-success btn-lg" title="Ajouter" data-toggle="modal"
+                data-target="#modalAddRank">
+          <span class="glyphicon glyphicon-plus-sign"></span>
+          &nbsp;Classement</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SÉPARATEUR -->
+  <hr/>
+
+  <!-- LISTE ANGULAR MATERIAL -->
+  <!-- Search Field -->
+  <mat-form-field>
+    <mat-icon matPrefix>search</mat-icon>
+    <mat-label>Rechercher</mat-label>
+    <input matInput (keyup)="applyFilter($event)" autocomplete="off" [(ngModel)]="value">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="refreshTable()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="center-block">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+        <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+      </ng-container>
+
+      <!-- RankName Column -->
+      <ng-container matColumnDef="rankName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Classement </th>
+        <td mat-cell *matCellDef="let element"> {{ element.rankName }} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <!-- ACTION icônes Editer + Désactiver -->
+        <td mat-cell *matCellDef="let element">
+          <i class="material-icons hover" style="color:dimgray;" title="Éditer" data-toggle="modal"
+             data-target="#modalEditRank">create</i>
+          <i class="material-icons hover" style="color:orangered;" title="Désactiver" data-toggle="modal"
+             data-target="#modalDeleteRank">delete_forever</i>
+        </td>
+      </ng-container>
+
+      <!-- EN-TÊTE DE PAGE - AFFICHAGE  -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <!-- LIGNES DU TABLEAU - AFFICHAGE  -->
+      <tr mat-row *matRowDef="let row; let even = even; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <!-- PAGINATION -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+    <!-- Copyright 2019 Google LLC. All Rights Reserved.
+        Use of this source code is governed by an MIT-style license that
+        can be found in the LICENSE file at http://angular.io/license -->
+  </div>
+
+  <!-- MODAL GESTION DES CLASSEMENTS - SUPPRIMER -->
+  <div class="modal fade" id="modalDeleteRank" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+          <h4 class="modal-title w-100 font-weight-bold">Supprimer un classement</h4>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body">
+            Voulez-vous supprimer le classement <b>40 [id: 2]</b> ?
+            <br/><span class="glyphicon glyphicon-exclamation-sign" style="font-size:20px;color:orange;"></span>
+            Cette action sera définitive.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btn-danger">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
