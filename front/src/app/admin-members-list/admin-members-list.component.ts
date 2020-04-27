@@ -5,8 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 
 export interface UserData {
   id: string;
-  lastname: string;
-  firstname: string;
+  lastName: string;
+  firstName: string;
   login: string;
   group: string;
   status: string;
@@ -16,8 +16,8 @@ export interface UserData {
 const ELEMENT_DATA: UserData[] = [
   {
     id: '1',
-    lastname: 'Wick',
-    firstname: 'John',
+    lastName: 'Wick',
+    firstName: 'John',
     login: 'jwick',
     group: 'Lundi',
     status: 'Actif',
@@ -25,8 +25,8 @@ const ELEMENT_DATA: UserData[] = [
   },
   {
     id: '2',
-    lastname: 'Bonisseur de La Bath',
-    firstname: 'Hubert',
+    lastName: 'Bonisseur de La Bath',
+    firstName: 'Hubert',
     login: 'hbonisseurdelabath',
     group: 'Mardi',
     status: 'Actif',
@@ -34,8 +34,8 @@ const ELEMENT_DATA: UserData[] = [
   },
   {
     id: '3',
-    lastname: 'La Menace',
-    firstname: 'Max',
+    lastName: 'La Menace',
+    firstName: 'Max',
     login: 'mlamenace',
     group: 'Jeudi',
     status: 'Actif',
@@ -43,8 +43,8 @@ const ELEMENT_DATA: UserData[] = [
   },
   {
     id: '4',
-    lastname: 'Croft',
-    firstname: 'Lara',
+    lastName: 'Croft',
+    firstName: 'Lara',
     login: 'lcroft',
     group: 'Mardi',
     status: 'Inactif',
@@ -52,8 +52,8 @@ const ELEMENT_DATA: UserData[] = [
   },
   {
     id: '5',
-    lastname: 'Anderson',
-    firstname: 'Thomas',
+    lastName: 'Anderson',
+    firstName: 'Thomas',
     login: 'tanderson',
     group: 'Lundi',
     status: 'Actif',
@@ -61,8 +61,8 @@ const ELEMENT_DATA: UserData[] = [
   },
   {
     id: '6',
-    lastname: 'Roger',
-    firstname: 'Steve',
+    lastName: 'Roger',
+    firstName: 'Steve',
     login: 'sroger',
     group: 'Jeudi',
     status: 'Actif',
@@ -79,7 +79,7 @@ const ELEMENT_DATA: UserData[] = [
   styleUrls: ['./admin-members-list.component.css']
 })
 export class AdminMembersListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'lastname', 'firstname', 'login', 'group', 'status', 'action'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'login', 'group', 'status', 'action'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

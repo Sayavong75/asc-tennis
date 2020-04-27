@@ -11,13 +11,13 @@
 
       <!-- ENTRAÎNEMENTS -->
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/training-sessions-list']"><i class="glyphicon glyphicon-th-list"></i>Entraînements</a>
+        <a class="nav-link" [routerLink]="['/training-sessions-list']"><span class="glyphicon glyphicon-th-list"></span>Entraînements</a>
       </li>
 
       <!-- MESSAGERIE -->
       <li class="nav-item dropdown">
         <!-- Dropdown link-->
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-envelope"></i>Messagerie</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-envelope"></span>Messagerie</a>
         <div class="dropdown-menu">
           <a class="dropdown-item" [routerLink]="['/home']"><span class="glyphicon glyphicon-user"></span> Mes contacts</a>
           <a class="dropdown-item" [routerLink]="['/home']"><span class="glyphicon glyphicon-inbox"></span> Mes messages</a>
@@ -26,12 +26,12 @@
 
       <!-- MATCHES PAR ÉQUIPES -->
       <!-- <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/home']"><i class="glyphicon glyphicon-flag"></i>Matches</a>
+        <a class="nav-link" [routerLink]="['/home']"><span class="glyphicon glyphicon-flag"></span>Matches</a>
       </li> -->
 
       <!-- ADMINISTRATION -->
       <li class="nav-item" id="admin" *ngIf ="isAdmin">
-        <a class="nav-link" [routerLink]="['/admin']"><i class="glyphicon glyphicon-font" style="color:#00FFFF"></i>Admin</a>
+        <a class="nav-link" [routerLink]="['/admin']"><span class="glyphicon glyphicon-font" style="color:#00FFFF"></span>Admin</a>
       </li>
 
     </ul>
@@ -42,7 +42,7 @@
 
         <!-- Dropdown link-->
         <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-          <i class="glyphicon glyphicon-cog"></i>
+          <span class="glyphicon glyphicon-cog"></span>
         </a>
         <!-- Right-aligned menu-->
         <div class="dropdown-menu dropdown-menu-right">
