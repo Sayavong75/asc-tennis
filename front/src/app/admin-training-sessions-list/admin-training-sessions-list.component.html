@@ -1,0 +1,84 @@
+<div class="container">
+
+  <div class="table-title">
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-8">
+        <div class="center-div">
+          <h2>Administrateur - Gestion des sessions d'entraînement</h2>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-success btn-lg" title="Ajouter" data-toggle="modal"
+                data-target="#modalAddUser">
+          <span class="glyphicon glyphicon-plus-sign"></span>
+          &nbsp;Adhérent</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SÉPARATEUR -->
+  <hr/>
+
+  <!-- LISTE ANGULAR MATERIAL -->
+  <!-- Search Field -->
+  <mat-form-field>
+    <mat-icon matPrefix>search</mat-icon>
+    <mat-label>Rechercher</mat-label>
+    <input matInput (keyup)="applyFilter($event)" autocomplete="off" [(ngModel)]="value">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="refreshTable()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+      <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateSession">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date / Lieu </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.dateSession }} - {{ element.timeSession }} <br/>
+        {{ element.placeSession }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="registrationStatus">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Statut </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.registrationStatus }} <br/>
+        {{ element.finalListStatus }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="trainerStatus">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Entraîneur </th>
+      <td mat-cell *matCellDef="let element"> {{ element.trainerStatus }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="activate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Session </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-slide-toggle [checked]="element.activate" (change)="updateActiveStatus(element)"></mat-slide-toggle>
+        &nbsp;{{ element.activate ? 'Prévue':'Annulée' }}
+      </td>
+    </ng-container>
+
+    <!-- EN-TÊTE DE PAGE - AFFICHAGE  -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- LIGNES DU TABLEAU - AFFICHAGE  -->
+    <tr mat-row *matRowDef="let row; let even = even; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- PAGINATION -->
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+  <!-- Copyright 2019 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+
+</div>
