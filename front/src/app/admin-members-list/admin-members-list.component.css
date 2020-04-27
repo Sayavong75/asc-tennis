@@ -1,47 +1,41 @@
-/*.pagination {*/
-/*  float: right;*/
-/*  margin: 0 0 5px;*/
-/*}*/
-.pagination li a {
-  border: none;
-  font-size: 13px;
-  min-width: 30px;
-  min-height: 30px;
-  color: #999;
-  margin: 0 2px;
-  line-height: 20px;
-  border-radius: 2px !important;
-  text-align: center;
-  padding: 0 6px;
-  text-decoration: none;
+/* Style table Angular Material */
+table {
+  width: 100%;
 }
-.pagination li a:hover {
-  color: #666;
+.mat-form-field {
+  font-size: 16px;
+  width: 400px;
 }
-.pagination li.active a, .pagination li.active a.page-link {
-  background: #03A9F4;
-  color: white;
-}
-.pagination li.active a:hover {
-  background: #0397d6;
-  color: white;
-}
-.pagination li.disabled i {
-  color: #ccc;
-  pointer: not-allowed;
-}
-.pagination li a {
+.mat-cell,
+.mat-footer-cell,
+.mat-header-cell,
+.mat-paginator {
   font-size: 14px;
-  padding-top: 6px
 }
-.pagination li.disabled {
-  cursor: no-drop;
+.mat-header-cell:hover {
+  font-weight: bold;
+}
+.mat-header-cell {
+  background-color:#D3D3D3;
+  color: black;
+}
+.mat-row:nth-child(even) {
+  background-color:#E8E8E8;
+}
+.mat-row:nth-child(odd) {
+  background-color:#FFFFFF;
 }
 
-/* Style survol sur les boutons material-icons */
-.glyphicon-sort {
-  cursor: pointer;
+/* Style champ de recherche Angular Material */
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: grey !important;
 }
-.glyphicon-sort:hover {
-  color: yellow;
+::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: grey !important;
+}
+::ng-deep.mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: grey !important;;
 }

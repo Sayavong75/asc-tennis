@@ -8,7 +8,7 @@ describe('AdminMembersListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminMembersListComponent ]
+      declarations: [ AdminMembersListComponent ],
     })
     .compileComponents();
   }));

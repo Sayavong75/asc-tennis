@@ -21,74 +21,91 @@
   <!-- SÉPARATEUR -->
   <hr/>
 
-  <nav class="navbar">
-    <input class="form-control" type="text" name="search">
-  </nav>
-  <table class="table table-hover">
-    <thead class="thead-dark">
-    <tr>
-      <!-- En-tête de colonne au format "proper name" et icône de tri -->
-      <th *ngFor="let head of headElements; let i = index" (click)="sort(head)">{{ head | titlecase }}
-        <span class="glyphicon glyphicon-sort"></span>
-      </th>
-    </tr>
-    </thead>
+  <!-- LISTE ANGULAR MATERIAL -->
+  <!-- Search Field -->
+  <mat-form-field>
+    <mat-icon matPrefix>search</mat-icon>
+    <mat-label>Rechercher</mat-label>
+    <input matInput (keyup)="applyFilter($event)" autocomplete="off" [(ngModel)]="value">
+<!--    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">-->
+      <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="refreshTable()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
 
-<!--    <tbody>-->
-<!--    <tr *ngFor="let el of elements; let i = index">-->
-<!--      <th scope="row">{{el.id}}</th>-->
-<!--      <td>{{el.first}}</td>-->
-<!--      <td>{{el.last}}</td>-->
-<!--      <td>{{el.handle}}</td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-    <tbody>
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+      <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+    </ng-container>
 
-    <tr *ngFor="let member of members; let i = index">
-      <!-- ID -->
-      <td>{{ member.id }}</td>
-      <!-- NOM -->
-      <td>{{ member.lastname }}</td>
-      <!-- PRÉNOM -->
-      <td>{{ member.firstname }}</td>
-      <!-- LOGIN -->
-      <td>{{ member.login }}</td>
-      <!-- GROUPE SEMAINE -->
-      <td>{{ member.group }}</td>
+    <!-- LastName Column -->
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+      <td mat-cell *matCellDef="let element"> {{ element.lastname }} </td>
+    </ng-container>
 
-      <!-- STATUT -->
+    <!-- FirstName Column -->
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </th>
+      <td mat-cell *matCellDef="let element"> {{ element.firstname }} </td>
+    </ng-container>
+
+    <!-- Login Column -->
+    <ng-container matColumnDef="login">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Login </th>
+      <td mat-cell *matCellDef="let element"> {{ element.login }} </td>
+    </ng-container>
+
+    <!-- Group Column -->
+    <ng-container matColumnDef="group">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Groupe </th>
+      <td mat-cell *matCellDef="let element"> {{ element.group }} </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Statut </th>
+      <ng-container *matCellDef="let element">
+        <td mat-cell *ngIf="element.status === 'Actif'; then activeBlock else inactiveBlock">
+          {{ element.status }}
+        </td>
+      </ng-container>
+
       <!-- Affichage de l'icône actif/inactif en fonction du statut du membre -->
-      <td *ngIf="member.status === 'Actif'; then activeBlock else inactiveBlock">Toto</td>
+      <ng-template #activeBlock>
+        <td><span class="glyphicon glyphicon-record" style="color:green;"></span> Actif</td>
+      </ng-template>
 
-        <ng-template #activeBlock>
-          <td><i class="status text-success">&bull;</i> {{ member.status }}</td>
-        </ng-template>
+      <ng-template #inactiveBlock>
+        <td><span class="glyphicon glyphicon-record" style="color:red;"></span> Inactif</td>
+      </ng-template>
+    </ng-container>
 
-        <ng-template #inactiveBlock>
-          <td><i class="status text-danger">&bull;</i> {{ member.status }}</td>
-        </ng-template>
-
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
       <!-- ACTION icônes Editer + Désactiver -->
-      <td>
-        <i class="material-icons hover" style="color:dimgray;" title="Éditer" data-toggle="modal"
-           data-target="#modalEditUser">create</i>
-        <i class="material-icons hover" style="color:orangered;" title="Désactiver" data-toggle="modal"
-           data-target="#modalDeactivateUser">delete_forever</i>
+      <td mat-cell *matCellDef="let element">
+      <i class="material-icons hover" style="color:dimgray;" title="Éditer" data-toggle="modal"
+         data-target="#modalEditUser">create</i>
+      <i class="material-icons hover" style="color:orangered;" title="Désactiver" data-toggle="modal"
+         data-target="#modalDeactivateUser">delete_forever</i>
       </td>
-    </tr>
+    </ng-container>
 
-    </tbody>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; let even = even; columns: displayedColumns;"></tr>
   </table>
 
-  <!-- PAGINATION Center-aligned -->
-  <ul class="pagination justify-content-center" style="margin:20px 0">
-    <li class="page-item disabled"><a class="page-link" [routerLink]="['/admin-members-list']">Previous</a></li>
-    <li class="page-item active"><a class="page-link" [routerLink]="['/admin-members-list']">1</a></li>
-    <li class="page-item"><a class="page-link" [routerLink]="['/admin-members-list']">2</a></li>
-    <li class="page-item"><a class="page-link" [routerLink]="['/admin-members-list']">3</a></li>
-    <li class="page-item"><a class="page-link" [routerLink]="['/admin-members-list']">Next</a></li>
-  </ul>
+  <!-- PAGINATION -->
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+  <!-- Copyright 2019 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
 
   <!-- MODAL GESTION DES ADHÉRENTS - AJOUTER -->
   <div class="modal fade" id="modalAddUser" role="dialog">
