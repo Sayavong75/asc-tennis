@@ -11,7 +11,7 @@
       </div>
       <div class="col-sm-2">
         <button type="button" class="btn btn-success btn-lg" title="Ajouter" data-toggle="modal"
-                data-target="#modalAddRank">
+                data-target="#modalAddRank" id="btnId">
           <span class="glyphicon glyphicon-plus-sign"></span>
           &nbsp;Classement</button>
       </div>
@@ -72,6 +72,33 @@
     <!-- Copyright 2019 Google LLC. All Rights Reserved.
         Use of this source code is governed by an MIT-style license that
         can be found in the LICENSE file at http://angular.io/license -->
+  </div>
+
+  <!-- MODAL GESTION DES CLASSEMENTS - AJOUTER -->
+  <div class="modal fade" id="modalAddRank" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+          <h4 class="modal-title w-100 font-weight-bold">Ajouter un classement</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- NOM -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formAddRankName">Nom</label>
+            <input type="text" id="formAddRankName" class="form-control" placeholder="Nom">
+          </div>
+
+          <!-- PIED DE PAGE - BOUTONS -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" value="reset">Annuler</button>
+            <button type="button" class="btn btn-success">Valider</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- MODAL GESTION DES CLASSEMENTS - SUPPRIMER -->

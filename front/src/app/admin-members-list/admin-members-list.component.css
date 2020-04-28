@@ -2,29 +2,6 @@
 table {
   width: 100%;
 }
-.mat-form-field {
-  font-size: 16px;
-  width: 400px;
-}
-.mat-cell,
-.mat-footer-cell,
-.mat-header-cell,
-.mat-paginator {
-  font-size: 14px;
-}
-.mat-header-cell:hover {
-  font-weight: bold;
-}
-.mat-header-cell {
-  background-color:#D3D3D3;
-  color: black;
-}
-.mat-row:nth-child(even) {
-  background-color:#E8E8E8;
-}
-.mat-row:nth-child(odd) {
-  background-color:#FFFFFF;
-}
 
 /* Style champ de recherche Angular Material */
 ::ng-deep .mat-focused .mat-form-field-label {

@@ -2,11 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+declare var $: any;
 
 export interface UserData {
   id: string;
-  lastname: string;
-  firstname: string;
+  lastName: string;
+  firstName: string;
   login: string;
   group: string;
   status: string;
@@ -16,17 +17,17 @@ export interface UserData {
 const ELEMENT_DATA: UserData[] = [
   {
     id: '1',
-    lastname: 'Wick',
-    firstname: 'John',
+    lastName: 'Wick',
+    firstName: 'John',
     login: 'jwick',
-    group: 'Lundi',
+    group: 'Lundi Niv. 4',
     status: 'Actif',
     action: ''
   },
   {
     id: '2',
-    lastname: 'Bonisseur de La Bath',
-    firstname: 'Hubert',
+    lastName: 'Bonisseur de La Bath',
+    firstName: 'Hubert',
     login: 'hbonisseurdelabath',
     group: 'Mardi',
     status: 'Actif',
@@ -34,8 +35,8 @@ const ELEMENT_DATA: UserData[] = [
   },
   {
     id: '3',
-    lastname: 'La Menace',
-    firstname: 'Max',
+    lastName: 'La Menace',
+    firstName: 'Max',
     login: 'mlamenace',
     group: 'Jeudi',
     status: 'Actif',
@@ -43,8 +44,8 @@ const ELEMENT_DATA: UserData[] = [
   },
   {
     id: '4',
-    lastname: 'Croft',
-    firstname: 'Lara',
+    lastName: 'Croft',
+    firstName: 'Lara',
     login: 'lcroft',
     group: 'Mardi',
     status: 'Inactif',
@@ -52,17 +53,17 @@ const ELEMENT_DATA: UserData[] = [
   },
   {
     id: '5',
-    lastname: 'Anderson',
-    firstname: 'Thomas',
+    lastName: 'Anderson',
+    firstName: 'Thomas',
     login: 'tanderson',
-    group: 'Lundi',
+    group: 'Lundi Niv. 1',
     status: 'Actif',
     action: ''
   },
   {
     id: '6',
-    lastname: 'Roger',
-    firstname: 'Steve',
+    lastName: 'Roger',
+    firstName: 'Steve',
     login: 'sroger',
     group: 'Jeudi',
     status: 'Actif',
@@ -79,7 +80,7 @@ const ELEMENT_DATA: UserData[] = [
   styleUrls: ['./admin-members-list.component.css']
 })
 export class AdminMembersListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'lastname', 'firstname', 'login', 'group', 'status', 'action'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'login', 'group', 'status', 'action'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -92,6 +93,23 @@ export class AdminMembersListComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    // Fonction pour remise à zéro du formulaire lors du clic sur le bouton Annuler
+    // tslint:disable-next-line:only-arrow-functions
+    $('[data-dismiss=modal]').on('click', function(e) {
+      // tslint:disable-next-line:one-variable-per-declaration
+      const $t = $(this),
+        // tslint:disable-next-line:prefer-const
+        target = $t[0].href || $t.data('target') || $t.parents('.modal') || [];
+
+      $(target)
+        .find('input,textarea,select')
+        .val('')
+        .end()
+        .find('input[type=checkbox], input[type=radio]')
+        .prop('checked', '')
+        .end();
+    });
   }
 
   applyFilter(event: Event) {

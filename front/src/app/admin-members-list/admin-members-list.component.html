@@ -42,15 +42,15 @@
     </ng-container>
 
     <!-- LastName Column -->
-    <ng-container matColumnDef="lastname">
+    <ng-container matColumnDef="lastName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
-      <td mat-cell *matCellDef="let element"> {{ element.lastname }} </td>
+      <td mat-cell *matCellDef="let element"> {{ element.lastName }} </td>
     </ng-container>
 
     <!-- FirstName Column -->
-    <ng-container matColumnDef="firstname">
+    <ng-container matColumnDef="firstName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </th>
-      <td mat-cell *matCellDef="let element"> {{ element.firstname }} </td>
+      <td mat-cell *matCellDef="let element"> {{ element.firstName }} </td>
     </ng-container>
 
     <!-- Login Column -->
@@ -318,7 +318,7 @@
     </div>
   </div>
 
-  <!-- MODAL GESTION DES ADHÉRENTS - SUPPRIMER -->
+  <!-- MODAL GESTION DES ADHÉRENTS - DÉSACTIVER -->
   <div class="modal fade" id="modalDeactivateUser" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -329,7 +329,8 @@
         <div class="modal-body">
           <div class="modal-body">
             Voulez-vous désactiver <b>John Wick [login: jwick - id: 1]</b> ?
-              <br/>La personne ne pourra plus accéder au site.
+            <br/><span class="glyphicon glyphicon-exclamation-sign" style="font-size:20px;color:orange;"></span>
+            La personne ne pourra plus accéder au site.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>

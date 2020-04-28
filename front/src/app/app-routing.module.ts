@@ -8,6 +8,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EmailAlertSettingsComponent } from './email-alert-settings/email-alert-settings.component';
 import { AdminComponent} from './admin/admin.component';
 import { AdminMembersListComponent } from './admin-members-list/admin-members-list.component';
+import { AdminRankingListComponent } from './admin-ranking-list/admin-ranking-list.component';
+import { AdminWeeklyGroupListComponent } from './admin-weekly-group-list/admin-weekly-group-list.component';
+import { AdminTrainingSessionsListComponent } from './admin-training-sessions-list/admin-training-sessions-list.component';
 
 const routes: Routes = [
   { path: '',
@@ -19,7 +22,10 @@ const routes: Routes = [
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'email-alert-settings', component: EmailAlertSettingsComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'admin-members-list', component: AdminMembersListComponent }
+  { path: 'admin-members-list', component: AdminMembersListComponent },
+  { path: 'admin-ranking-list', component: AdminRankingListComponent},
+  { path: 'admin-weekly-group-list', component: AdminWeeklyGroupListComponent },
+  { path: 'admin-training-sessions-list', component: AdminTrainingSessionsListComponent}
 ];
 
 @NgModule({

@@ -11,9 +11,9 @@
       </div>
       <div class="col-sm-2">
         <button type="button" class="btn btn-success btn-lg" title="Ajouter" data-toggle="modal"
-                data-target="#modalAddUser">
+                data-target="#modalAddSession">
           <span class="glyphicon glyphicon-plus-sign"></span>
-          &nbsp;Adhérent</button>
+          &nbsp;Session</button>
       </div>
     </div>
   </div>
@@ -55,9 +55,15 @@
         {{ element.finalListStatus }} </td>
     </ng-container>
 
-    <ng-container matColumnDef="trainerStatus">
+    <ng-container matColumnDef="trainerIsPresent">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Entraîneur </th>
-      <td mat-cell *matCellDef="let element"> {{ element.trainerStatus }} </td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.trainerStatus }}
+        <mat-button-toggle appearance="legacy" (click)="toggleTrainerIsPresent(element)">
+          {{ element.trainerIsPresent ? 'Présent':'Absent' }}
+        </mat-button-toggle>
+      </td>
+
     </ng-container>
 
     <ng-container matColumnDef="activate">
@@ -80,5 +86,55 @@
   <!-- Copyright 2019 Google LLC. All Rights Reserved.
       Use of this source code is governed by an MIT-style license that
       can be found in the LICENSE file at http://angular.io/license -->
+
+  <!-- MODAL GESTION DES SESSIONS D'ENTRAÎNEMENT - AJOUTER -->
+  <div class="modal fade" id="modalAddSession" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+          <h4 class="modal-title w-100 font-weight-bold">Ajouter une session</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- JOUR -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formSelectAddSessionDay">Jour</label>
+            <select class="form-control" id="formSelectAddSessionDay" placeholder="Jour">
+              <option value="0" selected>-- Veuillez choisir un jour --</option>
+              <option value="1" >Lundi</option>
+              <option value="2" >Mardi</option>
+              <option value="3" >Mercredi</option>
+              <option value="4" >Jeudi</option>
+              <option value="5" >Vendredi</option>
+              <option value="6" >Samedi</option>
+              <option value="7" >Dimanche</option>
+            </select>
+          </div>
+
+          <!-- HEURE -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formAddSessionTime">Heure</label>
+            <input type="text" id="formAddSessionTime" class="form-control" placeholder="Heure">
+          </div>
+
+          <!-- LIEU -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formAddSessionPlace">Lieu</label>
+            <input type="text" id="formAddSessionPlace" class="form-control" placeholder="Lieu">
+          </div>
+
+          <!-- PIED DE PAGE - BOUTONS -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" value="reset">Annuler</button>
+            <button type="button" class="btn btn-success">Valider</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+<!--    TODO : A créer suppression des sessions récurrentes -->
+  </div>
 
 </div>

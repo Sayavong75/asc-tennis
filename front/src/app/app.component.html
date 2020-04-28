@@ -8,6 +8,12 @@
   <app-nav-bar></app-nav-bar>
   <!-- Page Content -->
   <div class="container">
+    <!-- Bouton pour aller sur la page de connexion -->
+    <div class="page-header">
+      <button class='btn btn-success pull-right' [routerLink]="['/login']" (click)="topFunction()">
+        <span class="glyphicon glyphicon-off"></span>
+      </button>
+    </div>
 
     <!-- Ajout d'un espace card devant un background -->
     <div class="card border-0 shadow my-5">
@@ -16,16 +22,12 @@
         <div style="height: 700px"></div>
         <p class="lead mb-0">
           You've reached the end!
-          <a class="navbar-brand" [routerLink]="['/login']" (click)="topFunction()">
-            <span><i class="glyphicon glyphicon-refresh"></i></span>
-          </a>
         </p>
         <!-- Bouton de défilement vers le haut -->
         <button *ngIf="isShow" (click)="topFunction()" id="myBtn">
           <i class="material-icons" style="font-size:32px;">arrow_upward</i>
         </button>
       </div>
-
     </div>
   </div>
 </div>
