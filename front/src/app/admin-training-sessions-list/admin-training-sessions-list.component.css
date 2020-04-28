@@ -34,3 +34,14 @@ table {
   /* change color of thumb button (bouton poussoir) when unchecked */
   background-color: #ffa4a2;
 }
+
+/* Style boutons toggle de la colonne Entraîneur Angular Material */
+.mat-button-toggle {
+  background-color: #98ee99;
+  color: black;
+  box-shadow: 1px 2px 5px #000000;
+}
+.mat-button-toggle-checked {
+  background-color: #37474f;
+  color: white;
+}

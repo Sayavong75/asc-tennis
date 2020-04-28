@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import {GroupData} from '../admin-weekly-group-list/admin-weekly-group-list.component';
+declare var $: any;
 
 export interface SessionData {
   id: number;
@@ -11,7 +11,7 @@ export interface SessionData {
   placeSession: string;
   registrationStatus: string;
   finalListStatus: string;
-  trainerStatus: string;
+  trainerIsPresent: boolean;
   activate: boolean;
 }
 
@@ -23,7 +23,7 @@ const ELEMENT_DATA: SessionData[] = [
     placeSession: 'Ligue Hauts de Seine',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 02/05/2020',
-    trainerStatus: 'Présent',
+    trainerIsPresent: true,
     activate: true
   },
   {
@@ -33,7 +33,7 @@ const ELEMENT_DATA: SessionData[] = [
     placeSession: 'Ligue Hauts de Seine',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 03/05/2020',
-    trainerStatus: 'Présent',
+    trainerIsPresent: true,
     activate: true
   },
   {
@@ -43,7 +43,7 @@ const ELEMENT_DATA: SessionData[] = [
     placeSession: 'Ligue Hauts de Seine',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 06/05/2020',
-    trainerStatus: 'Présent',
+    trainerIsPresent: true,
     activate: true
   },
   {
@@ -53,7 +53,7 @@ const ELEMENT_DATA: SessionData[] = [
     placeSession: 'Ligue Hauts de Seine',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 09/05/2020',
-    trainerStatus: 'Présent',
+    trainerIsPresent: true,
     activate: true
   },
   {
@@ -63,7 +63,7 @@ const ELEMENT_DATA: SessionData[] = [
     placeSession: 'Ligue Hauts de Seine',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 10/05/2020',
-    trainerStatus: 'Présent',
+    trainerIsPresent: true,
     activate: true
   },
   {
@@ -73,7 +73,7 @@ const ELEMENT_DATA: SessionData[] = [
     placeSession: 'Ligue Hauts de Seine',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 13/05/2020',
-    trainerStatus: 'Présent',
+    trainerIsPresent: true,
     activate: true
   },
   {
@@ -83,7 +83,7 @@ const ELEMENT_DATA: SessionData[] = [
     placeSession: 'Ligue Hauts de Seine',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 16/05/2020',
-    trainerStatus: 'Présent',
+    trainerIsPresent: true,
     activate: true
   },
   {
@@ -93,7 +93,7 @@ const ELEMENT_DATA: SessionData[] = [
     placeSession: 'Ligue Hauts de Seine',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 17/05/2020',
-    trainerStatus: 'Présent',
+    trainerIsPresent: true,
     activate: true
   },
   {
@@ -103,7 +103,7 @@ const ELEMENT_DATA: SessionData[] = [
     placeSession: 'Ligue Hauts de Seine',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 20/05/2020',
-    trainerStatus: 'Présent',
+    trainerIsPresent: true,
     activate: true
   },
   {
@@ -113,7 +113,7 @@ const ELEMENT_DATA: SessionData[] = [
     placeSession: 'Ligue Hauts de Seine',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 23/05/2020',
-    trainerStatus: 'Présent',
+    trainerIsPresent: true,
     activate: true
   },
   {
@@ -123,7 +123,7 @@ const ELEMENT_DATA: SessionData[] = [
     placeSession: 'Ligue Hauts de Seine',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 24/05/2020',
-    trainerStatus: 'Présent',
+    trainerIsPresent: true,
     activate: true
   },
   {
@@ -133,7 +133,7 @@ const ELEMENT_DATA: SessionData[] = [
     placeSession: 'Ligue Hauts de Seine',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 27/05/2020',
-    trainerStatus: 'Présent',
+    trainerIsPresent: true,
     activate: true
   }
 ];
@@ -147,7 +147,7 @@ const ELEMENT_DATA: SessionData[] = [
   styleUrls: ['./admin-training-sessions-list.component.css']
 })
 export class AdminTrainingSessionsListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'dateSession', 'registrationStatus', 'trainerStatus', 'activate'];
+  displayedColumns: string[] = ['id', 'dateSession', 'registrationStatus', 'trainerIsPresent', 'activate'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -161,6 +161,23 @@ export class AdminTrainingSessionsListComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    // Fonction pour remise à zéro du formulaire lors du clic sur le bouton Annuler
+    // tslint:disable-next-line:only-arrow-functions
+    $('[data-dismiss=modal]').on('click', function(e) {
+      // tslint:disable-next-line:one-variable-per-declaration
+      const $t = $(this),
+        // tslint:disable-next-line:prefer-const
+        target = $t[0].href || $t.data('target') || $t.parents('.modal') || [];
+
+      $(target)
+        .find('input,textarea,select')
+        .val('')
+        .end()
+        .find('input[type=checkbox], input[type=radio]')
+        .prop('checked', '')
+        .end();
+    });
   }
 
   applyFilter(event: Event) {
@@ -178,6 +195,11 @@ export class AdminTrainingSessionsListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.value = '';
+  }
+
+  // Activation ou désactivation de la présence de l'entraîneur
+  toggleTrainerIsPresent(element): void{
+    element.trainerIsPresent = !element.trainerIsPresent;
   }
 
   // Affichage du message si une session d'entraînement est activée / désactivée

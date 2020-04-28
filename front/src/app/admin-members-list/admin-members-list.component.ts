@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+declare var $: any;
 
 export interface UserData {
   id: string;
@@ -19,7 +20,7 @@ const ELEMENT_DATA: UserData[] = [
     lastName: 'Wick',
     firstName: 'John',
     login: 'jwick',
-    group: 'Lundi',
+    group: 'Lundi Niv. 4',
     status: 'Actif',
     action: ''
   },
@@ -55,7 +56,7 @@ const ELEMENT_DATA: UserData[] = [
     lastName: 'Anderson',
     firstName: 'Thomas',
     login: 'tanderson',
-    group: 'Lundi',
+    group: 'Lundi Niv. 1',
     status: 'Actif',
     action: ''
   },
@@ -92,6 +93,23 @@ export class AdminMembersListComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    // Fonction pour remise à zéro du formulaire lors du clic sur le bouton Annuler
+    // tslint:disable-next-line:only-arrow-functions
+    $('[data-dismiss=modal]').on('click', function(e) {
+      // tslint:disable-next-line:one-variable-per-declaration
+      const $t = $(this),
+        // tslint:disable-next-line:prefer-const
+        target = $t[0].href || $t.data('target') || $t.parents('.modal') || [];
+
+      $(target)
+        .find('input,textarea,select')
+        .val('')
+        .end()
+        .find('input[type=checkbox], input[type=radio]')
+        .prop('checked', '')
+        .end();
+    });
   }
 
   applyFilter(event: Event) {
