@@ -65,6 +65,7 @@ import { AdminMembersListComponent } from './admin-members-list/admin-members-li
 import { AdminRankingListComponent } from './admin-ranking-list/admin-ranking-list.component';
 import { AdminWeeklyGroupListComponent } from './admin-weekly-group-list/admin-weekly-group-list.component';
 import { AdminTrainingSessionsListComponent } from './admin-training-sessions-list/admin-training-sessions-list.component';
+import { AdminSessionsViewListComponent } from './admin-sessions-view-list/admin-sessions-view-list.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -81,7 +82,8 @@ import { AppRoutingModule } from './app-routing.module';
     AdminMembersListComponent,
     AdminRankingListComponent,
     AdminWeeklyGroupListComponent,
-    AdminTrainingSessionsListComponent
+    AdminTrainingSessionsListComponent,
+    AdminSessionsViewListComponent
   ],
   imports: [
     BrowserModule,

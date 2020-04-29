@@ -14,8 +14,8 @@ const ELEMENT_DATA: GroupData[] = [
   {id: '1', groupName: '-- En attente d\'affectation --', action: ''},
   {id: '2', groupName: 'Lundi Niv. 1', action: ''},
   {id: '3', groupName: 'Lundi Niv. 4', action: ''},
-  {id: '4', groupName: 'Mardi', action: ''},
-  {id: '5', groupName: 'Jeudi', action: ''}
+  {id: '4', groupName: 'Mardi Niv. 2', action: ''},
+  {id: '5', groupName: 'Jeudi Niv. 3', action: ''}
 ];
 
 /**
@@ -43,20 +43,20 @@ export class AdminWeeklyGroupListComponent implements OnInit {
 
     // Fonction pour remise à zéro du formulaire lors du clic sur le bouton Annuler
     // tslint:disable-next-line:only-arrow-functions
-    $('[data-dismiss=modal]').on('click', function(e) {
-      // tslint:disable-next-line:one-variable-per-declaration
-      const $t = $(this),
-        // tslint:disable-next-line:prefer-const
-        target = $t[0].href || $t.data('target') || $t.parents('.modal') || [];
-
-      $(target)
-        .find('input,textarea,select')
-        .val('')
-        .end()
-        .find('input[type=checkbox], input[type=radio]')
-        .prop('checked', '')
-        .end();
-    });
+    // $('[data-dismiss=modal]').on('click', function(e) {
+    //   // tslint:disable-next-line:one-variable-per-declaration
+    //   const $t = $(this),
+    //     // tslint:disable-next-line:prefer-const
+    //     target = $t[0].href || $t.data('target') || $t.parents('.modal') || [];
+    //
+    //   $(target)
+    //     .find('input,textarea,select')
+    //     .val('')
+    //     .end()
+    //     .find('input[type=checkbox], input[type=radio]')
+    //     .prop('checked', '')
+    //     .end();
+    // });
   }
 
   applyFilter(event: Event) {

@@ -101,6 +101,33 @@
     </div>
   </div>
 
+  <!-- MODAL GESTION DES CLASSEMENTS - MODIFIER -->
+  <div class="modal fade" id="modalEditRank" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+          <h4 class="modal-title w-100 font-weight-bold">Modifier le classement</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- NOM -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditRankName">Nom</label>
+            <input type="text" id="formEditRankName" class="form-control" placeholder="Nom" value="40">
+          </div>
+
+          <!-- PIED DE PAGE - BOUTONS -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" value="reset">Annuler</button>
+            <button type="button" class="btn btn-success">Valider</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL GESTION DES CLASSEMENTS - SUPPRIMER -->
   <div class="modal fade" id="modalDeleteRank" role="dialog">
     <div class="modal-dialog" role="document">

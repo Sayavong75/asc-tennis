@@ -11,6 +11,7 @@ import { AdminMembersListComponent } from './admin-members-list/admin-members-li
 import { AdminRankingListComponent } from './admin-ranking-list/admin-ranking-list.component';
 import { AdminWeeklyGroupListComponent } from './admin-weekly-group-list/admin-weekly-group-list.component';
 import { AdminTrainingSessionsListComponent } from './admin-training-sessions-list/admin-training-sessions-list.component';
+import { AdminSessionsViewListComponent } from './admin-sessions-view-list/admin-sessions-view-list.component';
 
 const routes: Routes = [
   { path: '',
@@ -25,7 +26,8 @@ const routes: Routes = [
   { path: 'admin-members-list', component: AdminMembersListComponent },
   { path: 'admin-ranking-list', component: AdminRankingListComponent},
   { path: 'admin-weekly-group-list', component: AdminWeeklyGroupListComponent },
-  { path: 'admin-training-sessions-list', component: AdminTrainingSessionsListComponent}
+  { path: 'admin-training-sessions-list', component: AdminTrainingSessionsListComponent},
+  { path: 'admin-sessions-view-list', component: AdminSessionsViewListComponent}
 ];
 
 @NgModule({

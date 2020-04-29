@@ -29,7 +29,7 @@ const ELEMENT_DATA: UserData[] = [
     lastName: 'Bonisseur de La Bath',
     firstName: 'Hubert',
     login: 'hbonisseurdelabath',
-    group: 'Mardi',
+    group: 'Mardi Niv. 2',
     status: 'Actif',
     action: ''
   },
@@ -38,7 +38,7 @@ const ELEMENT_DATA: UserData[] = [
     lastName: 'La Menace',
     firstName: 'Max',
     login: 'mlamenace',
-    group: 'Jeudi',
+    group: 'Jeudi Niv. 3',
     status: 'Actif',
     action: ''
   },
@@ -47,7 +47,7 @@ const ELEMENT_DATA: UserData[] = [
     lastName: 'Croft',
     firstName: 'Lara',
     login: 'lcroft',
-    group: 'Mardi',
+    group: 'Mardi Niv. 2',
     status: 'Inactif',
     action: ''
   },
@@ -65,7 +65,7 @@ const ELEMENT_DATA: UserData[] = [
     lastName: 'Roger',
     firstName: 'Steve',
     login: 'sroger',
-    group: 'Jeudi',
+    group: 'Jeudi Niv. 3',
     status: 'Actif',
     action: ''
   }
@@ -96,20 +96,20 @@ export class AdminMembersListComponent implements OnInit {
 
     // Fonction pour remise à zéro du formulaire lors du clic sur le bouton Annuler
     // tslint:disable-next-line:only-arrow-functions
-    $('[data-dismiss=modal]').on('click', function(e) {
-      // tslint:disable-next-line:one-variable-per-declaration
-      const $t = $(this),
-        // tslint:disable-next-line:prefer-const
-        target = $t[0].href || $t.data('target') || $t.parents('.modal') || [];
-
-      $(target)
-        .find('input,textarea,select')
-        .val('')
-        .end()
-        .find('input[type=checkbox], input[type=radio]')
-        .prop('checked', '')
-        .end();
-    });
+    // $('[data-dismiss=modal]').on('click', function(e) {
+    //   // tslint:disable-next-line:one-variable-per-declaration
+    //   const $t = $(this),
+    //     // tslint:disable-next-line:prefer-const
+    //     target = $t[0].href || $t.data('target') || $t.parents('.modal') || [];
+    //
+    //   $(target)
+    //     .find('input,textarea,select')
+    //     .val('')
+    //     .end()
+    //     .find('input[type=checkbox], input[type=radio]')
+    //     .prop('checked', '')
+    //     .end();
+    // });
   }
 
   applyFilter(event: Event) {
