@@ -1,1 +1,166 @@
-<p>admin-sessions-view-list works!</p>
+<div class="container">
+
+  <div class="table-title">
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-8">
+        <div class="center-div">
+          <h2>Administrateur - Liste des sessions d'entraînement</h2>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-light btn-lg" title="Gestion" [routerLink]="['/admin-training-sessions-list']">
+          <span class="glyphicon glyphicon-list"></span>
+          &nbsp;Gestion</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SÉPARATEUR -->
+  <hr/>
+
+  <!-- LISTE ANGULAR MATERIAL -->
+  <!-- Search Field -->
+  <mat-form-field>
+    <mat-icon matPrefix>search</mat-icon>
+    <mat-label>Rechercher</mat-label>
+    <input matInput (keyup)="applyFilter($event)" autocomplete="off" [(ngModel)]="value">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="refreshTable()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+      <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+    </ng-container>
+
+    <!-- DateSession Column -->
+    <ng-container matColumnDef="dateSession">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date / Lieu </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.dateSession }} - {{ element.timeSession }} <br/>
+        {{ element.placeSession }}
+      </td>
+    </ng-container>
+
+    <!-- StatusSession Column -->
+    <ng-container matColumnDef="registrationStatus">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Statut </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.registrationStatus }} <br/>
+        {{ element.finalListStatus }} </td>
+    </ng-container>
+
+    <!-- GroupName Column -->
+    <ng-container matColumnDef="groupName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Groupe </th>
+      <td mat-cell *matCellDef="let element"> {{ element.groupName }} </td>
+    </ng-container>
+
+    <!-- TrainerSession Column -->
+    <ng-container matColumnDef="trainerIsPresent">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Entraîneur </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.trainerStatus }}
+        <mat-button-toggle appearance="legacy" (click)="toggleTrainerIsPresent(element)">
+          {{ element.trainerIsPresent ? 'Présent':'Absent' }}
+        </mat-button-toggle>
+      </td>
+
+    </ng-container>
+
+    <ng-container matColumnDef="activate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Session </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-slide-toggle [checked]="element.activate" (change)="updateActiveStatus(element)"></mat-slide-toggle>
+        &nbsp;{{ element.activate ? 'Prévue':'Annulée' }}
+      </td>
+    </ng-container>
+
+    <!-- EN-TÊTE DE PAGE - AFFICHAGE  -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- LIGNES DU TABLEAU - AFFICHAGE  -->
+    <tr mat-row *matRowDef="let row; let even = even; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- PAGINATION -->
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+  <!-- Copyright 2019 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+
+  <!-- MODAL GESTION DES SESSIONS D'ENTRAÎNEMENT - AJOUTER -->
+  <div class="modal fade" id="modalAddSession" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+          <h4 class="modal-title w-100 font-weight-bold">Ajouter une session hebdomadaire</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- JOUR -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formSelectAddSessionDay">Jour</label>
+            <select class="form-control" id="formSelectAddSessionDay">
+              <option value="0" selected>-- Veuillez choisir un jour --</option>
+              <option value="1" >Lundi</option>
+              <option value="2" >Mardi</option>
+              <option value="3" >Mercredi</option>
+              <option value="4" >Jeudi</option>
+              <option value="5" >Vendredi</option>
+              <option value="6" >Samedi</option>
+              <option value="7" >Dimanche</option>
+            </select>
+          </div>
+
+          <!-- HEURE -->
+          <div class="md-form md-outline">
+            <label for="default-picker"><b>Heure</b></label>
+            <input type="time" id="default-picker" class="form-control" placeholder="Select time">
+          </div>
+
+          <!-- LIEU -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formAddSessionPlace">Lieu</label>
+            <input type="text" id="formAddSessionPlace" class="form-control" placeholder="Lieu">
+          </div>
+
+          <!-- LIEN IFRAME GOOGLE -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formAddSessionPlaceIframeLink">Lien Iframe Google Maps</label>
+            <input type="text" id="formAddSessionPlaceIframeLink" class="form-control"
+                   placeholder="Lien URL. Exemple : <iframe src=...>">
+          </div>
+
+          <!-- GROUPE À RATTACHER -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formSelectAddGroup">Groupe à rattacher</label>
+            <select class="form-control" id="formSelectAddGroup">
+              <option value="0" selected>-- Veuillez choisir un groupe --</option>
+              <option value="1" >Lundi Niv.1</option>
+              <option value="2" >Lundi Niv.4</option>
+              <option value="3" >Mardi Niv.2</option>
+              <option value="4" >Jeudi Niv.3</option>
+            </select>
+          </div>
+
+          <!-- PIED DE PAGE - BOUTONS -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal" value="reset">Annuler</button>
+            <button type="button" class="btn btn-success">Valider</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

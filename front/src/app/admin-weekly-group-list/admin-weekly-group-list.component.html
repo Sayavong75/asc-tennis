@@ -44,7 +44,7 @@
       <!-- GroupName Column -->
       <ng-container matColumnDef="groupName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Groupe </th>
-        <td mat-cell *matCellDef="let element"> {{ element.groupName }}</td>
+        <td mat-cell *matCellDef="let element"> {{ element.groupName }} <span>&nbsp;&nbsp;</span></td>
       </ng-container>
 
       <!-- Action Column -->
@@ -92,7 +92,7 @@
 
           <!-- PIED DE PAGE - BOUTONS -->
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" value="reset">Annuler</button>
+            <button type="button" class="btn btn-light" data-dismiss="modal" value="reset">Annuler</button>
             <button type="button" class="btn btn-success">Valider</button>
           </div>
 
@@ -119,7 +119,7 @@
 
           <!-- PIED DE PAGE - BOUTONS -->
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" value="reset">Annuler</button>
+            <button type="button" class="btn btn-light" data-dismiss="modal" value="reset">Annuler</button>
             <button type="button" class="btn btn-success">Valider</button>
           </div>
 
@@ -138,12 +138,12 @@
         </div>
         <div class="modal-body">
           <div class="modal-body">
-            Voulez-vous supprimer le groupe <b>Lundi Niv. 1 [id: 2]</b> ?
+            Voulez-vous supprimer le groupe <b>Lundi Niv. 1 [Id: 2]</b> ?
             <br/><span class="glyphicon glyphicon-exclamation-sign" style="font-size:20px;color:orange;"></span>
             Cette action sera définitive.
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
             <button type="button" class="btn btn-danger">Supprimer</button>
           </div>
         </div>

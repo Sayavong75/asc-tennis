@@ -45,3 +45,19 @@
     background-color: #37474f;
     color: white;
   }
+
+  /* Style bouton Liste */
+  .btn-light {
+    /*.btn-light, .btn-light:hover, .btn-light:active, .btn-light:visited {*/
+    background-color: #d3d3d3 !important;
+    border-color: #d3d3d3;
+  }
+  .btn-light:hover {
+    background-color: white !important;
+    border-color: #d3d3d3;
+  }
+
+  /* Survol du curseur sur le champ id */
+  #formEditSessionId {
+    cursor: not-allowed;
+  }

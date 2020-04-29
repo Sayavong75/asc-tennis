@@ -1,0 +1,312 @@
+<div class="container">
+
+  <div class="table-title">
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-8">
+        <div class="center-div">
+          <h2>Administrateur - Gestion des sessions d'entraînement hebdomadaires</h2>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <button type="button" class="btn btn-info btn-lg" title="Liste" [routerLink]="['/admin-sessions-view-list']">
+          <span class="glyphicon glyphicon-search"></span>
+          &nbsp;Liste</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SÉPARATEUR -->
+  <hr/>
+
+  <!-- LISTE ANGULAR MATERIAL -->
+  <!-- Search Field -->
+  <mat-form-field>
+    <mat-icon matPrefix>search</mat-icon>
+    <mat-label>Rechercher</mat-label>
+    <input matInput (keyup)="applyFilter($event)" autocomplete="off" [(ngModel)]="value">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="refreshTable()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="center-block">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+        <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+      </ng-container>
+
+      <!-- DaySession Column -->
+      <ng-container matColumnDef="daySession">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Jour </th>
+        <td mat-cell *matCellDef="let element"> {{ element.daySession }} </td>
+      </ng-container>
+
+      <!-- TimeSession Column -->
+      <ng-container matColumnDef="timeSession">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Heure </th>
+        <td mat-cell *matCellDef="let element"> {{ element.timeSession }} </td>
+      </ng-container>
+
+      <!-- PlaceSession Column -->
+      <ng-container matColumnDef="placeSession">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Lieu </th>
+        <td mat-cell *matCellDef="let element"> {{ element.placeSession }} <span>&nbsp;&nbsp;</span></td>
+      </ng-container>
+
+      <!-- GroupName Column -->
+      <ng-container matColumnDef="groupName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Groupe assigné </th>
+        <td mat-cell *matCellDef="let element"> {{ element.groupName }} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <!-- ACTION icônes Editer + Désactiver -->
+        <td mat-cell *matCellDef="let element">
+          <i class="material-icons hover" style="color:dimgray;" title="Éditer" data-toggle="modal"
+             data-target="#modalEditSession">create</i>
+          <i class="material-icons hover" style="color:orangered;" title="Désactiver" data-toggle="modal"
+             data-target="#modalDeleteSession">delete_forever</i>
+        </td>
+      </ng-container>
+
+      <!-- EN-TÊTE DE PAGE - AFFICHAGE  -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <!-- LIGNES DU TABLEAU - AFFICHAGE  -->
+      <tr mat-row *matRowDef="let row; let even = even; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <!-- PAGINATION -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+    <!-- Copyright 2019 Google LLC. All Rights Reserved.
+        Use of this source code is governed by an MIT-style license that
+        can be found in the LICENSE file at http://angular.io/license -->
+  </div>
+
+<!--  <div class="center-block">-->
+<!--    <table class="table table-hover w-auto">-->
+
+<!--      <thead style="background-color:#d3d3d3">-->
+<!--      <tr>-->
+<!--        <th>Action</th>-->
+<!--        <th></th>-->
+<!--        <th></th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+
+<!--      &lt;!&ndash; CRÉER UNE SESSION &ndash;&gt;-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--        <td>Créer</td>-->
+<!--        <td></td>-->
+<!--        <td>-->
+<!--          <i class="material-icons hover" style="color:#218838;" title="Créer" data-toggle="modal"-->
+<!--             data-target="#modalAddSession">add_circle</i>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+
+<!--      &lt;!&ndash; MODIFIER UNE SESSION &ndash;&gt;-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--        <td>Modifier</td>-->
+<!--        <td></td>-->
+<!--        <td>-->
+<!--          <i class="material-icons hover" style="color:dimgray;" title="Modifier" data-toggle="modal"-->
+<!--             data-target="#modalEditSession">create</i>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+
+<!--      &lt;!&ndash; SUPPRIMER UNE SESSION &ndash;&gt;-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--      <tr>-->
+<!--        <td>Groupe semaine</td>-->
+<!--        <td></td>-->
+<!--        <td>-->
+<!--          <i class="material-icons hover" style="color:orangered;" title="Supprimer" data-toggle="modal"-->
+<!--             data-target="#modalDeleteSession">delete_forever</i>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+
+<!--    </table>-->
+<!--  </div>-->
+
+  <!-- MODAL GESTION DES SESSIONS D'ENTRAÎNEMENT HEBDO - MODIFIER -->
+  <div class="modal fade" id="modalEditSession" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+          <h4 class="modal-title w-100 font-weight-bold">Modifier une session hebdomadaire</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- ID -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditSessionId">Id</label>
+            <input type="text" id="formEditSessionId" class="form-control" value="1" disabled>
+          </div>
+
+          <!-- JOUR -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formSelectEditSessionDay">Jour</label>
+            <select class="form-control" id="formSelectEditSessionDay">
+              <option value="1" selected>Lundi</option>
+              <option value="2">Mardi</option>
+              <option value="3">Mercredi</option>
+              <option value="4">Jeudi</option>
+              <option value="5">Vendredi</option>
+              <option value="6">Samedi</option>
+              <option value="7">Dimanche</option>
+            </select>
+          </div>
+
+          <!-- HEURE -->
+          <div class="md-form md-outline">
+            <label for="edit-session-picker"><b>Heure</b></label>
+            <input type="time" id="edit-session-picker" class="form-control" value="20:30">
+          </div>
+
+          <!-- LIEU -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditSessionPlace">Lieu</label>
+            <input type="text" id="formEditSessionPlace" class="form-control" value="Comité des Hauts de Seine de Tennis">
+          </div>
+
+          <!-- LIEN IFRAME GOOGLE -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditSessionPlaceIframeLink">Lien Iframe Google Maps</label>
+            <textarea class="form-control" rows="8" name="mytextarea" id="formEditSessionPlaceIframeLink" style="min-width: 100%"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.1250209993004!2d2.160267815674944!3d48.87489317928904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7f27fbfcf0a06f68!2sComit%C3%A9%20des%20Hauts%20de%20Seine%20de%20Tennis!5e0!3m2!1sfr!2sfr!4v1588084817667!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe></textarea>
+          </div>
+
+          <!-- GROUPE À RATTACHER -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formSelectEditGroup">Groupe à rattacher</label>
+            <select class="form-control" id="formSelectEditGroup">
+              <option value="1" selected>Lundi Niv.1</option>
+              <option value="2">Lundi Niv.4</option>
+              <option value="3">Mardi Niv.2</option>
+              <option value="4">Jeudi Niv.3</option>
+            </select>
+          </div>
+
+          <!-- PIED DE PAGE - BOUTONS -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal" value="reset">Annuler</button>
+            <button type="button" class="btn btn-success">Valider</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL GESTION DES SESSIONS D'ENTRAÎNEMENT HEBDO - AJOUTER -->
+  <div class="modal fade" id="modalAddSession" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+          <h4 class="modal-title w-100 font-weight-bold">Ajouter une session hebdomadaire</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- JOUR -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formSelectAddSessionDay">Jour</label>
+            <select class="form-control" id="formSelectAddSessionDay">
+              <option value="0" selected>-- Veuillez choisir un jour --</option>
+              <option value="1">Lundi</option>
+              <option value="2">Mardi</option>
+              <option value="3">Mercredi</option>
+              <option value="4">Jeudi</option>
+              <option value="5">Vendredi</option>
+              <option value="6">Samedi</option>
+              <option value="7">Dimanche</option>
+            </select>
+          </div>
+
+          <!-- HEURE -->
+          <div class="md-form md-outline">
+<!--            <label for="default-picker"><b>Heure</b></label>-->
+            <label for="add-session-picker"><b>Heure</b></label>
+            <input type="time" id="add-session-picker" class="form-control" placeholder="Select time">
+          </div>
+
+          <!-- LIEU -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formAddSessionPlace">Lieu</label>
+            <input type="text" id="formAddSessionPlace" class="form-control" placeholder="Lieu">
+          </div>
+
+          <!-- LIEN IFRAME GOOGLE -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formAddSessionPlaceIframeLink">Lien Iframe Google Maps</label>
+            <input type="text" id="formAddSessionPlaceIframeLink" class="form-control"
+                   placeholder="Lien URL. Exemple : <iframe src=...>">
+          </div>
+
+          <!-- GROUPE À RATTACHER -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formSelectAddGroup">Groupe à rattacher</label>
+            <select class="form-control" id="formSelectAddGroup">
+              <option value="0" selected>-- Veuillez choisir un groupe --</option>
+              <option value="1">Lundi Niv.1</option>
+              <option value="2">Lundi Niv.4</option>
+              <option value="3">Mardi Niv.2</option>
+              <option value="4">Jeudi Niv.3</option>
+            </select>
+          </div>
+
+          <!-- PIED DE PAGE - BOUTONS -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal" value="reset">Annuler</button>
+            <button type="button" class="btn btn-success">Valider</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL GESTION DES DES SESSIONS D'ENTRAÎNEMENT HEBDO - SUPPRIMER -->
+  <div class="modal fade" id="modalDeleteSession" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+          <h4 class="modal-title w-100 font-weight-bold">Supprimer une session hebdomadaire</h4>
+        </div>
+        <div class="modal-body">
+          <div class="modal-body">
+            Voulez-vous supprimer la session ci-dessous ?<br/>
+            <ul style="list-style-type:square;">
+              <li>Id : <b>1</b></li>
+              <li>Jour : <b>Lundi</b></li>
+              <li>Heure : <b>20h30</b></li>
+              <li>Lieu : <b>Comité des Hauts de Seine de Tennis</b></li>
+            </ul>
+            <br/><span class="glyphicon glyphicon-exclamation-sign" style="font-size:20px;color:orange;"></span>
+            Cette action sera définitive.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
+            <button type="button" class="btn btn-danger">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
