@@ -11,6 +11,7 @@ export interface SessionData {
   placeSession: string;
   registrationStatus: string;
   finalListStatus: string;
+  groupName: string;
   trainerIsPresent: boolean;
   activate: boolean;
 }
@@ -19,120 +20,176 @@ const ELEMENT_DATA: SessionData[] = [
   {
     id: 1,
     dateSession: 'Lundi 4 mai 2020',
-    timeSession: '21h00',
-    placeSession: 'Ligue Hauts de Seine',
+    timeSession: '20h30',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 02/05/2020',
+    groupName: 'Lundi Niv. 1',
     trainerIsPresent: true,
     activate: true
   },
   {
     id: 2,
-    dateSession: 'Mardi 5 mai 2020',
-    timeSession: '20h00',
-    placeSession: 'Ligue Hauts de Seine',
+    dateSession: 'Lundi 4 mai 2020',
+    timeSession: '21h00',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
     registrationStatus: 'Inscriptions ouvertes',
-    finalListStatus: 'Liste finale le 03/05/2020',
+    finalListStatus: 'Liste finale le 02/05/2020',
+    groupName: 'Lundi Niv. 4',
     trainerIsPresent: true,
     activate: true
   },
   {
     id: 3,
-    dateSession: 'Jeudi 7 mai 2020',
-    timeSession: '21h00',
-    placeSession: 'Ligue Hauts de Seine',
+    dateSession: 'Mardi 5 mai 2020',
+    timeSession: '20h00',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
     registrationStatus: 'Inscriptions ouvertes',
-    finalListStatus: 'Liste finale le 06/05/2020',
+    finalListStatus: 'Liste finale le 03/05/2020',
+    groupName: 'Mardi Niv. 2',
     trainerIsPresent: true,
     activate: true
   },
   {
     id: 4,
-    dateSession: 'Lundi 11 mai 2020',
+    dateSession: 'Jeudi 7 mai 2020',
     timeSession: '21h00',
-    placeSession: 'Ligue Hauts de Seine',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
     registrationStatus: 'Inscriptions ouvertes',
-    finalListStatus: 'Liste finale le 09/05/2020',
+    finalListStatus: 'Liste finale le 06/05/2020',
+    groupName: 'Jeudi Niv. 3',
     trainerIsPresent: true,
     activate: true
   },
   {
     id: 5,
-    dateSession: 'Mardi 12 mai 2020',
-    timeSession: '20h00',
-    placeSession: 'Ligue Hauts de Seine',
+    dateSession: 'Lundi 11 mai 2020',
+    timeSession: '20h30',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
     registrationStatus: 'Inscriptions ouvertes',
-    finalListStatus: 'Liste finale le 10/05/2020',
+    finalListStatus: 'Liste finale le 09/05/2020',
+    groupName: 'Lundi Niv. 1',
     trainerIsPresent: true,
     activate: true
   },
   {
     id: 6,
-    dateSession: 'Jeudi 14 mai 2020',
+    dateSession: 'Lundi 11 mai 2020',
     timeSession: '21h00',
-    placeSession: 'Ligue Hauts de Seine',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
     registrationStatus: 'Inscriptions ouvertes',
-    finalListStatus: 'Liste finale le 13/05/2020',
+    finalListStatus: 'Liste finale le 09/05/2020',
+    groupName: 'Lundi Niv. 4',
     trainerIsPresent: true,
     activate: true
   },
   {
     id: 7,
-    dateSession: 'Lundi 18 mai 2020',
-    timeSession: '21h00',
-    placeSession: 'Ligue Hauts de Seine',
+    dateSession: 'Mardi 12 mai 2020',
+    timeSession: '20h00',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
     registrationStatus: 'Inscriptions ouvertes',
-    finalListStatus: 'Liste finale le 16/05/2020',
+    finalListStatus: 'Liste finale le 10/05/2020',
+    groupName: 'Mardi Niv. 2',
     trainerIsPresent: true,
     activate: true
   },
   {
     id: 8,
-    dateSession: 'Mardi 19 mai 2020',
-    timeSession: '20h00',
-    placeSession: 'Ligue Hauts de Seine',
+    dateSession: 'Jeudi 14 mai 2020',
+    timeSession: '21h00',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
     registrationStatus: 'Inscriptions ouvertes',
-    finalListStatus: 'Liste finale le 17/05/2020',
+    finalListStatus: 'Liste finale le 13/05/2020',
+    groupName: 'Jeudi Niv. 3',
     trainerIsPresent: true,
     activate: true
   },
   {
     id: 9,
-    dateSession: 'Jeudi 21 mai 2020',
-    timeSession: '21h00',
-    placeSession: 'Ligue Hauts de Seine',
+    dateSession: 'Lundi 18 mai 2020',
+    timeSession: '20h30',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
     registrationStatus: 'Inscriptions ouvertes',
-    finalListStatus: 'Liste finale le 20/05/2020',
+    finalListStatus: 'Liste finale le 16/05/2020',
+    groupName: 'Lundi Niv. 1',
     trainerIsPresent: true,
     activate: true
   },
   {
     id: 10,
-    dateSession: 'Lundi 25 mai 2020',
+    dateSession: 'Lundi 18 mai 2020',
     timeSession: '21h00',
-    placeSession: 'Ligue Hauts de Seine',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
     registrationStatus: 'Inscriptions ouvertes',
-    finalListStatus: 'Liste finale le 23/05/2020',
+    finalListStatus: 'Liste finale le 16/05/2020',
+    groupName: 'Lundi Niv. 4',
     trainerIsPresent: true,
     activate: true
   },
   {
     id: 11,
-    dateSession: 'Mardi 26 mai 2020',
+    dateSession: 'Mardi 19 mai 2020',
     timeSession: '20h00',
-    placeSession: 'Ligue Hauts de Seine',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
     registrationStatus: 'Inscriptions ouvertes',
-    finalListStatus: 'Liste finale le 24/05/2020',
+    finalListStatus: 'Liste finale le 17/05/2020',
+    groupName: 'Mardi Niv. 2',
     trainerIsPresent: true,
     activate: true
   },
   {
     id: 12,
+    dateSession: 'Jeudi 21 mai 2020',
+    timeSession: '21h00',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
+    registrationStatus: 'Inscriptions ouvertes',
+    finalListStatus: 'Liste finale le 20/05/2020',
+    groupName: 'Jeudi Niv. 3',
+    trainerIsPresent: true,
+    activate: true
+  },
+  {
+    id: 13,
+    dateSession: 'Lundi 25 mai 2020',
+    timeSession: '20h30',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
+    registrationStatus: 'Inscriptions ouvertes',
+    finalListStatus: 'Liste finale le 23/05/2020',
+    groupName: 'Lundi Niv. 1',
+    trainerIsPresent: true,
+    activate: true
+  },
+  {
+    id: 14,
+    dateSession: 'Lundi 25 mai 2020',
+    timeSession: '21h00',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
+    registrationStatus: 'Inscriptions ouvertes',
+    finalListStatus: 'Liste finale le 23/05/2020',
+    groupName: 'Lundi Niv. 4',
+    trainerIsPresent: true,
+    activate: true
+  },
+  {
+    id: 15,
+    dateSession: 'Mardi 26 mai 2020',
+    timeSession: '20h00',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
+    registrationStatus: 'Inscriptions ouvertes',
+    finalListStatus: 'Liste finale le 24/05/2020',
+    groupName: 'Mardi Niv. 2',
+    trainerIsPresent: true,
+    activate: true
+  },
+  {
+    id: 16,
     dateSession: 'Jeudi 28 mai 2020',
     timeSession: '21h00',
-    placeSession: 'Ligue Hauts de Seine',
+    placeSession: 'Comité des Hauts de Seine de Tennis',
     registrationStatus: 'Inscriptions ouvertes',
     finalListStatus: 'Liste finale le 27/05/2020',
+    groupName: 'Jeudi Niv. 3',
     trainerIsPresent: true,
     activate: true
   }
@@ -147,7 +204,7 @@ const ELEMENT_DATA: SessionData[] = [
   styleUrls: ['./admin-training-sessions-list.component.css']
 })
 export class AdminTrainingSessionsListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'dateSession', 'registrationStatus', 'trainerIsPresent', 'activate'];
+  displayedColumns: string[] = ['id', 'dateSession', 'registrationStatus', 'groupName', 'trainerIsPresent', 'activate'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -164,20 +221,20 @@ export class AdminTrainingSessionsListComponent implements OnInit {
 
     // Fonction pour remise à zéro du formulaire lors du clic sur le bouton Annuler
     // tslint:disable-next-line:only-arrow-functions
-    $('[data-dismiss=modal]').on('click', function(e) {
-      // tslint:disable-next-line:one-variable-per-declaration
-      const $t = $(this),
-        // tslint:disable-next-line:prefer-const
-        target = $t[0].href || $t.data('target') || $t.parents('.modal') || [];
-
-      $(target)
-        .find('input,textarea,select')
-        .val('')
-        .end()
-        .find('input[type=checkbox], input[type=radio]')
-        .prop('checked', '')
-        .end();
-    });
+    // $('[data-dismiss=modal]').on('click', function(e) {
+    //   // tslint:disable-next-line:one-variable-per-declaration
+    //   const $t = $(this),
+    //     // tslint:disable-next-line:prefer-const
+    //     target = $t[0].href || $t.data('target') || $t.parents('.modal') || [];
+    //
+    //   $(target)
+    //     .find('input,textarea,select')
+    //     .val('')
+    //     .end()
+    //     .find('input[type=checkbox], input[type=radio]')
+    //     .prop('checked', '')
+    //     .end();
+    // });
   }
 
   applyFilter(event: Event) {

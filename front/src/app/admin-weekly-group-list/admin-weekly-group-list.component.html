@@ -74,6 +74,33 @@
         can be found in the LICENSE file at http://angular.io/license -->
   </div>
 
+  <!-- MODAL GESTION DES GROUPES - MODIFIER -->
+  <div class="modal fade" id="modalEditGroup" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
+          <h4 class="modal-title w-100 font-weight-bold">Modifier un groupe</h4>
+        </div>
+        <div class="modal-body">
+
+          <!-- NOM -->
+          <div class="form-group">
+            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditGroupName">Nom</label>
+            <input type="text" id="formEditGroupName" class="form-control" placeholder="Nom" value="Lundi Niv. 1">
+          </div>
+
+          <!-- PIED DE PAGE - BOUTONS -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" value="reset">Annuler</button>
+            <button type="button" class="btn btn-success">Valider</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- MODAL GESTION DES GROUPES - AJOUTER -->
   <div class="modal fade" id="modalAddGroup" role="dialog">
     <div class="modal-dialog" role="document">
@@ -111,7 +138,7 @@
         </div>
         <div class="modal-body">
           <div class="modal-body">
-            Voulez-vous supprimer le groupe <b>Lundi [id: 2]</b> ?
+            Voulez-vous supprimer le groupe <b>Lundi Niv. 1 [id: 2]</b> ?
             <br/><span class="glyphicon glyphicon-exclamation-sign" style="font-size:20px;color:orange;"></span>
             Cette action sera définitive.
           </div>
