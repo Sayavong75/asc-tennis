@@ -41,7 +41,7 @@ public class ClubServiceImpl implements ClubService {
     public Club saveClub(Long clubId, Club club) throws EntityNotFoundException{
         Optional<Club> dbClub = clubRepository.findById(clubId);
         if (dbClub.isPresent()) {
-            return dbClub.get();
+            return clubRepository.save(club);
         } else {
             throw new EntityNotFoundException("The club with ID: " + clubId + " cannot be found in DB", "Club");
         }

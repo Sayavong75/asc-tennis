@@ -49,7 +49,7 @@ public class ClubController {
 
     /** Delete a club from the clubs array  */
     @DeleteMapping("/{clubId}")
-    public void deleteclub(@PathVariable Long clubId) {
+    public void deleteClub(@PathVariable Long clubId) {
         clubService.deleteClub(clubId);
     }
 }

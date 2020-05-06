@@ -24,8 +24,6 @@ public class Club {
     @Column(nullable = false)
     private String address2;
 
-    @NotNull
-    @NotBlank
     @Column(nullable = false)
     private Long zipCode;
 
@@ -40,11 +38,8 @@ public class Club {
     @Column(columnDefinition="text")
     private String iframeGoogleMaps;
 
-    @NotNull
-    @NotBlank
     @Column(nullable = false)
     private boolean statusIsActive = true;
-
 
     // GETTERS & SETTERS
     public Long getId() {
