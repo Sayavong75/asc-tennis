@@ -1,9 +1,8 @@
 package co.simplon.asctennisapi.service;
 
 import co.simplon.asctennisapi.exception.EntityNotFoundException;
-import co.simplon.asctennisapi.model.Coach;
 import co.simplon.asctennisapi.model.TrainingGroup;
-import co.simplon.asctennisapi.repository.service.TrainingGroupRepository;
+import co.simplon.asctennisapi.repository.TrainingGroupRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +17,7 @@ public class TrainingGroupServiceImpl implements TrainingGroupService {
         this.trainingGroupRepository = trainingGroupRepository;
     }
 
+    @Override
     public List<TrainingGroup> getTrainingGroups() {
         return trainingGroupRepository.findAll();
     }
@@ -32,6 +32,7 @@ public class TrainingGroupServiceImpl implements TrainingGroupService {
         }
     }
 
+    @Override
     public TrainingGroup createTrainingGroup(TrainingGroup newTrainingGroup) {
         return trainingGroupRepository.save(newTrainingGroup);
     }

@@ -2,7 +2,7 @@ package co.simplon.asctennisapi.service;
 
 import co.simplon.asctennisapi.exception.EntityNotFoundException;
 import co.simplon.asctennisapi.model.Club;
-import co.simplon.asctennisapi.repository.service.ClubRepository;
+import co.simplon.asctennisapi.repository.ClubRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

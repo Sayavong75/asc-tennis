@@ -1,4 +1,4 @@
-package co.simplon.asctennisapi.repository.service;
+package co.simplon.asctennisapi.repository;
 
 import co.simplon.asctennisapi.model.TrainingGroup;
 import org.springframework.data.jpa.repository.JpaRepository;
