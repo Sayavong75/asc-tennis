@@ -12,15 +12,15 @@ public interface CoachService {
     /** Coach list retrieval */
     List<Coach> getCoaches();
 
-    /** Get one coach with its ID  */
+    /** Get one coach with its ID */
     Coach getCoachById(Long coachId) throws EntityNotFoundException;
 
     /** Create a new coach */
     Coach createCoach(Coach newCoach);
 
-    /** Save an existing coach  */
+    /** Save an existing coach */
     Coach saveCoach(Long coachId, Coach coach);
 
-    /** Delete a coach from the coaches array  */
+    /** Delete a coach from the coaches array */
     void deleteCoach(Long coachId);
 }
