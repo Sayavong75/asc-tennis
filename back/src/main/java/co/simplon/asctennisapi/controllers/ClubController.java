@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clubs")
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClubController {
 
     private ClubService clubService;
@@ -25,7 +25,7 @@ public class ClubController {
         return clubService.getClubs();
     }
 
-    /** Get one club with its ID  */
+    /** Get one club with its ID */
     @GetMapping("/{clubId}")
     public Club getClubById(@PathVariable Long clubId) {
         return clubService.getClubById(clubId);
@@ -37,7 +37,7 @@ public class ClubController {
         return clubService.createClub(newClub);
     }
 
-    /** Save an existing club  */
+    /** Save an existing club */
     @PutMapping("/{clubId}")
     public ResponseEntity<Club> saveClub(@PathVariable Long clubId, @RequestBody Club club) {
         try {
@@ -47,7 +47,7 @@ public class ClubController {
         }
     }
 
-    /** Delete a club from the clubs array  */
+    /** Delete a club from the clubs array */
     @DeleteMapping("/{clubId}")
     public void deleteClub(@PathVariable Long clubId) {
         clubService.deleteClub(clubId);
