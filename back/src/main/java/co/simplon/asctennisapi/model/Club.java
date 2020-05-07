@@ -1,8 +1,11 @@
 package co.simplon.asctennisapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotBlank;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Club {
@@ -40,6 +43,11 @@ public class Club {
 
     @Column(nullable = false)
     private boolean statusIsActive = true;
+
+    // RELATION unidirectionnelle vers TrainingDay (3)
+    @JsonIgnore
+    @OneToMany (mappedBy = "club")
+    private List<TrainingDay> trainingDays;
 
     // GETTERS & SETTERS
     public Long getId() {
@@ -112,6 +120,10 @@ public class Club {
 
     public void setStatusIsActive(boolean statusIsActive) {
         this.statusIsActive = statusIsActive;
+    }
+
+    public List<TrainingDay> getTrainingDays() {
+        return trainingDays;
     }
 }
 

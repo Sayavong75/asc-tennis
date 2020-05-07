@@ -41,7 +41,7 @@ public class Coach {
     @Column(nullable = false)
     private boolean statusIsActive = true;
 
-    // RELATION bidirectionnelle vers TrainingGroup (1)
+    // RELATION unidirectionnelle vers TrainingGroup (1)
     @JsonIgnore
     @OneToMany (mappedBy = "coach")
     private List<TrainingGroup> trainingGroups;
