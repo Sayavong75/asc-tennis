@@ -16,7 +16,7 @@ public class Ranking {
     @Column(nullable = false)
     private String label;
 
-    // RELATION bidirectionnelle vers Series (2)
+    // RELATION unidirectionnelle vers Series (2)
     @ManyToOne
     private Series series;
 

@@ -31,6 +31,10 @@ public class TrainingDay {
     @Column(nullable = false)
     private boolean statusIsActive = true;
 
+    // RELATION unidirectionnelle vers Club (3)
+    @ManyToOne
+    private Club club;
+
     // GETTERS & SETTERS
     public Long getId() {
         return id;
@@ -70,5 +74,9 @@ public class TrainingDay {
 
     public void setStatusIsActive(boolean statusIsActive) {
         this.statusIsActive = statusIsActive;
+    }
+
+    public Club getClub() {
+        return club;
     }
 }

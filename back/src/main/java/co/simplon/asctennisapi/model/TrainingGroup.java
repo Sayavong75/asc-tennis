@@ -16,7 +16,7 @@ public class TrainingGroup {
     @Column(nullable = false)
     private String label;
 
-    // RELATION bidirectionnelle vers Coach (1)
+    // RELATION unidirectionnelle vers Coach (1)
     @ManyToOne
     private Coach coach;
 
