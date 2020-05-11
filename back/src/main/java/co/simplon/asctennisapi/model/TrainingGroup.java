@@ -1,8 +1,11 @@
 package co.simplon.asctennisapi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class TrainingGroup {
@@ -19,6 +22,11 @@ public class TrainingGroup {
     // RELATION unidirectionnelle vers Coach (1)
     @ManyToOne
     private Coach coach;
+
+    // RELATION unidirectionnelle vers Player (1)
+    @JsonIgnore
+    @OneToMany (mappedBy = "trainingGroup")
+    private List<Player> players;
 
     // GETTERS & SETTERS
     public Long getId() {
@@ -39,5 +47,9 @@ public class TrainingGroup {
 
     public Coach getCoach() {
         return coach;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
     }
 }
