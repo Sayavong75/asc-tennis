@@ -67,7 +67,7 @@ import { AdminWeeklyGroupListComponent } from './admin-weekly-group-list/admin-w
 import { AdminTrainingSessionListComponent } from './admin-training-session-list/admin-training-session-list.component';
 import { AdminSessionsViewListComponent } from './admin-sessions-view-list/admin-sessions-view-list.component';
 
-
+import { DataService} from './service/data.service';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
@@ -141,7 +141,8 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   providers: [
     NavBarService,
-    NavAdminService],
+    NavAdminService,
+    DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
