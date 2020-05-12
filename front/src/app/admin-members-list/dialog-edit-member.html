@@ -1,0 +1,101 @@
+<!-- MODAL GESTION DES ADHÉRENTS - AJOUTER -->
+
+<h1 mat-dialog-title>Modifier un utilisateur</h1>
+<div mat-dialog-content>
+
+  <!-- ID -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.id" placeholder="Id" disabled>
+  </mat-form-field>
+
+  <!-- NOM -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.lastName" placeholder="Nom">
+  </mat-form-field>
+
+  <!-- PRÉNOM -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.firstName" placeholder="Prénom">
+  </mat-form-field>
+
+  <!-- LOGIN -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.login" placeholder="Login">
+  </mat-form-field>
+
+  <!-- MOT DE PASSE -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.password" placeholder="Mot de passe">
+  </mat-form-field>
+
+  <!-- EMAIL 1 -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.email1" placeholder="Email 1">
+  </mat-form-field>
+
+  <!-- EMAIL 2 -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.email2" placeholder="Email 2">
+  </mat-form-field>
+
+  <!-- TELEPHONE 1 -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.phoneNumber1" placeholder="Téléphone 1">
+  </mat-form-field>
+
+  <!-- TELEPHONE 2 -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.phoneNumber2" placeholder="Téléphone 2">
+  </mat-form-field>
+
+  <!-- NOMBRE DE PARTICIPATION AUX ENTRAÎNEMENTS -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.trainingCount" placeholder="Nombre de participation aux entraînements">
+  </mat-form-field>
+
+  <!-- CLASSEMENT -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.ranking" placeholder="Classement">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select [(ngModel)]="choosenEmoji" placeholder="Choose Your Destiny:">
+      <mat-option *ngFor="let emoji of emojis" [value]="emoji">
+        {{ emoji }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- GROUPE D'ENTRAÎNEMENT -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.trainingGroup" placeholder="Groupe d'entraînement">
+  </mat-form-field>
+
+  <!-- AUTORISATION POUR RECEVOIR DES EMAILS GÉNÉRAUX -->
+  <mat-checkbox [(ngModel)]="data.generalAlertOn">
+    Réception d'emails généraux
+  </mat-checkbox>
+  <br/>
+
+  <!-- AUTORISATION POUR RECEVOIR DES EMAILS DES AUTRES MEMBRES -->
+  <mat-checkbox [(ngModel)]="data.playerAlertOn">
+    Réception d'emails des autres membres
+  </mat-checkbox>
+  <br/>
+
+  <!-- STATUT ACTIF / INACTIF -->
+  <mat-checkbox [(ngModel)]="data.statusIsActive">
+    {{ data.statusIsActive ? 'Actif' : 'Inactif' }}
+  </mat-checkbox>
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">Annuler</button>
+  <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial>Mettre à jour</button>
+</div>
+
+
+<!-- Copyright 2019 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
