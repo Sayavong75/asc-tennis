@@ -61,7 +61,7 @@ import { TrainingSessionsListComponent } from './training-sessions-list/training
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EmailAlertSettingsComponent } from './email-alert-settings/email-alert-settings.component';
 import { AdminComponent } from './admin/admin.component';
-import { AdminMembersListComponent } from './admin-members-list/admin-members-list.component';
+import { AdminMembersListComponent, DialogEditMember } from './admin-members-list/admin-members-list.component';
 import { AdminRankingListComponent } from './admin-ranking-list/admin-ranking-list.component';
 import { AdminWeeklyGroupListComponent } from './admin-weekly-group-list/admin-weekly-group-list.component';
 import { AdminTrainingSessionListComponent } from './admin-training-session-list/admin-training-session-list.component';
@@ -84,7 +84,8 @@ import { AppRoutingModule } from './app-routing.module';
     AdminRankingListComponent,
     AdminWeeklyGroupListComponent,
     AdminTrainingSessionListComponent,
-    AdminSessionsViewListComponent
+    AdminSessionsViewListComponent,
+    DialogEditMember
   ],
   imports: [
     BrowserModule,
@@ -143,6 +144,7 @@ import { AppRoutingModule } from './app-routing.module';
     NavBarService,
     NavAdminService,
     DataService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogEditMember]
 })
 export class AppModule { }

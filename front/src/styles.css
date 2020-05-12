@@ -107,6 +107,32 @@
     background-color:#FFFFFF;
   }
 
+  /* Alignement à droite des boutons des boîtes de dialogue Angular Material */
+  .mat-dialog-actions {
+    justify-content: flex-end;
+  }
+
+  /* Style d'en-tête des boîtes de dialogue Angular Material */
+  .mat-dialog-title {
+    font-weight: 200;
+    padding: 0.5em;
+    text-align: center;
+    font-size: 1.5em;
+    background-color: dimgrey;
+    color:white;
+  }
+
+  /* Style de couleur pour les checkbox */
+  .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    opacity: 0.03 !important;
+    background-color:orangered !important;
+  }
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: orangered;
+  }
+
+
+
 /* ====================
    Media queries
    Extra small devices (portrait phones, less than 576px)

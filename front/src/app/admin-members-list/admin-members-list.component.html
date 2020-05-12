@@ -89,10 +89,8 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
       <!-- ACTION icônes Editer + Désactiver -->
       <td mat-cell *matCellDef="let player">
-        <i class="material-icons hover" style="color:dimgray;" title="Éditer" data-toggle="modal"
-           data-target="#modalEditUser">create</i>
-        <i class="material-icons hover" style="color:orangered;" title="Désactiver" data-toggle="modal"
-           data-target="#modalDeactivateUser">delete_forever</i>
+        <mat-icon (click)="editPlayer(player)" style="color:dimgray;">edit</mat-icon>
+<!--        <mat-icon style="color:orangered;">delete</mat-icon>-->
       </td>
     </ng-container>
 
@@ -213,133 +211,23 @@
     </div>
   </div>
 
-  <!-- MODAL GESTION DES ADHÉRENTS - MODIFIER -->
-  <div class="modal fade" id="modalEditUser" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
-          <h4 class="modal-title w-100 font-weight-bold">Modifier l'utilisateur<br/><h3><b>John Wick</b></h3></h4>
+  <mat-form-field>
+    <mat-label>Classement</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let ranking of rankings" [value]="ranking.label">
+        {{ranking.label}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br/>
 
-        </div>
-        <div class="modal-body">
-
-          <!-- NOM -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditUserLastName">Nom</label>
-            <input type="text" id="formEditUserLastName" class="form-control" placeholder="Nom" value="Wick">
-          </div>
-
-          <!-- PRÉNOM -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditUserFirstName">Prénom</label>
-            <input type="text" id="formEditUserFirstName" class="form-control" placeholder="Prénom" value="John">
-          </div>
-
-          <!-- LOGIN -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditUserLogin">Login</label>
-            <input type="text" id="formEditUserLogin" class="form-control" placeholder="Login" value="jwick">
-          </div>
-
-          <!-- EMAIL 1 -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditUserEmail1">E-mail 1</label>
-            <input type="email" id="formEditUserEmail1" class="form-control" placeholder="E-mail 1" value="john.wick@moviestar.com">
-          </div>
-
-          <!-- EMAIL 2 -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditUserEmail2">E-mail 2</label>
-            <input type="email" id="formEditUserEmail2" class="form-control" placeholder="E-mail 2">
-          </div>
-
-          <!-- PHONE 1 -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditUserPhone1">Téléphone 1</label>
-            <input type="email" id="formEditUserPhone1" class="form-control" placeholder="Téléphone 1" value="0102030405">
-          </div>
-
-          <!-- PHONE 2 -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditUserPhone2">Téléphone 2</label>
-            <input type="email" id="formEditUserPhone2" class="form-control" placeholder="Téléphone 2">
-          </div>
-
-          <!-- CLASSEMENT -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formSelectEditUserRank">Classement</label>
-            <select class="form-control" id="formSelectEditUserRank">
-              <option value="0" selected>NC</option>
-              <option value="1" >40</option>
-              <option value="2" >30/5</option>
-              <option value="3" >30/4</option>
-              <option value="4" >30/3</option>
-              <option value="5" >30/2</option>
-              <option value="6" >30/1</option>
-              <option value="7" >30</option>
-              <option value="8" >15/5</option>
-              <option value="9" >15/4</option>
-              <option value="10" >15/3</option>
-              <option value="11" >15/2</option>
-              <option value="12" >15/1</option>
-              <option value="13" >15</option>
-              <option value="24" >5/6</option>
-              <option value="14" >4/6</option>
-              <option value="14" >3/6</option>
-              <option value="15" >2/6</option>
-              <option value="16" >1/6</option>
-              <option value="17" >0</option>
-              <option value="18" >-2/6</option>
-              <option value="19" >-4/6</option>
-              <option value="20" >-15</option>
-              <option value="22" >Promotion</option>
-            </select>
-          </div>
-
-          <!-- CLASSEMENT -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formSelectEditWeekGroup">Classement</label>
-            <select class="form-control" id="formSelectEditWeekGroup">
-              <option value="">-- En attente d'affectation --</option>
-              <option value="1" selected>Lundi</option>
-              <option value="2" >Mardi</option>
-              <option value="3" >Jeudi</option>
-            </select>
-          </div>
-
-          <!-- PIED DE PAGE - BOUTONS -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
-            <button type="button" class="btn btn-success">Valider</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL GESTION DES ADHÉRENTS - DÉSACTIVER -->
-  <div class="modal fade" id="modalDeactivateUser" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
-          <h4 class="modal-title w-100 font-weight-bold">Désactiver un utilisateur</h4>
-        </div>
-        <div class="modal-body">
-          <div class="modal-body">
-            Voulez-vous désactiver <b>John Wick [login: jwick - id: 1]</b> ?
-            <br/><span class="glyphicon glyphicon-exclamation-sign" style="font-size:20px;color:orange;"></span>
-            La personne ne pourra plus accéder au site.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
-            <button type="button" class="btn btn-danger">Désactiver</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <mat-form-field>
+    <mat-label>Groupe d'entraînement</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let trainingGroup of trainingGroups" [value]="trainingGroup.label">
+        {{trainingGroup.label}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
 </div>

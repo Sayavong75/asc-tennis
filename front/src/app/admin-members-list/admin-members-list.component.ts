@@ -1,11 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 declare var $: any;
 
 import { DataService} from '../service/data.service';
 import { Player } from '../model/player';
+import { Ranking } from '../model/ranking';
+import { TrainingGroup } from '../model/trainingGroup';
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -19,19 +22,34 @@ export class AdminMembersListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'login', 'group', 'status', 'action'];
   dataSource: MatTableDataSource<Player>;
 
+  value;
+  player;
+  ranking;
+  players: Player[];
+  rankings: Ranking[];
+  trainingGroups: TrainingGroup[];
+
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  value;
-
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.dataService.fetchPosts().subscribe(players => {
       this.dataSource = new MatTableDataSource(players);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
+      this.players = players;
     });
+    this.dataService.getRankingList().subscribe(
+      rankings => this.rankings = rankings
+    );
+    this.dataService.getTrainingGroupList().subscribe(
+      trainingGroups => this.trainingGroups = trainingGroups
+    );
   }
 
   applyFilter(event: Event) {
@@ -49,6 +67,39 @@ export class AdminMembersListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.value = '';
+  }
+
+  // Modifier un profil Utilisateur
+  editPlayer(player) {
+    const dialogRef = this.dialog.open(DialogEditMember, {
+      width: '465px',
+      data: player,
+    });
+  console.log(this.rankings);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.player = player;
+    });
+  }
+
+}
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-edit-member',
+  templateUrl: 'dialog-edit-member.html',
+})
+// tslint:disable-next-line:component-class-suffix
+export class DialogEditMember {
+  emojis = ['🐼', '💪', '🐷', '🤖', '👽', '🐥'];
+  choosenEmoji: string;
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogEditMember>,
+    @Inject(MAT_DIALOG_DATA) public data: Player) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
