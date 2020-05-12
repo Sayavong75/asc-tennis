@@ -17,9 +17,7 @@ import { Player } from '../model/player';
 })
 export class AdminMembersListComponent implements OnInit {
   displayedColumns: string[] = ['id', 'firstName', 'lastName', 'login', 'group', 'status', 'action'];
-  // dataSource = new MatTableDataSource(ELEMENT_DATA);
-  playerList: Player[] = [];
-  dataSource = new MatTableDataSource(this.playerList);
+  dataSource: MatTableDataSource<Player>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -29,27 +27,11 @@ export class AdminMembersListComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-
-    this.dataService.getPlayerList().subscribe(players => this.playerList = players);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-
-    // Fonction pour remise à zéro du formulaire lors du clic sur le bouton Annuler
-    // tslint:disable-next-line:only-arrow-functions
-    // $('[data-dismiss=modal]').on('click', function(e) {
-    //   // tslint:disable-next-line:one-variable-per-declaration
-    //   const $t = $(this),
-    //     // tslint:disable-next-line:prefer-const
-    //     target = $t[0].href || $t.data('target') || $t.parents('.modal') || [];
-    //
-    //   $(target)
-    //     .find('input,textarea,select')
-    //     .val('')
-    //     .end()
-    //     .find('input[type=checkbox], input[type=radio]')
-    //     .prop('checked', '')
-    //     .end();
-    // });
+    this.dataService.fetchPosts().subscribe(players => {
+      this.dataSource = new MatTableDataSource(players);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
   applyFilter(event: Event) {
@@ -63,8 +45,7 @@ export class AdminMembersListComponent implements OnInit {
 
   // Rechargement de la table lors du clic sur le bouton X du champ de recherche
   refreshTable() {
-    // this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-    this.dataSource = new MatTableDataSource(this.playerList);
+    this.dataSource.filter = '';
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.value = '';
