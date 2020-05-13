@@ -26,8 +26,6 @@ export class AdminMembersListComponent implements OnInit {
   player;
   ranking;
   players: Player[];
-  rankings: Ranking[];
-  trainingGroups: TrainingGroup[];
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -44,12 +42,6 @@ export class AdminMembersListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.players = players;
     });
-    this.dataService.getRankingList().subscribe(
-      rankings => this.rankings = rankings
-    );
-    this.dataService.getTrainingGroupList().subscribe(
-      trainingGroups => this.trainingGroups = trainingGroups
-    );
   }
 
   applyFilter(event: Event) {
@@ -75,7 +67,6 @@ export class AdminMembersListComponent implements OnInit {
       width: '465px',
       data: player,
     });
-  console.log(this.rankings);
 
     dialogRef.afterClosed().subscribe(result => {
       this.player = player;
@@ -84,6 +75,7 @@ export class AdminMembersListComponent implements OnInit {
 
 }
 
+// BOITE DE DIALOGUE POUR FORMULAIRE EDIT
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'dialog-edit-member',
@@ -91,12 +83,27 @@ export class AdminMembersListComponent implements OnInit {
 })
 // tslint:disable-next-line:component-class-suffix
 export class DialogEditMember {
-  emojis = ['🐼', '💪', '🐷', '🤖', '👽', '🐥'];
-  choosenEmoji: string;
+  // Data pour test listbox
+  // emojis = ['🐼', '💪', '🐷', '🤖', '👽', '🐥'];
+  // choosenEmoji: string;
+
+  rankings: Ranking[];
+  trainingGroups: TrainingGroup[];
 
   constructor(
+    private dataService: DataService,
     public dialogRef: MatDialogRef<DialogEditMember>,
     @Inject(MAT_DIALOG_DATA) public data: Player) {}
+
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit(): void {
+    this.dataService.getRankingList().subscribe(
+      rankings => this.rankings = rankings
+    );
+    this.dataService.getTrainingGroupList().subscribe(
+      trainingGroups => this.trainingGroups = trainingGroups
+    );
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

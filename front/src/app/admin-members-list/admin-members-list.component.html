@@ -211,23 +211,4 @@
     </div>
   </div>
 
-  <mat-form-field>
-    <mat-label>Classement</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let ranking of rankings" [value]="ranking.label">
-        {{ranking.label}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br/>
-
-  <mat-form-field>
-    <mat-label>Groupe d'entraînement</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let trainingGroup of trainingGroups" [value]="trainingGroup.label">
-        {{trainingGroup.label}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
 </div>

@@ -55,20 +55,21 @@
 
   <!-- CLASSEMENT -->
   <mat-form-field>
-    <input matInput [(ngModel)]="data.ranking" placeholder="Classement">
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-select [(ngModel)]="choosenEmoji" placeholder="Choose Your Destiny:">
-      <mat-option *ngFor="let emoji of emojis" [value]="emoji">
-        {{ emoji }}
+    <mat-select [(ngModel)]="data.ranking" placeholder="Classement">
+      <mat-option *ngFor="let ranking of rankings" [value]="ranking.label">
+        {{ranking.label}}
       </mat-option>
     </mat-select>
   </mat-form-field>
+  <br/>
 
   <!-- GROUPE D'ENTRAÎNEMENT -->
   <mat-form-field>
-    <input matInput [(ngModel)]="data.trainingGroup" placeholder="Groupe d'entraînement">
+    <mat-select [(ngModel)]="data.trainingGroup" placeholder="Groupe d'entraînement">
+      <mat-option *ngFor="let trainingGroup of trainingGroups" [value]="trainingGroup.label">
+        {{trainingGroup.label}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 
   <!-- AUTORISATION POUR RECEVOIR DES EMAILS GÉNÉRAUX -->
@@ -87,6 +88,15 @@
   <mat-checkbox [(ngModel)]="data.statusIsActive">
     {{ data.statusIsActive ? 'Actif' : 'Inactif' }}
   </mat-checkbox>
+
+  <!-- TEST LISTBOX -->
+  <!--  <mat-form-field>-->
+  <!--    <mat-select [(ngModel)]="choosenEmoji" placeholder="Choose Your Destiny:">-->
+  <!--      <mat-option *ngFor="let emoji of emojis" [value]="emoji">-->
+  <!--        {{ emoji }}-->
+  <!--      </mat-option>-->
+  <!--    </mat-select>-->
+  <!--  </mat-form-field>-->
 
 </div>
 
