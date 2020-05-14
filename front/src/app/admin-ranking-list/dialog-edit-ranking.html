@@ -1,0 +1,34 @@
+<!-- MODAL GESTION DES CLASSEMENTS - MODIFIER -->
+
+<h1 mat-dialog-title>Modifier un classement</h1>
+<div mat-dialog-content>
+
+  <!-- ID -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.id" placeholder="Id" disabled>
+  </mat-form-field>
+
+  <!-- INTITULÉ -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.label" placeholder="Intitulé">
+  </mat-form-field>
+
+  <!-- SERIE -->
+  <mat-form-field>
+    <mat-select [(ngModel)]="data.series.id" placeholder="Classement">
+      <mat-option *ngFor="let serie of series" [value]="serie.id">
+        {{serie.label}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onNoClick()">Annuler</button>
+  <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial (click)="onEditRanking(data.id)">Mettre à jour</button>
+</div>
+
+<!-- Copyright 2019 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

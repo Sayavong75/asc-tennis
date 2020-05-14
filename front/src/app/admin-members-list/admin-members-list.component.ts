@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -75,7 +75,7 @@ export class AdminMembersListComponent implements OnInit {
 
 }
 
-// BOITE DE DIALOGUE POUR FORMULAIRE EDIT
+// BOITE DE DIALOGUE POUR FORMULAIRE MODIFIER
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'dialog-edit-member',
