@@ -114,10 +114,10 @@
 
   /* Style d'en-tête des boîtes de dialogue Angular Material */
   .mat-dialog-title {
-    font-weight: 200;
+    font-weight: 100;
     padding: 0.5em;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 1.2em;
     background-color: dimgrey;
     color:white;
   }

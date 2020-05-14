@@ -18,7 +18,7 @@ import { Series } from '../model/series';
   styleUrls: ['./admin-ranking-list.component.css']
 })
 export class AdminRankingListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'label', 'action'];
+  displayedColumns: string[] = ['id', 'label', 'series', 'action'];
   dataSource: MatTableDataSource<Ranking>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -54,14 +54,31 @@ export class AdminRankingListComponent implements OnInit {
 
   // Rechargement de la table lors du clic sur le bouton X du champ de recherche
   refreshTable() {
-    this.dataSource.filter = '';
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    this.value = '';
+    this.dataService.getRankingList().subscribe(rankings => {
+      this.dataSource = new MatTableDataSource(rankings);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.rankings = rankings;
+      this.dataSource.filter = '';
+      this.value = '';
+      }
+    );
+  }
+
+  // Ajouter un classement
+  addRankingForm() {
+    const dialogRef = this.dialog.open(DialogAddRanking, {
+      width: '465px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.refreshTable();
+    });
   }
 
   // Modifier les données d'un classement
-  editRanking(ranking) {
+  editRankingForm(ranking) {
     const dialogRef = this.dialog.open(DialogEditRanking, {
       width: '465px',
       data: ranking,
@@ -73,7 +90,7 @@ export class AdminRankingListComponent implements OnInit {
   }
 
   // Supprimer un classement
-  deleteRanking(ranking) {
+  deleteRankingForm(ranking) {
     const dialogRef = this.dialog.open(DialogDeleteRanking, {
       width: '465px',
       data: ranking,
@@ -85,6 +102,44 @@ export class AdminRankingListComponent implements OnInit {
   }
 
 }
+
+// BOITE DE DIALOGUE POUR FORMULAIRE AJOUTER
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-add-ranking',
+  templateUrl: 'dialog-add-ranking.html',
+})
+
+// tslint:disable-next-line:component-class-suffix
+export class DialogAddRanking {
+
+  ranking = new Ranking();
+  series: Series[];
+
+  constructor(
+    private dataService: DataService,
+    public dialogRef: MatDialogRef<DialogAddRanking>,
+    @Inject(MAT_DIALOG_DATA) public data: Ranking) {}
+
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit(): void {
+    this.dataService.getSeriesList().subscribe(
+      series => this.series = series
+    );
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close(false);
+  }
+
+  onAddRanking() {
+    console.log('Data: ' + JSON.stringify(this.ranking));
+    this.dataService.addRanking(this.ranking).subscribe();
+    this.dialogRef.close();
+  }
+
+}
+
 
 // BOITE DE DIALOGUE POUR FORMULAIRE MODIFIER
 @Component({
