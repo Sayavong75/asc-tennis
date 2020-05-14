@@ -54,6 +54,10 @@ export class DataService {
     return this.httpClient.get<Ranking[]>('http://localhost:8080/api/rankings');
   }
 
+  addRanking(ranking) {
+    return this.httpClient.post(`http://localhost:8080/api/rankings`, ranking);
+  }
+
   updateRanking(ranking, rankingId) {
     return this.httpClient.put(`http://localhost:8080/api/rankings/${rankingId}`, ranking);
   }

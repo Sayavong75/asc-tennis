@@ -62,7 +62,12 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EmailAlertSettingsComponent } from './email-alert-settings/email-alert-settings.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminMembersListComponent, DialogEditMember } from './admin-members-list/admin-members-list.component';
-import { AdminRankingListComponent, DialogEditRanking, DialogDeleteRanking } from './admin-ranking-list/admin-ranking-list.component';
+import {
+  AdminRankingListComponent,
+  DialogEditRanking,
+  DialogDeleteRanking,
+  DialogAddRanking
+} from './admin-ranking-list/admin-ranking-list.component';
 import { AdminWeeklyGroupListComponent } from './admin-weekly-group-list/admin-weekly-group-list.component';
 import { AdminTrainingSessionListComponent } from './admin-training-session-list/admin-training-session-list.component';
 import { AdminSessionsViewListComponent } from './admin-sessions-view-list/admin-sessions-view-list.component';
@@ -86,6 +91,7 @@ import { AppRoutingModule } from './app-routing.module';
     AdminTrainingSessionListComponent,
     AdminSessionsViewListComponent,
     DialogEditMember,
+    DialogAddRanking,
     DialogEditRanking,
     DialogDeleteRanking
   ],
@@ -148,6 +154,7 @@ import { AppRoutingModule } from './app-routing.module';
     DataService],
   bootstrap: [AppComponent],
   entryComponents: [
+    DialogAddRanking,
     DialogEditMember,
     DialogEditRanking,
     DialogDeleteRanking]
