@@ -1,0 +1,16 @@
+<!-- MODAL GESTION DES GROUPES HEBDOMADAIRES - SUPPRIMER -->
+
+<h1 mat-dialog-title>Supprimer un groupe hebdomadaire</h1>
+<div mat-dialog-content>
+  <p>
+    Voulez-vous vraiment supprimer le groupe hebdomadaire :<br />
+    <b>{{ data.label }}</b> [id: {{ data.id }}] ?<br />
+    <span class="glyphicon glyphicon-exclamation-sign" style="font-size:20px;color:orange;"></span>
+    Cette action sera définitive.
+  </p>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onNoClick()">Non</button>
+  <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial (click)="onRemoveTrainingGroup(data.id)">Oui</button>
+</div>

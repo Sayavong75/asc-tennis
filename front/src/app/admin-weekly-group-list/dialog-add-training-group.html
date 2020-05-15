@@ -1,0 +1,31 @@
+<!-- MODAL GESTION DES GROUPES HEBDOMADAIRES - AJOUTER -->
+
+<h1 mat-dialog-title>Ajouter un groupe hebdomadaire</h1>
+<form>
+  <div mat-dialog-content>
+
+    <!-- INTITULÉ -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="trainingGroup.label" placeholder="Nom du groupe" name="label">
+    </mat-form-field>
+
+    <!-- SERIE -->
+    <mat-form-field>
+      <mat-select [(ngModel)]="trainingGroup.coach" placeholder="Entraîneur assigné" name="coach">
+        <mat-option *ngFor="let coach of coaches" [value]="coach">
+          {{ coach.firstName }} {{ coach.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onNoClick()">Annuler</button>
+    <button mat-raised-button cdkFocusInitial (click)="onAddTrainingGroup()">Ajouter</button>
+  </div>
+
+  <!-- Copyright 2019 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+</form>
