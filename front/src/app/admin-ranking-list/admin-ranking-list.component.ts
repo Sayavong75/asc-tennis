@@ -39,8 +39,7 @@ export class AdminRankingListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.rankings = rankings;
-      }
-    );
+    });
   }
 
   applyFilter(event: Event) {
@@ -61,8 +60,7 @@ export class AdminRankingListComponent implements OnInit {
       this.rankings = rankings;
       this.dataSource.filter = '';
       this.value = '';
-      }
-    );
+    });
   }
 
   // Ajouter un classement
@@ -86,6 +84,8 @@ export class AdminRankingListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.ranking = ranking;
+      console.log('The dialog was closed');
+      this.refreshTable();
     });
   }
 
@@ -98,9 +98,10 @@ export class AdminRankingListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.ranking = ranking;
+      console.log('The dialog was closed');
+      this.refreshTable();
     });
   }
-
 }
 
 // BOITE DE DIALOGUE POUR FORMULAIRE AJOUTER
@@ -137,9 +138,7 @@ export class DialogAddRanking {
     this.dataService.addRanking(this.ranking).subscribe();
     this.dialogRef.close();
   }
-
 }
-
 
 // BOITE DE DIALOGUE POUR FORMULAIRE MODIFIER
 @Component({

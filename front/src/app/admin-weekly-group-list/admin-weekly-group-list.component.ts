@@ -1,22 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 declare var $: any;
 
-export interface GroupData {
-  id: string;
-  groupName: string;
-  action: '';
-}
-
-const ELEMENT_DATA: GroupData[] = [
-  {id: '1', groupName: '-- En attente d\'affectation --', action: ''},
-  {id: '2', groupName: 'Lundi Niv. 1', action: ''},
-  {id: '3', groupName: 'Lundi Niv. 4', action: ''},
-  {id: '4', groupName: 'Mardi Niv. 2', action: ''},
-  {id: '5', groupName: 'Jeudi Niv. 3', action: ''}
-];
+import { DataService } from '../service/data.service';
+import { TrainingGroup } from '../model/trainingGroup';
+import { Coach } from '../model/coach';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {DialogAddRanking, DialogDeleteRanking, DialogEditRanking} from '../admin-ranking-list/admin-ranking-list.component';
+import {Ranking} from '../model/ranking';
+import {Series} from '../model/series';
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -27,36 +21,28 @@ const ELEMENT_DATA: GroupData[] = [
   styleUrls: ['./admin-weekly-group-list.component.css']
 })
 export class AdminWeeklyGroupListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'groupName', 'action'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['id', 'label', 'coach', 'action'];
+  dataSource: MatTableDataSource<TrainingGroup>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   value;
+  trainingGroup;
+  trainingGroups: TrainingGroup[];
 
-  constructor() { }
+  constructor(
+    private dataService: DataService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-
-    // Fonction pour remise à zéro du formulaire lors du clic sur le bouton Annuler
-    // tslint:disable-next-line:only-arrow-functions
-    // $('[data-dismiss=modal]').on('click', function(e) {
-    //   // tslint:disable-next-line:one-variable-per-declaration
-    //   const $t = $(this),
-    //     // tslint:disable-next-line:prefer-const
-    //     target = $t[0].href || $t.data('target') || $t.parents('.modal') || [];
-    //
-    //   $(target)
-    //     .find('input,textarea,select')
-    //     .val('')
-    //     .end()
-    //     .find('input[type=checkbox], input[type=radio]')
-    //     .prop('checked', '')
-    //     .end();
-    // });
+    this.dataService.getTrainingGroupList().subscribe(trainingGroups => {
+      this.dataSource = new MatTableDataSource(trainingGroups);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.trainingGroups = trainingGroups;
+    });
   }
 
   applyFilter(event: Event) {
@@ -70,12 +56,147 @@ export class AdminWeeklyGroupListComponent implements OnInit {
 
   // Rechargement de la table lors du clic sur le bouton X du champ de recherche
   refreshTable() {
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    this.value = '';
+    this.dataService.getTrainingGroupList().subscribe(trainingGroups => {
+      this.dataSource = new MatTableDataSource(trainingGroups);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.trainingGroups = trainingGroups;
+      this.dataSource.filter = '';
+      this.value = '';
+    });
   }
 
+  // Ajouter un groupe d'entraînement
+  addTrainingGroupForm() {
+    const dialogRef = this.dialog.open(DialogAddTrainingGroup, {
+      width: '465px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.refreshTable();
+    });
+  }
+
+  // Modifier les données d'un groupe
+  editTrainingGroupForm(trainingGroup) {
+    const dialogRef = this.dialog.open(DialogEditTrainingGroup, {
+      width: '465px',
+      data: trainingGroup,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.trainingGroup = trainingGroup;
+      console.log('The dialog was closed');
+      this.refreshTable();
+    });
+  }
+
+  // Supprimer un groupe
+  deleteTrainingGroupForm(trainingGroup) {
+    const dialogRef = this.dialog.open(DialogDeleteTrainingGroup, {
+      width: '465px',
+      data: trainingGroup,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.trainingGroup = trainingGroup;
+      console.log('The dialog was closed');
+      this.refreshTable();
+    });
+  }
+}
+
+// BOITE DE DIALOGUE POUR FORMULAIRE AJOUTER
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-add-training-group',
+  templateUrl: 'dialog-add-training-group.html',
+})
+
+// tslint:disable-next-line:component-class-suffix
+export class DialogAddTrainingGroup {
+
+  trainingGroup = new TrainingGroup();
+  coaches: Coach[];
+
+  constructor(
+    private dataService: DataService,
+    public dialogRef: MatDialogRef<DialogAddTrainingGroup>,
+    @Inject(MAT_DIALOG_DATA) public data: TrainingGroup) {}
+
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit(): void {
+    this.dataService.getCoachList().subscribe(
+      coaches => this.coaches = coaches
+    );
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close(false);
+  }
+
+  onAddTrainingGroup() {
+    console.log('Data: ' + JSON.stringify(this.trainingGroup));
+    this.dataService.addTrainingGroup(this.trainingGroup).subscribe();
+    this.dialogRef.close();
+  }
+}
+
+// BOITE DE DIALOGUE POUR FORMULAIRE MODIFIER
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-edit-training-group',
+  templateUrl: 'dialog-edit-training-group.html',
+})
+// tslint:disable-next-line:component-class-suffix
+export class DialogEditTrainingGroup {
+
+  coaches: Coach[];
+
+  constructor(
+    private dataService: DataService,
+    public dialogRef: MatDialogRef<DialogEditTrainingGroup>,
+    @Inject(MAT_DIALOG_DATA) public data: TrainingGroup) {}
+
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit(): void {
+    this.dataService.getCoachList().subscribe(
+      coaches => this.coaches = coaches
+    );
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  onEditTrainingGroup(trainingGroupId) {
+    // tslint:disable-next-line:ban-types
+    this.dataService.updateTrainingGroup(this.data as TrainingGroup, trainingGroupId as Number).subscribe();
+  }
+}
+
+// BOITE DE DIALOGUE POUR FORMULAIRE SUPPRIMER
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-delete-training-group',
+  templateUrl: 'dialog-delete-training-group.html',
+})
+// tslint:disable-next-line:component-class-suffix
+export class DialogDeleteTrainingGroup {
+
+  constructor(
+    private dataService: DataService,
+    public dialogRef: MatDialogRef<DialogDeleteTrainingGroup>,
+    @Inject(MAT_DIALOG_DATA) public data: TrainingGroup) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  onRemoveTrainingGroup(trainingGroupId) {
+    this.dataService.deleteTrainingGroup(trainingGroupId).subscribe();
+  }
 }
 
 /** Copyright 2019 Google LLC. All Rights Reserved.

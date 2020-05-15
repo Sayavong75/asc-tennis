@@ -6,6 +6,7 @@ import {Ranking} from '../model/ranking';
 import {TrainingGroup} from '../model/trainingGroup';
 import {Series} from '../model/series';
 import {map} from 'rxjs/operators';
+import {Coach} from '../model/coach';
 
 @Injectable({
   providedIn: 'root'
@@ -74,6 +75,23 @@ export class DataService {
   // Training Group
   getTrainingGroupList(): Observable<TrainingGroup[]> {
     return this.httpClient.get<TrainingGroup[]>('http://localhost:8080/api/training-groups');
+  }
+
+  addTrainingGroup(trainingGroup) {
+    return this.httpClient.post(`http://localhost:8080/api/training-groups`, trainingGroup);
+  }
+
+  updateTrainingGroup(trainingGroup, trainingGroupId) {
+    return this.httpClient.put(`http://localhost:8080/api/training-groups/${trainingGroupId}`, trainingGroup);
+  }
+
+  deleteTrainingGroup(trainingGroupId): Observable<TrainingGroup> {
+    return this.httpClient.delete<TrainingGroup>(`http://localhost:8080/api/training-groups/${trainingGroupId}`);
+  }
+
+  // Coach
+  getCoachList(): Observable<Coach[]> {
+    return this.httpClient.get<Coach[]>('http://localhost:8080/api/coaches');
   }
 
 }

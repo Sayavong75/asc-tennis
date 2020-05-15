@@ -9,12 +9,13 @@
           <h2>Administrateur - Gestion des groupes hebdomadaires</h2>
         </div>
       </div>
-      <div class="col-sm-2">
-        <button type="button" class="btn btn-success btn-lg" title="Ajouter" data-toggle="modal"
-                data-target="#modalAddGroup">
-          <span class="glyphicon glyphicon-plus-sign"></span>
-          &nbsp;Groupe</button>
-      </div>
+
+      <button mat-raised-button color="primary" (click)="addTrainingGroupForm()">
+<!--      <button mat-raised-button color="primary">-->
+        <i class="material-icons">add</i>
+        <span> Groupe </span>
+      </button>
+
     </div>
   </div>
 
@@ -38,24 +39,31 @@
       <!-- Id Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-        <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+        <td mat-cell *matCellDef="let trainingGroup"> {{ trainingGroup.id }} </td>
       </ng-container>
 
-      <!-- GroupName Column -->
-      <ng-container matColumnDef="groupName">
+      <!-- Label Column -->
+      <ng-container matColumnDef="label">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Groupe </th>
-        <td mat-cell *matCellDef="let element"> {{ element.groupName }} <span>&nbsp;&nbsp;</span></td>
+        <td mat-cell *matCellDef="let trainingGroup"> {{ trainingGroup.label }} <span>&nbsp;&nbsp;</span></td>
+      </ng-container>
+
+      <!-- Coach Column -->
+      <ng-container matColumnDef="coach">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Entraîneur </th>
+        <td mat-cell *matCellDef="let trainingGroup">
+          {{ trainingGroup.coach.firstName }} {{ trainingGroup.coach.lastName }}
+          <span>&nbsp;&nbsp;</span>
+        </td>
       </ng-container>
 
       <!-- Action Column -->
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-        <!-- ACTION icônes Editer + Désactiver -->
-        <td mat-cell *matCellDef="let element">
-          <i class="material-icons hover" style="color:dimgray;" title="Éditer" data-toggle="modal"
-             data-target="#modalEditGroup">create</i>
-          <i class="material-icons hover" style="color:orangered;" title="Désactiver" data-toggle="modal"
-             data-target="#modalDeleteGroup">delete_forever</i>
+        <!-- ACTION icônes Editer + Supprimer -->
+        <td mat-cell *matCellDef="let trainingGroup">
+          <mat-icon (click)="editTrainingGroupForm(trainingGroup)" style="color:dimgray;">edit</mat-icon>
+          <mat-icon (click)="deleteTrainingGroupForm(trainingGroup)" style="color:orangered;">delete</mat-icon>
         </td>
       </ng-container>
 
@@ -72,83 +80,6 @@
     <!-- Copyright 2019 Google LLC. All Rights Reserved.
         Use of this source code is governed by an MIT-style license that
         can be found in the LICENSE file at http://angular.io/license -->
-  </div>
-
-  <!-- MODAL GESTION DES GROUPES - MODIFIER -->
-  <div class="modal fade" id="modalEditGroup" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
-          <h4 class="modal-title w-100 font-weight-bold">Modifier un groupe</h4>
-        </div>
-        <div class="modal-body">
-
-          <!-- NOM -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formEditGroupName">Nom</label>
-            <input type="text" id="formEditGroupName" class="form-control" placeholder="Nom" value="Lundi Niv. 1">
-          </div>
-
-          <!-- PIED DE PAGE - BOUTONS -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-light" data-dismiss="modal" value="reset">Annuler</button>
-            <button type="button" class="btn btn-success">Valider</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL GESTION DES GROUPES - AJOUTER -->
-  <div class="modal fade" id="modalAddGroup" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
-          <h4 class="modal-title w-100 font-weight-bold">Ajouter un groupe</h4>
-        </div>
-        <div class="modal-body">
-
-          <!-- NOM -->
-          <div class="form-group">
-            <label class="form-control-label" data-error="wrong" data-success="right" for="formAddGroupName">Nom</label>
-            <input type="text" id="formAddGroupName" class="form-control" placeholder="Nom">
-          </div>
-
-          <!-- PIED DE PAGE - BOUTONS -->
-          <div class="modal-footer">
-            <button type="button" class="btn btn-light" data-dismiss="modal" value="reset">Annuler</button>
-            <button type="button" class="btn btn-success">Valider</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL GESTION DES GROUPES - SUPPRIMER -->
-  <div class="modal fade" id="modalDeleteGroup" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header text-center">
-          <i class="material-icons" style="color:red;" data-dismiss="modal" aria-label="Close" title="Fermer">cancel</i>
-          <h4 class="modal-title w-100 font-weight-bold">Supprimer un groupe</h4>
-        </div>
-        <div class="modal-body">
-          <div class="modal-body">
-            Voulez-vous supprimer le groupe <b>Lundi Niv. 1 [Id: 2]</b> ? <br />
-            <span class="glyphicon glyphicon-exclamation-sign" style="font-size:20px;color:orange;"></span>
-            Cette action sera définitive.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-light" data-dismiss="modal">Annuler</button>
-            <button type="button" class="btn btn-danger">Supprimer</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
 </div>
