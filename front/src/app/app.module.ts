@@ -76,6 +76,7 @@ import {
 } from './admin-weekly-group-list/admin-weekly-group-list.component';
 import { AdminTrainingSessionListComponent } from './admin-training-session-list/admin-training-session-list.component';
 import { AdminSessionsViewListComponent } from './admin-sessions-view-list/admin-sessions-view-list.component';
+import { AdminCoachesListComponent, DialogAddCoach, DialogEditCoach } from './admin-coaches-list/admin-coaches-list.component';
 
 import { DataService} from './service/data.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -95,13 +96,16 @@ import { AppRoutingModule } from './app-routing.module';
     AdminWeeklyGroupListComponent,
     AdminTrainingSessionListComponent,
     AdminSessionsViewListComponent,
+    AdminCoachesListComponent,
     DialogEditMember,
     DialogAddRanking,
     DialogEditRanking,
     DialogDeleteRanking,
     DialogAddTrainingGroup,
     DialogEditTrainingGroup,
-    DialogDeleteTrainingGroup
+    DialogDeleteTrainingGroup,
+    DialogAddCoach,
+    DialogEditCoach
   ],
   imports: [
     BrowserModule,
@@ -168,6 +172,8 @@ import { AppRoutingModule } from './app-routing.module';
     DialogDeleteRanking,
     DialogAddTrainingGroup,
     DialogEditTrainingGroup,
-    DialogDeleteTrainingGroup]
+    DialogDeleteTrainingGroup,
+    DialogAddCoach,
+    DialogEditCoach]
 })
 export class AppModule { }

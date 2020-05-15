@@ -1,0 +1,52 @@
+<!-- MODAL GESTION DES ENTRAÎNEURS - MODIFIER -->
+
+<h1 mat-dialog-title>Ajouter un entraîneur</h1>
+<form>
+  <div mat-dialog-content>
+
+    <!-- NOM -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.lastName" placeholder="Nom" name="lastName">
+    </mat-form-field>
+
+    <!-- PRÉNOM -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.firstName" placeholder="Prénom" name="firstName">
+    </mat-form-field>
+
+    <!-- EMAIL 1 -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.email1" placeholder="Email 1" name="email1">
+    </mat-form-field>
+
+    <!-- EMAIL 2 -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.email2" placeholder="Email 2" name="email2">
+    </mat-form-field>
+
+    <!-- TELEPHONE 1 -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.phoneNumber1" placeholder="Téléphone 1" name="phoneNumber1">
+    </mat-form-field>
+
+    <!-- TELEPHONE 2 -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.phoneNumber2" placeholder="Téléphone 2" name="phoneNumber2">
+    </mat-form-field>
+
+    <!-- STATUT ACTIF / INACTIF -->
+    <mat-checkbox [(ngModel)]="data.statusIsActive" name="statusIsActive">
+      {{ data.statusIsActive ? 'Actif' : 'Inactif' }}
+    </mat-checkbox>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onNoClick()">Annuler</button>
+    <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial (click)="onEditCoach(data.id)">Mettre à jour</button>
+  </div>
+
+  <!-- Copyright 2019 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+</form>
