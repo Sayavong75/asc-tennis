@@ -1,4 +1,4 @@
-<!-- MODAL GESTION DES ADHÉRENTS - AJOUTER -->
+<!-- MODAL GESTION DES ADHÉRENTS - MODIFIER -->
 
 <h1 mat-dialog-title>Modifier un utilisateur</h1>
 <div mat-dialog-content>
@@ -55,8 +55,8 @@
 
   <!-- CLASSEMENT -->
   <mat-form-field>
-    <mat-select [(ngModel)]="data.ranking" placeholder="Classement">
-      <mat-option *ngFor="let ranking of rankings" [value]="ranking.label">
+    <mat-select [(ngModel)]="data.ranking.id" placeholder="Classement">
+      <mat-option *ngFor="let ranking of rankings" [value]="ranking.id">
         {{ranking.label}}
       </mat-option>
     </mat-select>
@@ -65,8 +65,8 @@
 
   <!-- GROUPE D'ENTRAÎNEMENT -->
   <mat-form-field>
-    <mat-select [(ngModel)]="data.trainingGroup" placeholder="Groupe d'entraînement">
-      <mat-option *ngFor="let trainingGroup of trainingGroups" [value]="trainingGroup.label">
+    <mat-select [(ngModel)]="data.trainingGroup.id" placeholder="Groupe d'entraînement">
+      <mat-option *ngFor="let trainingGroup of trainingGroups" [value]="trainingGroup.id">
         {{trainingGroup.label}}
       </mat-option>
     </mat-select>
@@ -102,7 +102,7 @@
 
 <div mat-dialog-actions>
   <button mat-raised-button color="primary" (click)="onNoClick()">Annuler</button>
-  <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial>Mettre à jour</button>
+  <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial (click)="onEditPlayer(data.id)">Mettre à jour</button>
 </div>
 
 <!-- Copyright 2019 Google LLC. All Rights Reserved.

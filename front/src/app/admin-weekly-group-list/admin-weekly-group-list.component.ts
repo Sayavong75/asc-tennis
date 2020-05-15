@@ -60,7 +60,6 @@ export class AdminWeeklyGroupListComponent implements OnInit {
     this.dataService.getTrainingGroupList().subscribe(trainingGroups => {
       this.dataSource = new MatTableDataSource(trainingGroups);
       this.dataSource.paginator = this.paginator;
-      this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
       this.dataSource.sort = this.sort;
       this.trainingGroups = trainingGroups;
       this.dataSource.filter = '';

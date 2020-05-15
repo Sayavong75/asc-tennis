@@ -53,7 +53,6 @@ export class AdminCoachesListComponent implements OnInit {
     this.dataService.getCoachList().subscribe(coaches => {
       this.dataSource = new MatTableDataSource(coaches);
       this.dataSource.paginator = this.paginator;
-      this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
       this.dataSource.sort = this.sort;
       this.coaches = coaches;
       this.dataSource.filter = '';
@@ -100,7 +99,6 @@ export class AdminCoachesListComponent implements OnInit {
 export class DialogAddCoach {
 
   coach = new Coach();
-  statusIsActive = false;
 
   constructor(
     private dataService: DataService,

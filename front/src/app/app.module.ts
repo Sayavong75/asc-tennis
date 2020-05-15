@@ -61,7 +61,7 @@ import { TrainingSessionsListComponent } from './training-sessions-list/training
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { EmailAlertSettingsComponent } from './email-alert-settings/email-alert-settings.component';
 import { AdminComponent } from './admin/admin.component';
-import { AdminMembersListComponent, DialogEditMember } from './admin-members-list/admin-members-list.component';
+import { AdminMembersListComponent, DialogAddMember, DialogEditMember } from './admin-members-list/admin-members-list.component';
 import {
   AdminRankingListComponent,
   DialogAddRanking,
@@ -97,6 +97,7 @@ import { AppRoutingModule } from './app-routing.module';
     AdminTrainingSessionListComponent,
     AdminSessionsViewListComponent,
     AdminCoachesListComponent,
+    DialogAddMember,
     DialogEditMember,
     DialogAddRanking,
     DialogEditRanking,
@@ -166,8 +167,9 @@ import { AppRoutingModule } from './app-routing.module';
     DataService],
   bootstrap: [AppComponent],
   entryComponents: [
-    DialogAddRanking,
+    DialogAddMember,
     DialogEditMember,
+    DialogAddRanking,
     DialogEditRanking,
     DialogDeleteRanking,
     DialogAddTrainingGroup,
