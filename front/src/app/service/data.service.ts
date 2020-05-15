@@ -94,4 +94,12 @@ export class DataService {
     return this.httpClient.get<Coach[]>('http://localhost:8080/api/coaches');
   }
 
+  addCoach(coach) {
+    return this.httpClient.post(`http://localhost:8080/api/coaches`, coach);
+  }
+
+  updateCoach(coach, coachId) {
+    return this.httpClient.put(`http://localhost:8080/api/coaches/${coachId}`, coach);
+  }
+
 }

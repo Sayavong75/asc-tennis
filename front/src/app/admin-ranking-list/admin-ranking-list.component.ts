@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import {MatSort, MatSortable} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 declare var $: any;
@@ -37,6 +37,7 @@ export class AdminRankingListComponent implements OnInit {
     this.dataService.getRankingList().subscribe(rankings => {
       this.dataSource = new MatTableDataSource(rankings);
       this.dataSource.paginator = this.paginator;
+      this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
       this.dataSource.sort = this.sort;
       this.rankings = rankings;
     });
@@ -56,6 +57,7 @@ export class AdminRankingListComponent implements OnInit {
     this.dataService.getRankingList().subscribe(rankings => {
       this.dataSource = new MatTableDataSource(rankings);
       this.dataSource.paginator = this.paginator;
+      this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
       this.dataSource.sort = this.sort;
       this.rankings = rankings;
       this.dataSource.filter = '';
@@ -108,7 +110,7 @@ export class AdminRankingListComponent implements OnInit {
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'dialog-add-ranking',
-  templateUrl: 'dialog-add-ranking.html',
+  templateUrl: 'dialog-add-ranking.html'
 })
 
 // tslint:disable-next-line:component-class-suffix
@@ -144,7 +146,7 @@ export class DialogAddRanking {
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'dialog-edit-ranking',
-  templateUrl: 'dialog-edit-ranking.html',
+  templateUrl: 'dialog-edit-ranking.html'
 })
 // tslint:disable-next-line:component-class-suffix
 export class DialogEditRanking {
@@ -177,7 +179,7 @@ export class DialogEditRanking {
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'dialog-delete-ranking',
-  templateUrl: 'dialog-delete-ranking.html',
+  templateUrl: 'dialog-delete-ranking.html'
 })
 // tslint:disable-next-line:component-class-suffix
 export class DialogDeleteRanking {
@@ -192,7 +194,10 @@ export class DialogDeleteRanking {
   }
 
   onRemoveRanking(rankingId) {
-    this.dataService.deleteRanking(rankingId).subscribe();
+    this.dataService.deleteRanking(rankingId).subscribe(
+  delRanking => console.log(delRanking),
+  error => {if (error.status === 500)
+        {window.alert('ERREUR\nIl existe une association classement/adhérent.\nModifier le(s) adhérent(s) avant la suppression.'); }});
   }
 }
 

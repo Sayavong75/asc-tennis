@@ -19,11 +19,11 @@ public class TrainingGroup {
     @Column(nullable = false)
     private String label;
 
-    // RELATION unidirectionnelle vers Coach (1)
+    // RELATION bidirectionnelle vers Coach (1)
     @ManyToOne
     private Coach coach;
 
-    // RELATION unidirectionnelle vers Player (1)
+    // RELATION bidirectionnelle vers Player (5)
     @JsonIgnore
     @OneToMany (mappedBy = "trainingGroup")
     private List<Player> players;

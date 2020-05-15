@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import {MatSort, MatSortable} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 declare var $: any;
 
@@ -40,6 +40,7 @@ export class AdminWeeklyGroupListComponent implements OnInit {
     this.dataService.getTrainingGroupList().subscribe(trainingGroups => {
       this.dataSource = new MatTableDataSource(trainingGroups);
       this.dataSource.paginator = this.paginator;
+      this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
       this.dataSource.sort = this.sort;
       this.trainingGroups = trainingGroups;
     });
@@ -59,6 +60,7 @@ export class AdminWeeklyGroupListComponent implements OnInit {
     this.dataService.getTrainingGroupList().subscribe(trainingGroups => {
       this.dataSource = new MatTableDataSource(trainingGroups);
       this.dataSource.paginator = this.paginator;
+      this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
       this.dataSource.sort = this.sort;
       this.trainingGroups = trainingGroups;
       this.dataSource.filter = '';
@@ -111,7 +113,7 @@ export class AdminWeeklyGroupListComponent implements OnInit {
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'dialog-add-training-group',
-  templateUrl: 'dialog-add-training-group.html',
+  templateUrl: 'dialog-add-training-group.html'
 })
 
 // tslint:disable-next-line:component-class-suffix
@@ -147,7 +149,7 @@ export class DialogAddTrainingGroup {
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'dialog-edit-training-group',
-  templateUrl: 'dialog-edit-training-group.html',
+  templateUrl: 'dialog-edit-training-group.html'
 })
 // tslint:disable-next-line:component-class-suffix
 export class DialogEditTrainingGroup {
@@ -180,7 +182,7 @@ export class DialogEditTrainingGroup {
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'dialog-delete-training-group',
-  templateUrl: 'dialog-delete-training-group.html',
+  templateUrl: 'dialog-delete-training-group.html'
 })
 // tslint:disable-next-line:component-class-suffix
 export class DialogDeleteTrainingGroup {
@@ -195,9 +197,19 @@ export class DialogDeleteTrainingGroup {
   }
 
   onRemoveTrainingGroup(trainingGroupId) {
-    this.dataService.deleteTrainingGroup(trainingGroupId).subscribe();
+    this.dataService.deleteTrainingGroup(trainingGroupId).subscribe(
+  delTrainingGroup => console.log(delTrainingGroup),
+  error => {if (error.status === 500)
+        {window.alert('ERREUR\nIl existe une association groupe/adhérent.\nModifier le(s) adhérent(s) avant la suppression.'); }});
   }
 }
+
+// onRemoveRanking(rankingId) {
+//   this.dataService.deleteRanking(rankingId).subscribe(
+//     delRanking => console.log(delRanking),
+//     error => {if (error.status === 500)
+//     {window.alert('ERREUR\nDes adhérents sont associés à ce classement.\nModifier les joueurs avant la suppression.'); }});
+// }
 
 /** Copyright 2019 Google LLC. All Rights Reserved.
  * Use of this source code is governed by an MIT-style license that

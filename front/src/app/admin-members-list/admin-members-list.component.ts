@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import {MatSort, MatSortable} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 declare var $: any;
@@ -40,6 +40,7 @@ export class AdminMembersListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(players);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
+      this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
       this.players = players;
     });
   }
@@ -57,6 +58,7 @@ export class AdminMembersListComponent implements OnInit {
   refreshTable() {
     this.dataSource.filter = '';
     this.dataSource.paginator = this.paginator;
+    this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
     this.dataSource.sort = this.sort;
     this.value = '';
   }
@@ -79,7 +81,7 @@ export class AdminMembersListComponent implements OnInit {
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'dialog-edit-member',
-  templateUrl: 'dialog-edit-member.html',
+  templateUrl: 'dialog-edit-member.html'
 })
 // tslint:disable-next-line:component-class-suffix
 export class DialogEditMember {
