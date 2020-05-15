@@ -12,7 +12,7 @@ export class Player {
   phoneNumber1: string;
   phoneNumber2: string;
   trainingCount: number;
-  ranking: Ranking[];
+  ranking: Ranking;
   trainingGroup: TrainingGroup;
   generalAlertOn: boolean;
   playerAlertOn: boolean;

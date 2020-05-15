@@ -15,42 +15,20 @@ export class DataService {
 
   constructor(private httpClient: HttpClient) { }
 
-  // Player
-  // getPlayerList(): Observable<Player[]> {
-  //   return this.httpClient.get<Player[]>('http://localhost:8080/api/players');
-  // }
-
-  // Player
-  fetchPosts(): Observable<Player[]> {
-    return this.httpClient.get<Player[]>('http://localhost:8080/api/players').pipe(
-      map(data => data.map(o => this.toPlayer(o) ))
-    );
+  // PLAYER
+  getPlayerList(): Observable<Player[]> {
+    return this.httpClient.get<Player[]>('http://localhost:8080/api/players');
   }
 
-  private toPlayer(obj: any): Player {
-    console.log('objet'+ obj);
-    const trainingGroup = obj.trainingGroup;
-    const ranking = obj.ranking;
-    return {
-      id: obj.id,
-      lastName: obj.lastName,
-      firstName: obj.firstName,
-      login: obj.login,
-      password: obj.password,
-      email1: obj.email1,
-      email2: obj.email2,
-      phoneNumber1: obj.phoneNumber1,
-      phoneNumber2: obj.phoneNumber2,
-      trainingCount: obj.trainingCount,
-      ranking: ranking.label,
-      trainingGroup: trainingGroup.label,
-      generalAlertOn: obj.generalAlertOn,
-      playerAlertOn: obj.playerAlertOn,
-      statusIsActive: obj.statusIsActive
-    };
+  addPlayer(player) {
+    return this.httpClient.post(`http://localhost:8080/api/players`, player);
   }
 
-  // Ranking
+  updatePlayer(player, playerId) {
+    return this.httpClient.put(`http://localhost:8080/api/players/${playerId}`, player);
+  }
+
+  // RANKING
   getRankingList(): Observable<Ranking[]> {
     return this.httpClient.get<Ranking[]>('http://localhost:8080/api/rankings');
   }
@@ -67,12 +45,12 @@ export class DataService {
     return this.httpClient.delete<Ranking>(`http://localhost:8080/api/rankings/${rankingId}`);
   }
 
-  // Series
+  // SERIES
   getSeriesList(): Observable<Series[]> {
     return this.httpClient.get<Series[]>('http://localhost:8080/api/series');
   }
 
-  // Training Group
+  // TRAINING GROUP
   getTrainingGroupList(): Observable<TrainingGroup[]> {
     return this.httpClient.get<TrainingGroup[]>('http://localhost:8080/api/training-groups');
   }
@@ -89,7 +67,7 @@ export class DataService {
     return this.httpClient.delete<TrainingGroup>(`http://localhost:8080/api/training-groups/${trainingGroupId}`);
   }
 
-  // Coach
+  // COACH
   getCoachList(): Observable<Coach[]> {
     return this.httpClient.get<Coach[]>('http://localhost:8080/api/coaches');
   }

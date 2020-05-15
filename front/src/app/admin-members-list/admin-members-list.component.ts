@@ -9,6 +9,8 @@ import { DataService} from '../service/data.service';
 import { Player } from '../model/player';
 import { Ranking } from '../model/ranking';
 import { TrainingGroup } from '../model/trainingGroup';
+import {Coach} from '../model/coach';
+import {DialogAddCoach} from '../admin-coaches-list/admin-coaches-list.component';
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -36,11 +38,11 @@ export class AdminMembersListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dataService.fetchPosts().subscribe(players => {
+    this.dataService.getPlayerList().subscribe(players => {
       this.dataSource = new MatTableDataSource(players);
-      this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
+      this.dataSource.sort = this.sort;
       this.players = players;
     });
   }
@@ -54,17 +56,31 @@ export class AdminMembersListComponent implements OnInit {
     }
   }
 
-  // Rechargement de la table lors du clic sur le bouton X du champ de recherche
   refreshTable() {
-    this.dataSource.filter = '';
-    this.dataSource.paginator = this.paginator;
-    this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
-    this.dataSource.sort = this.sort;
-    this.value = '';
+    this.dataService.getPlayerList().subscribe(players => {
+      this.dataSource = new MatTableDataSource(players);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.players = players;
+      this.dataSource.filter = '';
+      this.value = '';
+    });
   }
 
-  // Modifier un profil Utilisateur
-  editPlayer(player) {
+  // Ajouter un adhérent
+  addPlayerForm() {
+    const dialogRef = this.dialog.open(DialogAddMember, {
+      width: '465px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.refreshTable();
+    });
+  }
+
+  // Modifier un profil adhérent
+  editPlayerForm(player) {
     const dialogRef = this.dialog.open(DialogEditMember, {
       width: '465px',
       data: player,
@@ -72,9 +88,54 @@ export class AdminMembersListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.player = player;
+      console.log('The dialog was closed');
+      this.refreshTable();
     });
   }
 
+}
+
+// BOITE DE DIALOGUE POUR FORMULAIRE AJOUTER
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-add-member',
+  templateUrl: 'dialog-add-member.html'
+})
+
+// tslint:disable-next-line:component-class-suffix
+export class DialogAddMember {
+
+  player = new Player();
+  rankings: Ranking[];
+  trainingGroups: TrainingGroup[];
+
+  constructor(
+    private dataService: DataService,
+    public dialogRef: MatDialogRef<DialogAddMember>,
+    @Inject(MAT_DIALOG_DATA) public data: Player) {}
+
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit(): void {
+    this.player.statusIsActive = true;
+    this.player.generalAlertOn = true;
+    this.player.playerAlertOn = false;
+    this.dataService.getRankingList().subscribe(
+      rankings => this.rankings = rankings
+    );
+    this.dataService.getTrainingGroupList().subscribe(
+      trainingGroups => this.trainingGroups = trainingGroups
+    );
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close(false);
+  }
+
+  onAddPlayer() {
+    console.log('Data: ' + JSON.stringify(this.player));
+    this.dataService.addPlayer(this.player).subscribe();
+    this.dialogRef.close();
+  }
 }
 
 // BOITE DE DIALOGUE POUR FORMULAIRE MODIFIER
@@ -111,6 +172,12 @@ export class DialogEditMember {
     this.dialogRef.close();
   }
 
+  onEditPlayer(playerId) {
+    // tslint:disable-next-line:ban-types
+    console.log('Data: ' + JSON.stringify(this.data));
+    // tslint:disable-next-line:ban-types
+    this.dataService.updatePlayer(this.data as Player, playerId as Number).subscribe();
+  }
 }
 
 /** Copyright 2019 Google LLC. All Rights Reserved.
