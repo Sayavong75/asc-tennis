@@ -8,6 +8,9 @@ declare var $: any;
 import { DataService } from '../service/data.service';
 import { Coach } from '../model/coach';
 
+/**
+ * @title Data table with sorting, pagination, and filtering.
+ */
 @Component({
   selector: 'app-admin-coaches-list',
   templateUrl: './admin-coaches-list.component.html',
@@ -30,13 +33,8 @@ export class AdminCoachesListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dataService.getCoachList().subscribe(coaches => {
-      this.dataSource = new MatTableDataSource(coaches);
-      this.dataSource.paginator = this.paginator;
-      this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
-      this.dataSource.sort = this.sort;
-      this.coaches = coaches;
-    });
+    this.refreshTable();
+    this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
   }
 
   applyFilter(event: Event) {

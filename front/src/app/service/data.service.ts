@@ -5,8 +5,9 @@ import {Player} from '../model/player';
 import {Ranking} from '../model/ranking';
 import {TrainingGroup} from '../model/trainingGroup';
 import {Series} from '../model/series';
-import {map} from 'rxjs/operators';
 import {Coach} from '../model/coach';
+import {Club} from '../model/club';
+import {TrainingDay} from '../model/trainingDay';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +79,36 @@ export class DataService {
 
   updateCoach(coach, coachId) {
     return this.httpClient.put(`http://localhost:8080/api/coaches/${coachId}`, coach);
+  }
+
+  // CLUB
+  getClubList(): Observable<Club[]> {
+    return this.httpClient.get<Club[]>('http://localhost:8080/api/clubs');
+  }
+
+  addClub(club) {
+    return this.httpClient.post(`http://localhost:8080/api/clubs`, club);
+  }
+
+  updateClub(club, clubId) {
+    return this.httpClient.put(`http://localhost:8080/api/clubs/${clubId}`, club);
+  }
+
+  // TRAINING DAY
+  getTrainingDayList(): Observable<TrainingDay[]> {
+    return this.httpClient.get<TrainingDay[]>('http://localhost:8080/api/training-days');
+  }
+
+  addTrainingDay(trainingDay) {
+    return this.httpClient.post(`http://localhost:8080/api/training-days`, trainingDay);
+  }
+
+  updateTrainingDay(trainingDay, trainingDayId) {
+    return this.httpClient.put(`http://localhost:8080/api/training-days/${trainingDayId}`, trainingDay);
+  }
+
+  deleteTrainingDay(trainingDayId): Observable<TrainingDay> {
+    return this.httpClient.delete<TrainingDay>(`http://localhost:8080/api/training-days/${trainingDayId}`);
   }
 
 }

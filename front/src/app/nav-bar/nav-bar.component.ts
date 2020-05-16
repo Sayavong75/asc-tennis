@@ -8,7 +8,8 @@ import { NavAdminService} from '../nav-admin.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  public isAdmin = false;
+  // public isAdmin = false;
+  public isAdmin = true;
 
   constructor(
     public nav: NavBarService,

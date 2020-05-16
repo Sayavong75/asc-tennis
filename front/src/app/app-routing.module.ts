@@ -11,6 +11,7 @@ import { AdminMembersListComponent } from './admin-members-list/admin-members-li
 import { AdminRankingListComponent } from './admin-ranking-list/admin-ranking-list.component';
 import { AdminWeeklyGroupListComponent } from './admin-weekly-group-list/admin-weekly-group-list.component';
 import { AdminCoachesListComponent } from './admin-coaches-list/admin-coaches-list.component';
+import { AdminClubsListComponent } from './admin-clubs-list/admin-clubs-list.component';
 import { AdminTrainingSessionListComponent } from './admin-training-session-list/admin-training-session-list.component';
 import { AdminSessionsViewListComponent } from './admin-sessions-view-list/admin-sessions-view-list.component';
 
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'admin-ranking-list', component: AdminRankingListComponent},
   { path: 'admin-weekly-group-list', component: AdminWeeklyGroupListComponent },
   { path: 'admin-coaches-list', component: AdminCoachesListComponent},
+  { path: 'admin-clubs-list', component: AdminClubsListComponent},
   { path: 'admin-training-sessions-list', component: AdminTrainingSessionListComponent},
   { path: 'admin-sessions-view-list', component: AdminSessionsViewListComponent}
 ];

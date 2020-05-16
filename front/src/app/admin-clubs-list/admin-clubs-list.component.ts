@@ -6,28 +6,26 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 declare var $: any;
 
 import { DataService } from '../service/data.service';
-import {TrainingDay} from '../model/trainingDay';
-import {Coach} from '../model/coach';
+import { Club } from '../model/club';
 
 /**
  * @title Data table with sorting, pagination, and filtering.
  */
 @Component({
-  selector: 'app-admin-training-sessions-list',
-  templateUrl: './admin-training-session-list.component.html',
-  styleUrls: ['./admin-training-session-list.component.css']
+  selector: 'app-admin-clubs-list',
+  templateUrl: './admin-clubs-list.component.html',
+  styleUrls: ['./admin-clubs-list.component.css']
 })
-export class AdminTrainingSessionListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'day', 'startTime', 'club', 'group', 'status', 'action'];
-  dataSource: MatTableDataSource<TrainingDay>;
+export class AdminClubsListComponent implements OnInit {
+  displayedColumns: string[] = ['id', 'name', 'address1', 'city', 'status', 'action'];
+  dataSource: MatTableDataSource<Club>;
+
+  value;
+  club;
+  clubs: Club[];
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
-
-  value;
-  trainingDay;
-  trainingDays: TrainingDay[];
-  // toggle = false;
 
   constructor(
     private dataService: DataService,
@@ -48,15 +46,15 @@ export class AdminTrainingSessionListComponent implements OnInit {
     }
   }
 
-  // Rechargement de la table lors du clic sur le bouton X du champ de recherche
   refreshTable() {
-    this.dataService.getTrainingDayList().subscribe(trainingDays => {
-      this.dataSource = new MatTableDataSource(trainingDays);
+    this.dataService.getClubList().subscribe(clubs => {
+      this.dataSource = new MatTableDataSource(clubs);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      this.trainingDays = trainingDays;
+      this.clubs = clubs;
       this.dataSource.filter = '';
       this.value = '';
     });
   }
+
 }

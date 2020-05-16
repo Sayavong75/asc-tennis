@@ -9,8 +9,6 @@ import { DataService} from '../service/data.service';
 import { Player } from '../model/player';
 import { Ranking } from '../model/ranking';
 import { TrainingGroup } from '../model/trainingGroup';
-import {Coach} from '../model/coach';
-import {DialogAddCoach} from '../admin-coaches-list/admin-coaches-list.component';
 
 /**
  * @title Data table with sorting, pagination, and filtering.

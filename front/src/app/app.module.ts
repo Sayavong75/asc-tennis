@@ -77,6 +77,7 @@ import {
 import { AdminTrainingSessionListComponent } from './admin-training-session-list/admin-training-session-list.component';
 import { AdminSessionsViewListComponent } from './admin-sessions-view-list/admin-sessions-view-list.component';
 import { AdminCoachesListComponent, DialogAddCoach, DialogEditCoach } from './admin-coaches-list/admin-coaches-list.component';
+import { AdminClubsListComponent } from './admin-clubs-list/admin-clubs-list.component';
 
 import { DataService} from './service/data.service';
 import { AppRoutingModule } from './app-routing.module';
@@ -97,6 +98,7 @@ import { AppRoutingModule } from './app-routing.module';
     AdminTrainingSessionListComponent,
     AdminSessionsViewListComponent,
     AdminCoachesListComponent,
+    AdminClubsListComponent,
     DialogAddMember,
     DialogEditMember,
     DialogAddRanking,
