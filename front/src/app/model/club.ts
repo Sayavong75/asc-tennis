@@ -6,6 +6,6 @@ export class Club {
   zipCode: number;
   city: string;
   phoneNumber: string;
-  iframeGoogleMaps: string;
+  urlGoogleMaps: string;
   statusIsActive: boolean;
 }

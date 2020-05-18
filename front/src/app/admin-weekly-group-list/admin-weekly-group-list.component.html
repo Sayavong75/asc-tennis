@@ -62,8 +62,8 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
         <!-- ACTION icônes Editer + Supprimer -->
         <td mat-cell *matCellDef="let trainingGroup">
-          <mat-icon (click)="editTrainingGroupForm(trainingGroup)" style="color:dimgray;">edit</mat-icon>
-          <mat-icon (click)="deleteTrainingGroupForm(trainingGroup)" style="color:orangered;">delete</mat-icon>
+          <mat-icon (click)="editTrainingGroupForm(trainingGroup)" style="color:dimgray;" matTooltip="Modifier">edit</mat-icon>
+          <mat-icon (click)="deleteTrainingGroupForm(trainingGroup)" style="color:orangered;" matTooltip="Supprimer">delete</mat-icon>
         </td>
       </ng-container>
 

@@ -8,9 +8,6 @@ import { DataService } from '../service/data.service';
 import { TrainingGroup } from '../model/trainingGroup';
 import { Coach } from '../model/coach';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {DialogAddRanking, DialogDeleteRanking, DialogEditRanking} from '../admin-ranking-list/admin-ranking-list.component';
-import {Ranking} from '../model/ranking';
-import {Series} from '../model/series';
 
 /**
  * @title Data table with sorting, pagination, and filtering.

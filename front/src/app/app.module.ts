@@ -74,13 +74,18 @@ import {
   DialogEditTrainingGroup,
   DialogDeleteTrainingGroup
 } from './admin-weekly-group-list/admin-weekly-group-list.component';
-import { AdminTrainingSessionListComponent } from './admin-training-session-list/admin-training-session-list.component';
+import {
+  AdminTrainingSessionListComponent,
+  DialogAddTrainingDay,
+  DialogEditTrainingDay
+} from './admin-training-session-list/admin-training-session-list.component';
 import { AdminSessionsViewListComponent } from './admin-sessions-view-list/admin-sessions-view-list.component';
 import { AdminCoachesListComponent, DialogAddCoach, DialogEditCoach } from './admin-coaches-list/admin-coaches-list.component';
-import { AdminClubsListComponent } from './admin-clubs-list/admin-clubs-list.component';
+import { AdminClubsListComponent, DialogAddClub, DialogEditClub } from './admin-clubs-list/admin-clubs-list.component';
 
 import { DataService} from './service/data.service';
 import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -108,7 +113,11 @@ import { AppRoutingModule } from './app-routing.module';
     DialogEditTrainingGroup,
     DialogDeleteTrainingGroup,
     DialogAddCoach,
-    DialogEditCoach
+    DialogEditCoach,
+    DialogAddClub,
+    DialogEditClub,
+    DialogAddTrainingDay,
+    DialogEditTrainingDay
   ],
   imports: [
     BrowserModule,
@@ -178,6 +187,10 @@ import { AppRoutingModule } from './app-routing.module';
     DialogEditTrainingGroup,
     DialogDeleteTrainingGroup,
     DialogAddCoach,
-    DialogEditCoach]
+    DialogEditCoach,
+    DialogAddClub,
+    DialogEditClub,
+    DialogAddTrainingDay,
+    DialogEditTrainingDay]
 })
 export class AppModule { }
