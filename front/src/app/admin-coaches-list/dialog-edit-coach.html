@@ -1,8 +1,13 @@
 <!-- MODAL GESTION DES ENTRAÎNEURS - MODIFIER -->
 
-<h1 mat-dialog-title>Ajouter un entraîneur</h1>
+<h1 mat-dialog-title>Modifier un entraîneur</h1>
 <form>
   <div mat-dialog-content>
+
+    <!-- ID -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.id" placeholder="Id" name="id" disabled>
+    </mat-form-field>
 
     <!-- NOM -->
     <mat-form-field>

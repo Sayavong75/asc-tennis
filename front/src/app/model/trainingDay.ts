@@ -1,4 +1,5 @@
 import {Club} from './club';
+import {TrainingGroup} from './trainingGroup';
 
 export class TrainingDay {
   id: number;
@@ -6,5 +7,6 @@ export class TrainingDay {
   startTime: string;
   maxNumberPlayers: number;
   club: Club;
+  trainingGroup: TrainingGroup;
   statusIsActive: boolean;
 }
