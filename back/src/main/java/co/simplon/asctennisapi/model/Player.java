@@ -27,7 +27,7 @@ public class Player {
     @NotNull
     @NotBlank
     @Column(nullable = false)
-    private String login;
+    private String username;
 
     @NotNull
     @NotBlank
@@ -95,11 +95,11 @@ public class Player {
     }
 
     public String getLogin() {
-        return login;
+        return username;
     }
 
     public void setLogin(String login) {
-        this.login = login;
+        this.username = username;
     }
 
     public String getPassword() {
