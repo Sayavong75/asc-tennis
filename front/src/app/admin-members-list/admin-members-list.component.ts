@@ -19,7 +19,7 @@ import { TrainingGroup } from '../model/trainingGroup';
   styleUrls: ['./admin-members-list.component.css']
 })
 export class AdminMembersListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'login', 'group', 'status', 'action'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'username', 'group', 'status', 'action'];
   dataSource: MatTableDataSource<Player>;
 
   value;
@@ -36,13 +36,8 @@ export class AdminMembersListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dataService.getPlayerList().subscribe(players => {
-      this.dataSource = new MatTableDataSource(players);
-      this.dataSource.paginator = this.paginator;
-      this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
-      this.dataSource.sort = this.sort;
-      this.players = players;
-    });
+    this.refreshTable();
+    this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
   }
 
   applyFilter(event: Event) {

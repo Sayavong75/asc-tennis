@@ -5,7 +5,7 @@ export class Player {
   id: number;
   lastName: string;
   firstName: string;
-  login: string;
+  username: string;
   password: string;
   email1: string;
   email2: string;

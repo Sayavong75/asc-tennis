@@ -34,13 +34,8 @@ export class AdminRankingListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dataService.getRankingList().subscribe(rankings => {
-      this.dataSource = new MatTableDataSource(rankings);
-      this.dataSource.paginator = this.paginator;
-      this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
-      this.dataSource.sort = this.sort;
-      this.rankings = rankings;
-    });
+    this.refreshTable();
+    this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
   }
 
   applyFilter(event: Event) {
