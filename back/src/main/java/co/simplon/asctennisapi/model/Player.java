@@ -1,7 +1,5 @@
 package co.simplon.asctennisapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -60,6 +58,9 @@ public class Player {
     @Column(nullable = false)
     private boolean statusIsActive = true;
 
+    @Column(nullable = false)
+    private String role;
+
     // RELATION bidirectionnelle vers Ranking (4)
     @ManyToOne
     private Ranking ranking;
@@ -67,6 +68,19 @@ public class Player {
     // RELATION bidirectionnelle vers TrainingGroup (5)
     @ManyToOne
     private TrainingGroup trainingGroup;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private List<Role> roleList;
+
+    public Player() {
+    }
+
+    public Player(@NotNull String username, @NotNull String password, List<Role> roleList) {
+        this.username = username;
+        this.password = password;
+        this.roleList = roleList;
+    }
 
     // GETTERS & SETTERS
 
@@ -94,11 +108,11 @@ public class Player {
         this.firstName = firstName;
     }
 
-    public String getLogin() {
+    public String getUsername() {
         return username;
     }
 
-    public void setLogin(String login) {
+    public void setUsername(String login) {
         this.username = username;
     }
 
@@ -174,6 +188,14 @@ public class Player {
         this.statusIsActive = statusIsActive;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     public Ranking getRanking() {
         return ranking;
     }
@@ -181,4 +203,9 @@ public class Player {
     public TrainingGroup getTrainingGroup() {
         return trainingGroup;
     }
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
 }

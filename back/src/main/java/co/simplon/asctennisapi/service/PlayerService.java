@@ -5,6 +5,7 @@ import co.simplon.asctennisapi.model.Player;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface PlayerService {
@@ -23,4 +24,12 @@ public interface PlayerService {
 
     /** Delete a player from the players array */
     void deletePlayer(Long playerId);
+
+    /**
+     * Method that finds a user based on its username.
+     *
+     * @param username the username to look for.
+     * @return an Optional object containing user if found, empty otherwise.
+     */
+    Optional<Player> findUserByUserName(String username);
 }
