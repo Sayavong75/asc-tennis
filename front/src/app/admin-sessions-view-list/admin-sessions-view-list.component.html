@@ -9,11 +9,6 @@
           <h2>Administrateur - Liste des sessions d'entraînement</h2>
         </div>
       </div>
-      <div class="col-sm-2">
-        <button type="button" class="btn btn-light btn-lg" title="Gestion" [routerLink]="['/admin-training-sessions-list']">
-          <span class="glyphicon glyphicon-list"></span>
-          &nbsp;Gestion</button>
-      </div>
     </div>
   </div>
 
@@ -30,6 +25,13 @@
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
+
+  <!-- Shortcut to go to Training Session List -->
+  <span>&nbsp;&nbsp;</span>
+  <button mat-raised-button color="accent" title="Entraînements hebdo" [routerLink]="['/admin-training-sessions-list']">
+    <i class="material-icons">view_list</i>
+    <span> Entraînements hebdo</span>
+  </button>
 
   <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
