@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 // ============ Angular Material ============
 import {A11yModule} from '@angular/cdk/a11y';
@@ -171,6 +171,7 @@ import { AppRoutingModule } from './app-routing.module';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
+    ReactiveFormsModule,
   ],
   providers: [
     NavBarService,
