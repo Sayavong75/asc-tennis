@@ -19,7 +19,7 @@ public class Series {
     @Column(nullable = false)
     private String label;
 
-    // RELATION undirectionnelle vers Ranking (2)
+    // RELATION bidirectionnelle vers Ranking (2)
     @JsonIgnore
     @OneToMany (mappedBy = "series")
     private List<Ranking> rankings;

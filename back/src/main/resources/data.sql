@@ -9,16 +9,9 @@ insert into series (id, label) values (nextval('series_id_seq'),'3ème série');
 insert into series (id, label) values (nextval('series_id_seq'),'4ème série');
 
 -- DATA CLUB
-insert into club (id, name, address1, address2, zip_code, city, phone_number, iframe_google_maps, status_is_active) values (nextval('club_id_seq'),'Tennis Fruit défendu','82 bd Bellerive','','92500','Rueil-Malmaison','01 47 51 14 93','<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.2580225009383!2d2.1507863156748637!3d48.872357579288845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb75b0e55581006dc!2sTennis%20du%20Fruit%20D%C3%A9fendu!5e0!3m2!1sfr!2sfr!4v1588677748571!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>','true');
-insert into club (id, name, address1, address2, zip_code, city, phone_number, iframe_google_maps, status_is_active) values (nextval('club_id_seq'),'Domaine BNPP','34 rue de Voisins','','78430','Louveciennes','01 30 78 12 40','<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.5792312542385!2d2.1130273158536905!3d48.866233508108216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e662b6c88fc631%3A0x1d7c2da8c13d844a!2s34%20Rue%20de%20Voisins%2C%2078430%20Louveciennes!5e0!3m2!1sfr!2sfr!4v1588677990748!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>','true');
-insert into club (id, name, address1, address2, zip_code, city, phone_number, iframe_google_maps, status_is_active) values (nextval('club_id_seq'),'Comité des Hauts de Seine de Tennis','4 Rue Edouard Manet','','92500','Rueil-Malmaison','01 41 39 84 00','<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.125517838922!2d2.160567115853929!3d48.87488370749902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6633932d366fd%3A0x7f27fbfcf0a06f68!2sComit%C3%A9%20des%20Hauts%20de%20Seine%20de%20Tennis!5e0!3m2!1sfr!2sfr!4v1588678198511!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>','true');
-
--- DATA TRAINING DAY
-insert into training_day (id, day, start_time, max_number_players, status_is_active, club_id) values (nextval('training_day_id_seq'),'Lundi','20:00:00','8','true','1');
-insert into training_day (id, day, start_time, max_number_players, status_is_active, club_id) values (nextval('training_day_id_seq'),'Lundi','21:00:00','8','true','3');
-insert into training_day (id, day, start_time, max_number_players, status_is_active, club_id) values (nextval('training_day_id_seq'),'Lundi','19:00:00','8','true','3');
-insert into training_day (id, day, start_time, max_number_players, status_is_active, club_id) values (nextval('training_day_id_seq'),'Mardi','21:00:00','8','true','3');
-insert into training_day (id, day, start_time, max_number_players, status_is_active, club_id) values (nextval('training_day_id_seq'),'Jeudi','21:00:00','8','true','3');
+insert into club (id, name, address1, address2, zip_code, city, phone_number, url_google_maps, status_is_active) values (nextval('club_id_seq'),'Tennis Fruit défendu','82 bd Bellerive','','92500','Rueil-Malmaison','01 47 51 14 93','https://goo.gl/maps/bwJTxnywwHRBZCiR8','true');
+insert into club (id, name, address1, address2, zip_code, city, phone_number, url_google_maps, status_is_active) values (nextval('club_id_seq'),'Domaine BNPP','34 rue de Voisins','','78430','Louveciennes','01 30 78 12 40','https://goo.gl/maps/NM4JvmDhCtU4Fc3T9','true');
+insert into club (id, name, address1, address2, zip_code, city, phone_number, url_google_maps, status_is_active) values (nextval('club_id_seq'),'Comité des Hauts de Seine de Tennis','4 Rue Edouard Manet','','92500','Rueil-Malmaison','01 41 39 84 00','https://goo.gl/maps/UtU8Nhie88k8UMhr8','true');
 
 -- DATA TRAINING GROUP
 insert into training_group (id, label, coach_id) values (nextval('training_group_id_seq'),'Groupe Niv.1','1');
@@ -26,6 +19,13 @@ insert into training_group (id, label, coach_id) values (nextval('training_group
 insert into training_group (id, label, coach_id) values (nextval('training_group_id_seq'),'Groupe Niv.3','1');
 insert into training_group (id, label, coach_id) values (nextval('training_group_id_seq'),'Groupe Niv.4','2');
 insert into training_group (id, label, coach_id) values (nextval('training_group_id_seq'),'Groupe Femmes','1');
+
+-- DATA TRAINING DAY
+insert into training_day (id, day, start_time, max_number_players, status_is_active, club_id, training_group_id) values (nextval('training_day_id_seq'),'Lundi','20:00:00','8','true','1','3');
+insert into training_day (id, day, start_time, max_number_players, status_is_active, club_id, training_group_id) values (nextval('training_day_id_seq'),'Lundi','21:00:00','8','true','3','4');
+insert into training_day (id, day, start_time, max_number_players, status_is_active, club_id, training_group_id) values (nextval('training_day_id_seq'),'Lundi','19:00:00','8','true','3','5');
+insert into training_day (id, day, start_time, max_number_players, status_is_active, club_id, training_group_id) values (nextval('training_day_id_seq'),'Mardi','21:00:00','8','true','3','2');
+insert into training_day (id, day, start_time, max_number_players, status_is_active, club_id, training_group_id) values (nextval('training_day_id_seq'),'Jeudi','21:00:00','8','true','3','1');
 
 -- DATA RANKING
 insert into ranking (id, label, series_id) values (nextval('ranking_id_seq'),'NC','4');

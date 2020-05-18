@@ -39,12 +39,12 @@ public class Club {
     private String phoneNumber;
 
     @Column(columnDefinition="text")
-    private String iframeGoogleMaps;
+    private String urlGoogleMaps;
 
     @Column(nullable = false)
     private boolean statusIsActive = true;
 
-    // RELATION unidirectionnelle vers TrainingDay (3)
+    // RELATION bidirectionnelle vers TrainingDay (3)
     @JsonIgnore
     @OneToMany (mappedBy = "club")
     private List<TrainingDay> trainingDays;
@@ -106,12 +106,12 @@ public class Club {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getIframeGoogleMaps() {
-        return iframeGoogleMaps;
+    public String getUrlGoogleMaps() {
+        return urlGoogleMaps;
     }
 
-    public void setIframeGoogleMaps(String iframeGoogleMaps) {
-        this.iframeGoogleMaps = iframeGoogleMaps;
+    public void setUrlGoogleMaps(String urlGoogleMaps) {
+        this.urlGoogleMaps = urlGoogleMaps;
     }
 
     public boolean isStatusIsActive() {
