@@ -1,0 +1,64 @@
+<!-- MODAL GESTION DES CLUBS - MODIFIER -->
+
+<h1 mat-dialog-title>Modifier un club</h1>
+<form>
+  <div mat-dialog-content>
+
+    <!-- ID -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.id" placeholder="Id" name="id" disabled>
+    </mat-form-field>
+
+    <!-- NOM -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.name" placeholder="Nom" name="name">
+    </mat-form-field>
+
+    <!-- ADRESSE 1 -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.address1" placeholder="Adresse 1" name="address1">
+    </mat-form-field>
+
+    <!-- ADRESSE 2 -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.address2" placeholder="Adresse 2" name="address2">
+    </mat-form-field>
+
+    <!-- VILLE -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.city" placeholder="Ville" name="city">
+    </mat-form-field>
+
+    <!-- CODE POSTAL -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.zipCode" placeholder="Code Postal" name="zipCode">
+    </mat-form-field>
+
+    <!-- TELEPHONE 1 -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.phoneNumber" placeholder="Téléphone" name="phoneNumber">
+    </mat-form-field>
+
+    <!-- LIEN URL GOOGLE MAPS -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.urlGoogleMaps" placeholder="Lien URL Google Maps" name="urlGoogleMaps"
+         style="font-size:14px;">
+    </mat-form-field>
+
+    <!-- STATUT ACTIF / INACTIF -->
+    <mat-checkbox [(ngModel)]="data.statusIsActive" name="statusIsActive">
+      {{ data.statusIsActive ? 'Actif' : 'Inactif' }}
+    </mat-checkbox>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onNoClick()">Annuler</button>
+    <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial (click)="onEditClub(data.id)">Mettre à jour</button>
+  </div>
+
+  <!-- Copyright 2019 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+</form>
+
