@@ -6,8 +6,9 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 declare var $: any;
 
 import { DataService } from '../service/data.service';
-import {TrainingDay} from '../model/trainingDay';
-import {Coach} from '../model/coach';
+import { TrainingDay } from '../model/trainingDay';
+import { Club } from '../model/club';
+import {TrainingGroup} from '../model/trainingGroup';
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -27,7 +28,6 @@ export class AdminTrainingSessionListComponent implements OnInit {
   value;
   trainingDay;
   trainingDays: TrainingDay[];
-  // toggle = false;
 
   constructor(
     private dataService: DataService,
@@ -58,5 +58,112 @@ export class AdminTrainingSessionListComponent implements OnInit {
       this.dataSource.filter = '';
       this.value = '';
     });
+  }
+
+  // Ajouter un groupe hebdo
+  addTrainingDayForm() {
+    const dialogRef = this.dialog.open(DialogAddTrainingDay, {
+      width: '465px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.refreshTable();
+    });
+  }
+
+  // Modifier les données d'un groupe hebdo
+  editTrainingDayForm(trainingDay) {
+    const dialogRef = this.dialog.open(DialogEditTrainingDay, {
+      width: '465px',
+      data: trainingDay,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.trainingDay = trainingDay;
+      console.log('The dialog was closed');
+      this.refreshTable();
+    });
+  }
+}
+
+
+// BOITE DE DIALOGUE POUR FORMULAIRE AJOUTER
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-add-training-day',
+  templateUrl: 'dialog-add-training-day.html'
+})
+
+// tslint:disable-next-line:component-class-suffix
+export class DialogAddTrainingDay {
+
+  trainingDay = new TrainingDay();
+  clubs: Club[];
+  trainingGroups: TrainingGroup[];
+
+  constructor(
+    private dataService: DataService,
+    public dialogRef: MatDialogRef<DialogAddTrainingDay>,
+    @Inject(MAT_DIALOG_DATA) public data: TrainingDay) {}
+
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit(): void {
+    this.trainingDay.statusIsActive = true;
+    this.dataService.getClubList().subscribe(
+      clubs => this.clubs = clubs
+    );
+    this.dataService.getTrainingGroupList().subscribe(
+      trainingGroups => this.trainingGroups = trainingGroups
+    );
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close(false);
+  }
+
+  onAddTrainingDay() {
+    console.log('Data: ' + JSON.stringify(this.trainingDay));
+    this.dataService.addTrainingDay(this.trainingDay).subscribe();
+    this.dialogRef.close();
+  }
+}
+
+// BOITE DE DIALOGUE POUR FORMULAIRE MODIFIER
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-edit-training-day',
+  templateUrl: 'dialog-edit-training-day.html'
+})
+// tslint:disable-next-line:component-class-suffix
+export class DialogEditTrainingDay {
+
+  clubs: Club[];
+  trainingGroups: TrainingGroup[];
+
+  constructor(
+    private dataService: DataService,
+    public dialogRef: MatDialogRef<DialogEditTrainingDay>,
+    @Inject(MAT_DIALOG_DATA) public data: TrainingDay) {}
+
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit(): void {
+    this.dataService.getClubList().subscribe(
+      clubs => this.clubs = clubs
+    );
+    this.dataService.getTrainingGroupList().subscribe(
+      trainingGroups => this.trainingGroups = trainingGroups
+    );
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  onEditTrainingDay(trainingDayId) {
+    // tslint:disable-next-line:ban-types
+    console.log('Data: ' + JSON.stringify(this.data));
+    // tslint:disable-next-line:ban-types
+    this.dataService.updateTrainingDay(this.data as TrainingDay, trainingDayId as Number).subscribe();
   }
 }

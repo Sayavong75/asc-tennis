@@ -1,0 +1,56 @@
+<!-- MODAL GESTION DES ENTRAÎNEMENTS HEBDOMADAIRES - AJOUTER -->
+
+<h1 mat-dialog-title>Ajouter un entraînement hedbo</h1>
+<form>
+  <div mat-dialog-content>
+
+    <!-- JOUR -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="trainingDay.day" placeholder="Jour semaine" name="day">
+    </mat-form-field>
+
+    <!-- HEURE DÉBUT -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="trainingDay.startTime" placeholder="Heure début" name="startTime">
+    </mat-form-field>
+
+    <!-- NOMBRE DE JOUEURS MAX -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="trainingDay.maxNumberPlayers" placeholder="Nombre de joueurs max" name="maxNumberPlayers">
+    </mat-form-field>
+
+    <!-- CLUB / LIEU DU TERRAIN D'ENTRAÎNEMENT -->
+    <mat-form-field>
+      <mat-select [(ngModel)]="trainingDay.club" placeholder="Club / Lieu" name="club">
+        <mat-option *ngFor="let club of clubs" [value]="club">
+          {{ club.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- GROUPE HEBDO -->
+    <mat-form-field>
+      <mat-select [(ngModel)]="trainingDay.trainingGroup" placeholder="Groupe assigné" name="trainingGroup">
+        <mat-option *ngFor="let trainingGroup of trainingGroups" [value]="trainingGroup">
+          {{ trainingGroup.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- STATUT ACTIF / INACTIF -->
+    <mat-checkbox [(ngModel)]="trainingDay.statusIsActive" name="statusIsActive">
+      {{ trainingDay.statusIsActive ? 'Actif' : 'Inactif' }}
+    </mat-checkbox>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onNoClick()">Annuler</button>
+    <button mat-raised-button cdkFocusInitial (click)="onAddTrainingDay()">Ajouter</button>
+  </div>
+
+  <!-- Copyright 2019 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+</form>
+
