@@ -19,11 +19,11 @@ public class Ranking {
     @Column(nullable = false)
     private String label;
 
-    // RELATION unidirectionnelle vers Series (2)
+    // RELATION bidirectionnelle vers Series (2)
     @ManyToOne
     private Series series;
 
-    // RELATION unidirectionnelle vers Player (4)
+    // RELATION bidirectionnelle vers Player (4)
     @JsonIgnore
     @OneToMany (mappedBy = "ranking")
     private List<Player> players;

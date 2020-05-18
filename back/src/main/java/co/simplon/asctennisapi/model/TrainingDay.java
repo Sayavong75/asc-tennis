@@ -4,8 +4,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import java.time.LocalTime;
-
 @Entity
 public class TrainingDay {
     @Id
@@ -21,19 +19,22 @@ public class TrainingDay {
     @NotNull
     @NotBlank
     @Column(nullable = false)
-    private LocalTime startTime;
+    private String startTime;
 
     @NotNull
-    @NotBlank
     @Column(nullable = false)
-    private int maxNumberPlayers;
+    private Long maxNumberPlayers;
 
     @Column(nullable = false)
     private boolean statusIsActive = true;
 
-    // RELATION unidirectionnelle vers Club (3)
+    // RELATION bidirectionnelle vers Club (3)
     @ManyToOne
     private Club club;
+
+    // RELATION unidirectionnelle vers Training Group (6)
+    @OneToOne
+    private TrainingGroup trainingGroup ;
 
     // GETTERS & SETTERS
     public Long getId() {
@@ -52,19 +53,19 @@ public class TrainingDay {
         this.day = day;
     }
 
-    public LocalTime getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalTime startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public int getMaxNumberPlayers() {
+    public Long getMaxNumberPlayers() {
         return maxNumberPlayers;
     }
 
-    public void setMaxNumberPlayers(int maxNumberPlayers) {
+    public void setMaxNumberPlayers(Long maxNumberPlayers) {
         this.maxNumberPlayers = maxNumberPlayers;
     }
 
@@ -78,5 +79,9 @@ public class TrainingDay {
 
     public Club getClub() {
         return club;
+    }
+
+    public TrainingGroup getTrainingGroup() {
+        return trainingGroup;
     }
 }

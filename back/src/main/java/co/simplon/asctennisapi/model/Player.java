@@ -60,11 +60,11 @@ public class Player {
     @Column(nullable = false)
     private boolean statusIsActive = true;
 
-    // RELATION unidirectionnelle vers Ranking (4)
+    // RELATION bidirectionnelle vers Ranking (4)
     @ManyToOne
     private Ranking ranking;
 
-    // RELATION unidirectionnelle vers TrainingGroup (5)
+    // RELATION bidirectionnelle vers TrainingGroup (5)
     @ManyToOne
     private TrainingGroup trainingGroup;
 
