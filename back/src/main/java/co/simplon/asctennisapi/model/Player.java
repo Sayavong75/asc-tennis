@@ -32,21 +32,24 @@ public class Player {
     @Column(nullable = false)
     private String password;
 
-    @NotNull
-    @NotBlank
-    @Column(nullable = false)
+    // @Column(nullable = false)
+    @Column
     private String email1;
 
-    @Column(nullable = false)
+    // @Column(nullable = false)
+    @Column
     private String email2;
 
-    @Column(nullable = false)
+    // @Column(nullable = false)
+    @Column
     private String phoneNumber1;
 
-    @Column(nullable = false)
+    // @Column(nullable = false)
+    @Column
     private String phoneNumber2;
 
-    @Column(nullable = false)
+    // @Column(nullable = false)
+    @Column
     private int trainingCount;
 
     @Column(nullable = false)
@@ -58,7 +61,8 @@ public class Player {
     @Column(nullable = false)
     private boolean statusIsActive = true;
 
-    @Column(nullable = false)
+    // @Column(nullable = false)
+    @Column
     private String role;
 
     // RELATION bidirectionnelle vers Ranking (4)
@@ -112,7 +116,7 @@ public class Player {
         return username;
     }
 
-    public void setUsername(String login) {
+    public void setUsername(String username) {
         this.username = username;
     }
 
@@ -128,9 +132,7 @@ public class Player {
         return email1;
     }
 
-    public void setEmail1(String email1) {
-        this.email1 = email1;
-    }
+    public void setEmail1(String email1) { this.email1 = email1; }
 
     public String getEmail2() {
         return email2;
