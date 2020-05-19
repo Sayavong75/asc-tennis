@@ -1,7 +1,9 @@
 package co.simplon.asctennisapi.service;
 
 import co.simplon.asctennisapi.exception.EntityNotFoundException;
+import co.simplon.asctennisapi.exception.ExistingUsernameException;
 import co.simplon.asctennisapi.model.Player;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +26,32 @@ public interface PlayerService {
 
     /** Delete a player from the players array */
     void deletePlayer(Long playerId);
+
+    /**
+     * Method that signs a user in the application.
+     *
+     * @param username the user username.
+     * @param password the user password.
+     * @return the JWT if credentials are valid, throws InvalidCredentialsException otherwise.
+     * @throws AuthenticationException
+     */
+    String signin(String username, String password) throws AuthenticationException;
+
+    /**
+     * Method that signs up a new user in the application.
+     *
+     * @param user the new user to create.
+     * @return the JWT if user username is not already existing.
+     * @throws ExistingUsernameException
+     */
+    String signup(Player user) throws ExistingUsernameException;
+
+    /**
+     * Method that finds all users from the application database.
+     *
+     * @return the list of all application users.
+     */
+    List<Player> findAllUsers();
 
     /**
      * Method that finds a user based on its username.
