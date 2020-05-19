@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavBarService } from '../nav-bar.service';
 import { NavAdminService} from '../nav-admin.service';
 import {FormBuilder, Validators} from '@angular/forms';
+import {Player} from '../model/player';
+import {AuthentificationService} from '../service/authentification.service';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private loginService: AuthentificationService,
     public nav: NavBarService,
     private navAdminService: NavAdminService
   ) { }
@@ -43,6 +46,11 @@ export class LoginComponent implements OnInit {
     this.displayNavBarAdmin();
   }
 
-  onSubmit() {}
+  onSubmit() {
+    const user = new Player();
+    user.username = this.loginForm.value.username;
+    user.password = this.loginForm.value.password;
+    this.loginService.logIn(user);
+  }
 
 }
