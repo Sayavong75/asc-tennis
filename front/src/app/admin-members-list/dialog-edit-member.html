@@ -20,12 +20,15 @@
 
   <!-- LOGIN -->
   <mat-form-field>
-    <input matInput [(ngModel)]="data.username" placeholder="Login">
+    <mat-select [(ngModel)]="data.appUser.id" placeholder="Utilisateur">
+      <mat-option *ngFor="let appUser of userList" [value]="appUser.id">
+        {{appUser.username}} [{{appUser.roleList?.join(', ')}}]
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 
-  <!-- MOT DE PASSE -->
   <mat-form-field>
-    <input matInput [(ngModel)]="data.password" placeholder="Mot de passe">
+    <input matInput [(ngModel)]="data.appUser.username" placeholder="test">
   </mat-form-field>
 
   <!-- EMAIL 1 -->
@@ -61,7 +64,7 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <br />
+  <br/>
 
   <!-- GROUPE D'ENTRAÎNEMENT -->
   <mat-form-field>
@@ -76,7 +79,7 @@
   <mat-checkbox [(ngModel)]="data.generalAlertOn">
     Réception d'emails généraux
   </mat-checkbox>
-  <br />
+  <br/>
 
   <!-- AUTORISATION POUR RECEVOIR DES EMAILS DES AUTRES MEMBRES -->
   <mat-checkbox [(ngModel)]="data.playerAlertOn">
@@ -102,7 +105,8 @@
 
 <div mat-dialog-actions>
   <button mat-raised-button color="primary" (click)="onNoClick()">Annuler</button>
-  <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial (click)="onEditPlayer(data.id)">Mettre à jour</button>
+  <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial (click)="onEditPlayer(data.id)">Mettre à jour
+  </button>
 </div>
 
 <!-- Copyright 2019 Google LLC. All Rights Reserved.

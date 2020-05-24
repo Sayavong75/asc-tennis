@@ -1,12 +1,12 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, MatSortable} from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-declare var $: any;
+import {MatTableDataSource} from '@angular/material/table';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {DataService} from '../service/data.service';
+import {Coach} from '../model/coach';
 
-import { DataService } from '../service/data.service';
-import { Coach } from '../model/coach';
+declare var $: any;
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -30,11 +30,12 @@ export class AdminCoachesListComponent implements OnInit {
   constructor(
     private dataService: DataService,
     public dialog: MatDialog
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.refreshTable();
-    this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
+    this.sort.sort(({id: 'id', start: 'asc'}) as MatSortable);
   }
 
   applyFilter(event: Event) {
@@ -101,7 +102,8 @@ export class DialogAddCoach {
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DialogAddCoach>,
-    @Inject(MAT_DIALOG_DATA) public data: Coach) {}
+    @Inject(MAT_DIALOG_DATA) public data: Coach) {
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -131,10 +133,12 @@ export class DialogEditCoach {
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DialogEditCoach>,
-    @Inject(MAT_DIALOG_DATA) public data: Coach) {}
+    @Inject(MAT_DIALOG_DATA) public data: Coach) {
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

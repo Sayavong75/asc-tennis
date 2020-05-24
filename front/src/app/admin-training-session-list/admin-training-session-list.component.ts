@@ -1,14 +1,14 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, MatSortable} from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-declare var $: any;
-
-import { DataService } from '../service/data.service';
-import { TrainingDay } from '../model/trainingDay';
-import { Club } from '../model/club';
+import {MatTableDataSource} from '@angular/material/table';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {DataService} from '../service/data.service';
+import {TrainingDay} from '../model/trainingDay';
+import {Club} from '../model/club';
 import {TrainingGroup} from '../model/trainingGroup';
+
+declare var $: any;
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -32,11 +32,12 @@ export class AdminTrainingSessionListComponent implements OnInit {
   constructor(
     private dataService: DataService,
     public dialog: MatDialog
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.refreshTable();
-    this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
+    this.sort.sort(({id: 'id', start: 'asc'}) as MatSortable);
   }
 
   applyFilter(event: Event) {
@@ -105,7 +106,8 @@ export class DialogAddTrainingDay {
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DialogAddTrainingDay>,
-    @Inject(MAT_DIALOG_DATA) public data: TrainingDay) {}
+    @Inject(MAT_DIALOG_DATA) public data: TrainingDay) {
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -144,7 +146,8 @@ export class DialogEditTrainingDay {
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DialogEditTrainingDay>,
-    @Inject(MAT_DIALOG_DATA) public data: TrainingDay) {}
+    @Inject(MAT_DIALOG_DATA) public data: TrainingDay) {
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {

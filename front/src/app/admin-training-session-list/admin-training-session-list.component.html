@@ -43,31 +43,32 @@
 
       <!-- Id Column -->
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id</th>
         <td mat-cell *matCellDef="let trainingDay"> {{ trainingDay.id }} </td>
       </ng-container>
 
       <!-- Day Column -->
       <ng-container matColumnDef="day">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Jour </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Jour</th>
         <td mat-cell *matCellDef="let trainingDay"> {{ trainingDay.day }} </td>
       </ng-container>
 
       <!-- StartTime Column -->
       <ng-container matColumnDef="startTime">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Heure </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Heure</th>
         <td mat-cell *matCellDef="let trainingDay"> {{ trainingDay.startTime }} <span>&nbsp;&nbsp;</span></td>
       </ng-container>
 
       <!-- Club Column -->
       <ng-container matColumnDef="club">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Club / Lieu </th>
-        <td mat-cell *matCellDef="let trainingDay"> {{ trainingDay.club.name }} ({{ trainingDay.club.city }}) <span>&nbsp;&nbsp;</span></td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Club / Lieu</th>
+        <td mat-cell *matCellDef="let trainingDay"> {{ trainingDay.club.name }} ({{ trainingDay.club.city }}) <span>&nbsp;&nbsp;</span>
+        </td>
       </ng-container>
 
       <!-- Group Column -->
       <ng-container matColumnDef="group">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Groupe assigné </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Groupe assigné</th>
         <td mat-cell *matCellDef="let trainingDay"> {{ trainingDay.trainingGroup.label }} <span>&nbsp;&nbsp;</span></td>
       </ng-container>
 
@@ -92,10 +93,11 @@
 
       <!-- Action Column -->
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action</th>
         <!-- ACTION icône Editer -->
         <td mat-cell *matCellDef="let trainingDay">
-          <mat-icon (click)="editTrainingDayForm(trainingDay)" style="color:dimgray;" matTooltip="Modifier">edit</mat-icon>
+          <mat-icon (click)="editTrainingDayForm(trainingDay)" style="color:dimgray;" matTooltip="Modifier">edit
+          </mat-icon>
         </td>
       </ng-container>
 

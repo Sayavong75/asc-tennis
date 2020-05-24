@@ -1,13 +1,13 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, MatSortable} from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-declare var $: any;
-
-import { DataService } from '../service/data.service';
-import { TrainingGroup } from '../model/trainingGroup';
-import { Coach } from '../model/coach';
+import {MatTableDataSource} from '@angular/material/table';
+import {DataService} from '../service/data.service';
+import {TrainingGroup} from '../model/trainingGroup';
+import {Coach} from '../model/coach';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+
+declare var $: any;
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -31,13 +31,14 @@ export class AdminWeeklyGroupListComponent implements OnInit {
   constructor(
     private dataService: DataService,
     public dialog: MatDialog
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.dataService.getTrainingGroupList().subscribe(trainingGroups => {
       this.dataSource = new MatTableDataSource(trainingGroups);
       this.dataSource.paginator = this.paginator;
-      this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
+      this.sort.sort(({id: 'id', start: 'asc'}) as MatSortable);
       this.dataSource.sort = this.sort;
       this.trainingGroups = trainingGroups;
     });
@@ -121,7 +122,8 @@ export class DialogAddTrainingGroup {
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DialogAddTrainingGroup>,
-    @Inject(MAT_DIALOG_DATA) public data: TrainingGroup) {}
+    @Inject(MAT_DIALOG_DATA) public data: TrainingGroup) {
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -155,7 +157,8 @@ export class DialogEditTrainingGroup {
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DialogEditTrainingGroup>,
-    @Inject(MAT_DIALOG_DATA) public data: TrainingGroup) {}
+    @Inject(MAT_DIALOG_DATA) public data: TrainingGroup) {
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -186,7 +189,8 @@ export class DialogDeleteTrainingGroup {
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DialogDeleteTrainingGroup>,
-    @Inject(MAT_DIALOG_DATA) public data: TrainingGroup) {}
+    @Inject(MAT_DIALOG_DATA) public data: TrainingGroup) {
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -194,9 +198,12 @@ export class DialogDeleteTrainingGroup {
 
   onRemoveTrainingGroup(trainingGroupId) {
     this.dataService.deleteTrainingGroup(trainingGroupId).subscribe(
-  delTrainingGroup => console.log(delTrainingGroup),
-  error => {if (error.status === 500)
-        {window.alert('ERREUR\nIl existe une association groupe/adhérent.\nModifier le(s) adhérent(s) avant la suppression.'); }});
+      delTrainingGroup => console.log(delTrainingGroup),
+      error => {
+        if (error.status === 500) {
+          window.alert('ERREUR\nIl existe une association groupe/adhérent.\nModifier le(s) adhérent(s) avant la suppression.');
+        }
+      });
   }
 }
 

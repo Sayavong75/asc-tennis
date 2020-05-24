@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AdminWeeklyGroupListComponent } from './admin-weekly-group-list.component';
+import {AdminWeeklyGroupListComponent} from './admin-weekly-group-list.component';
 
 describe('AdminWeeklyGroupListComponent', () => {
   let component: AdminWeeklyGroupListComponent;
@@ -8,9 +8,9 @@ describe('AdminWeeklyGroupListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminWeeklyGroupListComponent ]
+      declarations: [AdminWeeklyGroupListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

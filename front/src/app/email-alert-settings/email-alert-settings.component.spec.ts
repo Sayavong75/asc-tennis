@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EmailAlertSettingsComponent } from './email-alert-settings.component';
+import {EmailAlertSettingsComponent} from './email-alert-settings.component';
 
 describe('EmailAlertSettingsComponent', () => {
   let component: EmailAlertSettingsComponent;
@@ -8,9 +8,9 @@ describe('EmailAlertSettingsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmailAlertSettingsComponent ]
+      declarations: [EmailAlertSettingsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

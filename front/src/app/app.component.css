@@ -1,8 +1,8 @@
-  /* Insertion d'une image background  */
-  .image {
-    background: url('../assets/images/tennis-1280.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-  }
+/* Insertion d'une image background  */
+.image {
+  background: url('../assets/images/tennis-1280.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}

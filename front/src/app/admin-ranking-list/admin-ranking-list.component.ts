@@ -1,13 +1,13 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, MatSortable} from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-declare var $: any;
+import {MatTableDataSource} from '@angular/material/table';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {DataService} from '../service/data.service';
+import {Ranking} from '../model/ranking';
+import {Series} from '../model/series';
 
-import { DataService } from '../service/data.service';
-import { Ranking } from '../model/ranking';
-import { Series } from '../model/series';
+declare var $: any;
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -31,11 +31,12 @@ export class AdminRankingListComponent implements OnInit {
   constructor(
     private dataService: DataService,
     public dialog: MatDialog
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.refreshTable();
-    this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
+    this.sort.sort(({id: 'id', start: 'asc'}) as MatSortable);
   }
 
   applyFilter(event: Event) {
@@ -116,7 +117,8 @@ export class DialogAddRanking {
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DialogAddRanking>,
-    @Inject(MAT_DIALOG_DATA) public data: Ranking) {}
+    @Inject(MAT_DIALOG_DATA) public data: Ranking) {
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -150,7 +152,8 @@ export class DialogEditRanking {
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DialogEditRanking>,
-    @Inject(MAT_DIALOG_DATA) public data: Ranking) {}
+    @Inject(MAT_DIALOG_DATA) public data: Ranking) {
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -181,7 +184,8 @@ export class DialogDeleteRanking {
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DialogDeleteRanking>,
-    @Inject(MAT_DIALOG_DATA) public data: Ranking) {}
+    @Inject(MAT_DIALOG_DATA) public data: Ranking) {
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -189,9 +193,12 @@ export class DialogDeleteRanking {
 
   onRemoveRanking(rankingId) {
     this.dataService.deleteRanking(rankingId).subscribe(
-  delRanking => console.log(delRanking),
-  error => {if (error.status === 500)
-        {window.alert('ERREUR\nIl existe une association classement/adhérent.\nModifier le(s) adhérent(s) avant la suppression.'); }});
+      delRanking => console.log(delRanking),
+      error => {
+        if (error.status === 500) {
+          window.alert('ERREUR\nIl existe une association classement/adhérent.\nModifier le(s) adhérent(s) avant la suppression.');
+        }
+      });
   }
 }
 

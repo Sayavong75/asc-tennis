@@ -1,14 +1,16 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
 import {MatSort, MatSortable} from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-declare var $: any;
+import {MatTableDataSource} from '@angular/material/table';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {DataService} from '../service/data.service';
+import {Player} from '../model/player';
+import {Ranking} from '../model/ranking';
+import {TrainingGroup} from '../model/trainingGroup';
+import {User} from '../model/user';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
-import { DataService} from '../service/data.service';
-import { Player } from '../model/player';
-import { Ranking } from '../model/ranking';
-import { TrainingGroup } from '../model/trainingGroup';
+declare var $: any;
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -24,7 +26,6 @@ export class AdminMembersListComponent implements OnInit {
 
   value;
   player;
-  ranking;
   players: Player[];
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -33,11 +34,12 @@ export class AdminMembersListComponent implements OnInit {
   constructor(
     private dataService: DataService,
     public dialog: MatDialog
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.refreshTable();
-    this.sort.sort(({ id: 'id', start: 'asc'}) as MatSortable);
+    this.sort.sort(({id: 'id', start: 'asc'}) as MatSortable);
   }
 
   applyFilter(event: Event) {
@@ -101,11 +103,14 @@ export class DialogAddMember {
   player = new Player();
   rankings: Ranking[];
   trainingGroups: TrainingGroup[];
+  // userList: User[] = [];
+  userList: User[];
 
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DialogAddMember>,
-    @Inject(MAT_DIALOG_DATA) public data: Player) {}
+    @Inject(MAT_DIALOG_DATA) public data: Player) {
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -117,6 +122,9 @@ export class DialogAddMember {
     );
     this.dataService.getTrainingGroupList().subscribe(
       trainingGroups => this.trainingGroups = trainingGroups
+    );
+    this.dataService.getUserList().subscribe(
+      users => this.userList = users
     );
   }
 
@@ -145,11 +153,13 @@ export class DialogEditMember {
 
   rankings: Ranking[];
   trainingGroups: TrainingGroup[];
+  userList: User[];
 
   constructor(
     private dataService: DataService,
     public dialogRef: MatDialogRef<DialogEditMember>,
-    @Inject(MAT_DIALOG_DATA) public data: Player) {}
+    @Inject(MAT_DIALOG_DATA) public data: Player) {
+  }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit(): void {
@@ -158,6 +168,9 @@ export class DialogEditMember {
     );
     this.dataService.getTrainingGroupList().subscribe(
       trainingGroups => this.trainingGroups = trainingGroups
+    );
+    this.dataService.getUserList().subscribe(
+      users => this.userList = users
     );
   }
 

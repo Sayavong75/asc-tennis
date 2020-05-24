@@ -1,89 +1,96 @@
-  /* Positionnement des checkboxes */
-  .checkbox {
-    padding-left: 20px;
-  }
-  .checkbox label {
-    display: inline-block;
-    vertical-align: middle;
-    position: relative;
-    padding-left: 5px;
-    font-size: 14px;
-  }
+/* Positionnement des checkboxes */
+.checkbox {
+  padding-left: 20px;
+}
 
-  /* Effets de style sur les checkboxes */
-  .checkbox label::before {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    left: 0;
-    margin-left: -20px;
-    border: 1px solid #cccccc;
-    border-radius: 3px;
-    background-color: #fff;
-    -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
-    -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
-    transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
-  }
-  .checkbox label::after {
-    display: inline-block;
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    left: 0;
-    top: 0;
-    margin-left: -20px;
-    padding-left: 3px;
-    padding-top: 1px;
-    font-size: 11px;
-    color: #555555;
-  }
+.checkbox label {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  padding-left: 5px;
+  font-size: 14px;
+}
 
-  /* Effets de transition sur les checkboxes */
-  .checkbox input[type="checkbox"] {
-    opacity: 0;
-    z-index: 1;
-  }
-  .checkbox input[type="checkbox"]:focus + label::before {
-    outline: thin dotted;
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-  }
-  .checkbox input[type="checkbox"]:checked + label::after {
-    font-family: "FontAwesome";
-    content: "\f00c";
-  }
-  .checkbox input[type="checkbox"]:disabled + label {
-    opacity: 0.65;
-  }
+/* Effets de style sur les checkboxes */
+.checkbox label::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  left: 0;
+  margin-left: -20px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  background-color: #fff;
+  -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+  transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+}
 
-  /* Modification du style quand le checkbox 1 est coché/décoché */
-  .checkbox-warning input[type="checkbox"]:checked + label::before {
-    background-color: #f0ad4e;
-    border-color: #f0ad4e;
-  }
-  .checkbox-warning input[type="checkbox"]:checked + label::after {
-    color: #fff;
-  }
+.checkbox label::after {
+  display: inline-block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 0;
+  top: 0;
+  margin-left: -20px;
+  padding-left: 3px;
+  padding-top: 1px;
+  font-size: 11px;
+  color: #555555;
+}
 
-  /* Modification du style quand le checkbox 2 est coché/décoché */
-  .checkbox-success input[type="checkbox"]:checked + label::before {
-    background-color: #5cb85c;
-    border-color: #5cb85c;
-  }
-  .checkbox-success input[type="checkbox"]:checked + label::after {
-    color: #fff;
-  }
+/* Effets de transition sur les checkboxes */
+.checkbox input[type="checkbox"] {
+  opacity: 0;
+  z-index: 1;
+}
 
-  /* Alignement centré des blocs entrées (inputs) */
-  .center-block {
-    display: table;  /* Instead of display:block */
-    margin-left: auto;
-    margin-right: auto;
-  }
+.checkbox input[type="checkbox"]:focus + label::before {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
 
-  /* Survol du curseur sur le checkbox 1 */
-  #checkbox1, #label-checkbox1 {
-    cursor: not-allowed;
-  }
+.checkbox input[type="checkbox"]:checked + label::after {
+  font-family: "FontAwesome";
+  content: "\f00c";
+}
+
+.checkbox input[type="checkbox"]:disabled + label {
+  opacity: 0.65;
+}
+
+/* Modification du style quand le checkbox 1 est coché/décoché */
+.checkbox-warning input[type="checkbox"]:checked + label::before {
+  background-color: #f0ad4e;
+  border-color: #f0ad4e;
+}
+
+.checkbox-warning input[type="checkbox"]:checked + label::after {
+  color: #fff;
+}
+
+/* Modification du style quand le checkbox 2 est coché/décoché */
+.checkbox-success input[type="checkbox"]:checked + label::before {
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+}
+
+.checkbox-success input[type="checkbox"]:checked + label::after {
+  color: #fff;
+}
+
+/* Alignement centré des blocs entrées (inputs) */
+.center-block {
+  display: table; /* Instead of display:block */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Survol du curseur sur le checkbox 1 */
+#checkbox1, #label-checkbox1 {
+  cursor: not-allowed;
+}

@@ -18,6 +18,17 @@
       </tr>
       </thead>
 
+      <!-- GESTION DES UTILISATEURS -->
+      <tbody>
+      <tr>
+        <td>Utilisateur</td>
+        <td></td>
+        <td>
+          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-users-list']">view_list</i>
+        </td>
+      </tr>
+      </tbody>
+
       <!-- GESTION DES ADHÉRENTS -->
       <tbody>
       <tr>
@@ -28,6 +39,7 @@
         </td>
       </tr>
       </tbody>
+
 
       <!-- GESTION DES CLASSEMENTS -->
       <tbody>
@@ -47,7 +59,8 @@
         <td>Groupe semaine</td>
         <td></td>
         <td>
-          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-weekly-group-list']">view_list</i>
+          <i class="material-icons hover" style="color:dimgray;" title="Liste"
+             [routerLink]="['/admin-weekly-group-list']">view_list</i>
         </td>
       </tr>
       </tbody>
@@ -83,8 +96,11 @@
         <td>Session d'entraînement</td>
         <td></td>
         <td>
-          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-training-sessions-list']">view_list</i>
-          <mat-icon class="material-icons hover" color="warn" title="Liste générale" [routerLink]="['/admin-sessions-view-list']">calendar_today</mat-icon>
+          <i class="material-icons hover" style="color:dimgray;" title="Liste"
+             [routerLink]="['/admin-training-sessions-list']">view_list</i>
+          <mat-icon class="material-icons hover" color="warn" title="Liste générale"
+                    [routerLink]="['/admin-sessions-view-list']">calendar_today
+          </mat-icon>
       </tr>
       </tbody>
 

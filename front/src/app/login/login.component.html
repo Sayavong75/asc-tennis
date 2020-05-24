@@ -9,27 +9,12 @@
 
   <!-- INFORMATIONS GÉNÉRALES -->
   <div class="center-div">
-    <h2>Réservez vos prochaines sessions d'entraînement et consultez les matches à venir !</h2>
+    <!-- <h2>Réservez vos prochaines sessions d'entraînement et consultez les matches à venir ! </h2>-->
+    <h2>Réservez vos prochaines sessions d'entraînement !</h2>
   </div>
 
-<!--  <br />-->
-<!--  <div class="center-block">-->
-<!--    <p>Connexion</p>-->
-<!--  </div>-->
-
-<!--  &lt;!&ndash; BOUTONS &ndash;&gt;-->
-<!--  <div class="center-block">-->
-<!--    <div class="btn-group-vertical">-->
-<!--      &lt;!&ndash; Bouton Administrateur &ndash;&gt;-->
-<!--      <button type="button" class="btn btn-info btn-lg mb-3" [routerLink]="['/home']"-->
-<!--        (click)="displayNavBarAdmin()"><span class="glyphicon glyphicon-wrench"></span>&nbsp;Administrateur</button>-->
-
-<!--      &lt;!&ndash; Bouton Adhérent &ndash;&gt;-->
-<!--      <button type="button" class="btn btn-primary btn-lg mb-3" [routerLink]="['/home']"-->
-<!--        (click)="displayNavBar()"><span class="glyphicon glyphicon-user"></span>&nbsp;Adhérent</button>-->
-<!--    </div>-->
-<!--  </div>-->
-
+  <!-- ANGULAR MATERIAL FORMULAIRE DE LOGIN -->
+  <br/>
   <div class="center-block">
     <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()">
       <mat-card class="login-card">
@@ -63,5 +48,6 @@
         </mat-card-actions>
       </mat-card>
     </form>
+
   </div>
 </div>

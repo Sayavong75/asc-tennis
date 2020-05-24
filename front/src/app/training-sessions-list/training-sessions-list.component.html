@@ -9,30 +9,30 @@
 
   <table class="table table-hover">
     <thead class="thead-dark">
-      <tr>
-        <th>Date / Lieu</th>
-        <th>Statut</th>
-        <th>Entraîneur</th>
-        <th></th>
-      </tr>
+    <tr>
+      <th>Date / Lieu</th>
+      <th>Statut</th>
+      <th>Entraîneur</th>
+      <th></th>
+    </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>
-          Lundi 4 mai 2020 - 20h30 <br/>
-          (Comité des Hauts de Seine de Tennis)
-          <span class="glyphicon glyphicon-map-marker" data-toggle="modal" data-target="#modalRegular"></span>
-        </td>
-        <td>Inscriptions ouvertes <br> Liste finale le 02/05/2020</td>
-        <td>Présent</td>
-        <td>
-          <button type="button"
-            (click)="registerRule()"
-            [ngClass]="{'btn btn-success':toggle, 'btn btn-danger':!toggle}">
-            {{status}}
-          </button>
-        </td>
-      </tr>
+    <tr>
+      <td>
+        Lundi 4 mai 2020 - 20h30 <br/>
+        (Comité des Hauts de Seine de Tennis)
+        <span class="glyphicon glyphicon-map-marker" data-toggle="modal" data-target="#modalRegular"></span>
+      </td>
+      <td>Inscriptions ouvertes <br> Liste finale le 02/05/2020</td>
+      <td>Présent</td>
+      <td>
+        <button type="button"
+                (click)="registerRule()"
+                [ngClass]="{'btn btn-success':toggle, 'btn btn-danger':!toggle}">
+          {{status}}
+        </button>
+      </td>
+    </tr>
     </tbody>
   </table>
 
@@ -49,7 +49,10 @@
 
           <!--Google map-->
           <div id="map-container-google-16" class="z-depth-1-half map-container-9" style="height: 400px">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.1250209993004!2d2.160267815674944!3d48.87489317928904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7f27fbfcf0a06f68!2sComit%C3%A9%20des%20Hauts%20de%20Seine%20de%20Tennis!5e0!3m2!1sfr!2sfr!4v1588084817667!5m2!1sfr!2sfr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.1250209993004!2d2.160267815674944!3d48.87489317928904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7f27fbfcf0a06f68!2sComit%C3%A9%20des%20Hauts%20de%20Seine%20de%20Tennis!5e0!3m2!1sfr!2sfr!4v1588084817667!5m2!1sfr!2sfr"
+              width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+              tabindex="0"></iframe>
           </div>
 
         </div>

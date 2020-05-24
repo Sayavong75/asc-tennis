@@ -1,10 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
 // ============ Angular Material ============
 import {A11yModule} from '@angular/cdk/a11y';
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -49,43 +48,45 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
-// ================== END ===================
-
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { NavBarService } from './nav-bar.service';
-import { NavAdminService } from './nav-admin.service';
-import { TrainingSessionsListComponent } from './training-sessions-list/training-sessions-list.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { EmailAlertSettingsComponent } from './email-alert-settings/email-alert-settings.component';
-import { AdminComponent } from './admin/admin.component';
-import { AdminMembersListComponent, DialogAddMember, DialogEditMember } from './admin-members-list/admin-members-list.component';
+import {AppComponent} from './app.component';
+import {LoginComponent} from './login/login.component';
+import {HomeComponent} from './home/home.component';
+import {NavBarComponent} from './nav-bar/nav-bar.component';
+import {TrainingSessionsListComponent} from './training-sessions-list/training-sessions-list.component';
+import {UserProfileComponent} from './user-profile/user-profile.component';
+import {EmailAlertSettingsComponent} from './email-alert-settings/email-alert-settings.component';
+import {AdminComponent} from './admin/admin.component';
+import {AdminMembersListComponent, DialogAddMember, DialogEditMember} from './admin-members-list/admin-members-list.component';
 import {
   AdminRankingListComponent,
   DialogAddRanking,
-  DialogEditRanking,
-  DialogDeleteRanking
+  DialogDeleteRanking,
+  DialogEditRanking
 } from './admin-ranking-list/admin-ranking-list.component';
 import {
   AdminWeeklyGroupListComponent,
   DialogAddTrainingGroup,
-  DialogEditTrainingGroup,
-  DialogDeleteTrainingGroup
+  DialogDeleteTrainingGroup,
+  DialogEditTrainingGroup
 } from './admin-weekly-group-list/admin-weekly-group-list.component';
 import {
   AdminTrainingSessionListComponent,
   DialogAddTrainingDay,
   DialogEditTrainingDay
 } from './admin-training-session-list/admin-training-session-list.component';
-import { AdminSessionsViewListComponent } from './admin-sessions-view-list/admin-sessions-view-list.component';
-import { AdminCoachesListComponent, DialogAddCoach, DialogEditCoach } from './admin-coaches-list/admin-coaches-list.component';
-import { AdminClubsListComponent, DialogAddClub, DialogEditClub } from './admin-clubs-list/admin-clubs-list.component';
+import {AdminSessionsViewListComponent} from './admin-sessions-view-list/admin-sessions-view-list.component';
+import {AdminCoachesListComponent, DialogAddCoach, DialogEditCoach} from './admin-coaches-list/admin-coaches-list.component';
+import {AdminClubsListComponent, DialogAddClub, DialogEditClub} from './admin-clubs-list/admin-clubs-list.component';
+import {AdminUsersListComponent, DialogAddUser} from './admin-users-list/admin-users-list.component';
 
-import { DataService} from './service/data.service';
-import { AppRoutingModule } from './app-routing.module';
+import {DataService} from './service/data.service';
+import {AppRoutingModule} from './app-routing.module';
+import {CreatorGuard} from './authentication/guards/creator.guard';
+import {AdminGuard} from './authentication/guards/admin.guard';
+import {ReaderGuard} from './authentication/guards/reader.guard';
+import {JwtInterceptor} from './authentication/http-interceptor/jwt.interceptor';
 
+// ================== END ===================
 
 @NgModule({
   declarations: [
@@ -104,6 +105,7 @@ import { AppRoutingModule } from './app-routing.module';
     AdminSessionsViewListComponent,
     AdminCoachesListComponent,
     AdminClubsListComponent,
+    AdminUsersListComponent,
     DialogAddMember,
     DialogEditMember,
     DialogAddRanking,
@@ -117,7 +119,8 @@ import { AppRoutingModule } from './app-routing.module';
     DialogAddClub,
     DialogEditClub,
     DialogAddTrainingDay,
-    DialogEditTrainingDay
+    DialogEditTrainingDay,
+    DialogAddUser,
   ],
   imports: [
     BrowserModule,
@@ -174,9 +177,15 @@ import { AppRoutingModule } from './app-routing.module';
     ReactiveFormsModule,
   ],
   providers: [
-    NavBarService,
-    NavAdminService,
-    DataService],
+    DataService,
+    ReaderGuard,
+    CreatorGuard,
+    AdminGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent],
   entryComponents: [
     DialogAddMember,
@@ -192,6 +201,8 @@ import { AppRoutingModule } from './app-routing.module';
     DialogAddClub,
     DialogEditClub,
     DialogAddTrainingDay,
-    DialogEditTrainingDay]
+    DialogEditTrainingDay,
+    DialogAddUser]
 })
-export class AppModule { }
+export class AppModule {
+}
