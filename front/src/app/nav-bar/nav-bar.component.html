@@ -45,12 +45,12 @@
         <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
           <span class="glyphicon glyphicon-cog"></span>
           {{ currentUser }}
+          <!-- {{ getPlayerByUsername(currentUser) }} -->
         </a>
         <!-- Right-aligned menu-->
         <div class="dropdown-menu dropdown-menu-right">
 
           <!-- LOGOUT -->
-          <!--          <a class="dropdown-item" [routerLink]="['login']" (click)="hideNavBar()"><span class="glyphicon glyphicon-off"></span> Déconnexion</a>-->
           <a class="dropdown-item" [routerLink]="['login']" (click)="logOut()"><span
             class="glyphicon glyphicon-off"></span> Déconnexion</a>
 

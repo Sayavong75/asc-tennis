@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {AuthenticationService} from '../service/authentication.service';
-import {User} from '../model/user';
+import {Player} from '../model/player';
+import {DataService} from '../service/data.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -16,9 +17,10 @@ export class NavBarComponent implements OnInit {
   isAdmin: boolean;
 
   currentUser: string;
+  players: Player[];
 
   constructor(
-    private breakpointObserver: BreakpointObserver, private loginService: AuthenticationService,
+    private breakpointObserver: BreakpointObserver, private loginService: AuthenticationService, private dataService: DataService
   ) {
   }
 
@@ -34,12 +36,24 @@ export class NavBarComponent implements OnInit {
         this.isLoggedIn = true;
 
         this.currentUser = this.loginService.getCurrentUser();
-        this.currentUser = this.currentUser.replace(/\"/g, "");
+        // this.currentUser = this.currentUser.replace(/\"/g, '');
       }
+    });
+    this.dataService.getPlayerList().subscribe(players => {
+      this.players = players;
     });
   }
 
   logOut() {
     this.loginService.logOut();
+  }
+
+  getPlayerByUsername(usernameLogin) {
+    for (const player of this.players) {
+      if (player.appUser.username === usernameLogin) {
+        sessionStorage.setItem('CURRENT_PLAYER_FIRSTNAME', player.firstName);
+        return player.firstName;
+      }
+    }
   }
 }

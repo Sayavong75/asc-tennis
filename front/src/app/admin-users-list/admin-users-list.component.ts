@@ -94,7 +94,8 @@ export class DialogAddUser {
   }
 
   // tslint:disable-next-line:use-lifecycle-interface
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   onNoClick(): void {
     this.dialogRef.close(false);
