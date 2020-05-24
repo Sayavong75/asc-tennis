@@ -1,6 +1,5 @@
 import {Ranking} from './ranking';
 import {TrainingGroup} from './trainingGroup';
-import {Role} from './role';
 import {User} from './user';
 
 export class Player {

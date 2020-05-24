@@ -12,6 +12,8 @@ declare var $: any;
 
 export class HomeComponent implements OnInit {
 
+  currentUser: string;
+
   constructor(private breakpointObserver: BreakpointObserver, private loginService: AuthenticationService) {
   }
 
@@ -23,6 +25,8 @@ export class HomeComponent implements OnInit {
         $(this).hide();
       });
     });
+    this.currentUser = this.loginService.getCurrentUser();
   }
+
 
 }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {environment} from '../../environments/environment';
@@ -13,6 +13,7 @@ import {User} from '../model/user';
 export class AuthenticationService {
 
   userRoles: BehaviorSubject<string[]> = new BehaviorSubject([]);
+  currentUser: string;
 
   constructor(private httpClient: HttpClient, private router: Router) {
     this.getUserRoles();
@@ -29,7 +30,9 @@ export class AuthenticationService {
         sessionStorage.setItem(environment.accessToken, token.token);
 
         // store user details in session storage to keep user logged in between page refreshes
-        sessionStorage.setItem('currentUser', JSON.stringify(user.username));
+        this.currentUser = JSON.stringify(user.username);
+        this.currentUser = this.currentUser.replace(/\"/g, '');
+        sessionStorage.setItem('CURRENT_USER', this.currentUser);
 
         this.getUserRoles();
 
@@ -40,7 +43,7 @@ export class AuthenticationService {
 
   logOut() {
     sessionStorage.removeItem(environment.accessToken);
-    sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('CURRENT_USER');
 
     this.userRoles.next([]);
     this.router.navigate(['login']);
@@ -59,7 +62,6 @@ export class AuthenticationService {
   }
 
   public getCurrentUser(): string {
-    return sessionStorage.getItem('currentUser');
+    return sessionStorage.getItem('CURRENT_USER');
   }
-
 }

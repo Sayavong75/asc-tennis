@@ -8,7 +8,6 @@ import {Player} from '../model/player';
 import {Ranking} from '../model/ranking';
 import {TrainingGroup} from '../model/trainingGroup';
 import {User} from '../model/user';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 declare var $: any;
 
