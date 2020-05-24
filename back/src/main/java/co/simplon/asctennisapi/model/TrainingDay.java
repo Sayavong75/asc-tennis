@@ -34,7 +34,7 @@ public class TrainingDay {
 
     // RELATION unidirectionnelle vers Training Group (6)
     @OneToOne
-    private TrainingGroup trainingGroup ;
+    private TrainingGroup trainingGroup;
 
     // GETTERS & SETTERS
     public Long getId() {

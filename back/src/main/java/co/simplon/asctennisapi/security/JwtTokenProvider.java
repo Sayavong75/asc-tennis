@@ -55,11 +55,13 @@ public class JwtTokenProvider {
     public String createToken(String username, List<Role> roles) {
 
         Claims claims = Jwts.claims().setSubject(username);
+        System.out.println("TokenProvider username : " + username);
         claims.put("auth", roles.stream().map(s -> new SimpleGrantedAuthority(s.getAuthority())).filter(Objects::nonNull).collect(Collectors.toList()));
 
         Date now = new Date();
         // 1h
-        long validityInMilliseconds = 3600000;
+//        long validityInMilliseconds = 3600000;
+        long validityInMilliseconds = 10800000;
         Date validity = new Date(now.getTime() + validityInMilliseconds);
 
         return Jwts.builder()//

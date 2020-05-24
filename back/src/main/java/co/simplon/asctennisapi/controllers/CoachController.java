@@ -19,25 +19,33 @@ public class CoachController {
         this.coachService = coachService;
     }
 
-    /** Coach list retrieval */
+    /**
+     * Coach list retrieval
+     */
     @GetMapping
     public List<Coach> getCoaches() {
         return coachService.getCoaches();
     }
 
-    /** Get one coach with its ID */
+    /**
+     * Get one coach with its ID
+     */
     @GetMapping("/{coachId}")
     public Coach getCoachById(@PathVariable Long coachId) {
         return coachService.getCoachById(coachId);
     }
 
-    /** Create a new coach */
+    /**
+     * Create a new coach
+     */
     @PostMapping
     public Coach createCoach(@RequestBody @Valid Coach newCoach) {
         return coachService.createCoach(newCoach);
     }
 
-    /** Save an existing coach */
+    /**
+     * Save an existing coach
+     */
     @PutMapping("/{coachId}")
     public ResponseEntity<Coach> saveCoach(@PathVariable Long coachId, @RequestBody Coach coach) {
         try {
@@ -47,7 +55,9 @@ public class CoachController {
         }
     }
 
-    /** Delete a coach from the coaches array */
+    /**
+     * Delete a coach from the coaches array
+     */
     @DeleteMapping("/{coachId}")
     public void deleteCoach(@PathVariable Long coachId) {
         coachService.deleteCoach(coachId);

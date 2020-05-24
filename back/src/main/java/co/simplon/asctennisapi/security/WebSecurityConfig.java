@@ -11,8 +11,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -27,7 +25,7 @@ import java.util.Collections;
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
+    //
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
@@ -68,8 +66,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Entry points
         http.authorizeRequests()//
-                .antMatchers("/api/players/sign-in").permitAll()//
-                .antMatchers("/api/players/sign-up").permitAll()//
+                .antMatchers("/api/users/sign-in").permitAll()//
+                .antMatchers("/api/users/sign-up").permitAll()//
                 // Disallow everything else...
                 .anyRequest().authenticated();
 
@@ -95,7 +93,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/runtime.js");
         web.ignoring().antMatchers("/styles.js");
         web.ignoring().antMatchers("/vendor.js");
-        web.ignoring().antMatchers("/api/coaches");
     }
 
     /**
@@ -106,7 +103,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8080"));
+        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
 
         configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
 

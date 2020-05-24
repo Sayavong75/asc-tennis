@@ -13,7 +13,7 @@ public class CoachServiceImpl implements CoachService {
 
     private CoachRepository coachRepository;
 
-    public CoachServiceImpl (CoachRepository coachRepository) {
+    public CoachServiceImpl(CoachRepository coachRepository) {
         this.coachRepository = coachRepository;
     }
 
@@ -38,7 +38,7 @@ public class CoachServiceImpl implements CoachService {
     }
 
     @Override
-    public Coach saveCoach(Long coachId, Coach coach) throws EntityNotFoundException{
+    public Coach saveCoach(Long coachId, Coach coach) throws EntityNotFoundException {
         Optional<Coach> dbCoach = coachRepository.findById(coachId);
         if (dbCoach.isPresent()) {
             return coachRepository.save(coach);
@@ -48,5 +48,7 @@ public class CoachServiceImpl implements CoachService {
     }
 
     @Override
-    public void deleteCoach(Long coachId) {this.coachRepository.deleteById(coachId);}
+    public void deleteCoach(Long coachId) {
+        this.coachRepository.deleteById(coachId);
+    }
 }

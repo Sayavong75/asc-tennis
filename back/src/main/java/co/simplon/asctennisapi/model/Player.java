@@ -3,7 +3,6 @@ package co.simplon.asctennisapi.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
 public class Player {
@@ -21,16 +20,6 @@ public class Player {
     @NotBlank
     @Column(nullable = false)
     private String firstName;
-
-    @NotNull
-    @NotBlank
-    @Column(nullable = false)
-    private String username;
-
-    @NotNull
-    @NotBlank
-    @Column(nullable = false)
-    private String password;
 
     // @Column(nullable = false)
     @Column
@@ -61,10 +50,6 @@ public class Player {
     @Column(nullable = false)
     private boolean statusIsActive = true;
 
-    // @Column(nullable = false)
-    @Column
-    private String role;
-
     // RELATION bidirectionnelle vers Ranking (4)
     @ManyToOne
     private Ranking ranking;
@@ -73,18 +58,9 @@ public class Player {
     @ManyToOne
     private TrainingGroup trainingGroup;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Enumerated(EnumType.STRING)
-    private List<Role> roleList;
-
-    public Player() {
-    }
-
-    public Player(@NotNull String username, @NotNull String password, List<Role> roleList) {
-        this.username = username;
-        this.password = password;
-        this.roleList = roleList;
-    }
+    // RELATION unidirectionnelle vers AppUser (7)
+    @OneToOne
+    private AppUser appUser;
 
     // GETTERS & SETTERS
 
@@ -112,27 +88,13 @@ public class Player {
         this.firstName = firstName;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getEmail1() {
         return email1;
     }
 
-    public void setEmail1(String email1) { this.email1 = email1; }
+    public void setEmail1(String email1) {
+        this.email1 = email1;
+    }
 
     public String getEmail2() {
         return email2;
@@ -190,14 +152,6 @@ public class Player {
         this.statusIsActive = statusIsActive;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     public Ranking getRanking() {
         return ranking;
     }
@@ -206,8 +160,6 @@ public class Player {
         return trainingGroup;
     }
 
-    public List<Role> getRoleList() {
-        return roleList;
-    }
+    public AppUser getAppUser() { return appUser; }
 
 }

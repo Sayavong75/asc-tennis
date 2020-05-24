@@ -21,7 +21,7 @@ public class Series {
 
     // RELATION bidirectionnelle vers Ranking (2)
     @JsonIgnore
-    @OneToMany (mappedBy = "series")
+    @OneToMany(mappedBy = "series")
     private List<Ranking> rankings;
 
     // GETTERS & SETTERS

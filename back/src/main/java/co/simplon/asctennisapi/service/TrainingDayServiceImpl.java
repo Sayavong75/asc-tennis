@@ -13,7 +13,7 @@ public class TrainingDayServiceImpl implements TrainingDayService {
 
     private TrainingDayRepository trainingDayRepository;
 
-    public TrainingDayServiceImpl (TrainingDayRepository trainingDayRepository) {
+    public TrainingDayServiceImpl(TrainingDayRepository trainingDayRepository) {
         this.trainingDayRepository = trainingDayRepository;
     }
 
@@ -38,7 +38,7 @@ public class TrainingDayServiceImpl implements TrainingDayService {
     }
 
     @Override
-    public TrainingDay saveTrainingDay(Long trainingDayId, TrainingDay trainingDay) throws EntityNotFoundException{
+    public TrainingDay saveTrainingDay(Long trainingDayId, TrainingDay trainingDay) throws EntityNotFoundException {
         Optional<TrainingDay> dbTrainingDay = trainingDayRepository.findById(trainingDayId);
         if (dbTrainingDay.isPresent()) {
             return trainingDayRepository.save(trainingDay);
@@ -48,5 +48,7 @@ public class TrainingDayServiceImpl implements TrainingDayService {
     }
 
     @Override
-    public void deleteTrainingDay(Long trainingDayId) {this.trainingDayRepository.deleteById(trainingDayId);}
+    public void deleteTrainingDay(Long trainingDayId) {
+        this.trainingDayRepository.deleteById(trainingDayId);
+    }
 }

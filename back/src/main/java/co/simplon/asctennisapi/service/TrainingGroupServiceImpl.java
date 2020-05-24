@@ -13,7 +13,7 @@ public class TrainingGroupServiceImpl implements TrainingGroupService {
 
     private TrainingGroupRepository trainingGroupRepository;
 
-    public TrainingGroupServiceImpl (TrainingGroupRepository trainingGroupRepository) {
+    public TrainingGroupServiceImpl(TrainingGroupRepository trainingGroupRepository) {
         this.trainingGroupRepository = trainingGroupRepository;
     }
 
@@ -38,7 +38,7 @@ public class TrainingGroupServiceImpl implements TrainingGroupService {
     }
 
     @Override
-    public TrainingGroup saveTrainingGroup(Long trainingGroupId, TrainingGroup trainingGroup) throws EntityNotFoundException{
+    public TrainingGroup saveTrainingGroup(Long trainingGroupId, TrainingGroup trainingGroup) throws EntityNotFoundException {
         Optional<TrainingGroup> dbTrainingGroup = trainingGroupRepository.findById(trainingGroupId);
         if (dbTrainingGroup.isPresent()) {
             return trainingGroupRepository.save(trainingGroup);
@@ -48,5 +48,7 @@ public class TrainingGroupServiceImpl implements TrainingGroupService {
     }
 
     @Override
-    public void deleteTrainingGroup(Long trainingGroupId) {this.trainingGroupRepository.deleteById(trainingGroupId);}
+    public void deleteTrainingGroup(Long trainingGroupId) {
+        this.trainingGroupRepository.deleteById(trainingGroupId);
+    }
 }

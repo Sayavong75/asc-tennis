@@ -19,25 +19,33 @@ public class SeriesController {
         this.seriesService = seriesService;
     }
 
-    /** Series list retrieval */
+    /**
+     * Series list retrieval
+     */
     @GetMapping
     public List<Series> getSeries() {
         return seriesService.getSeries();
     }
 
-    /** Get one series with its ID */
+    /**
+     * Get one series with its ID
+     */
     @GetMapping("/{seriesId}")
     public Series getSeriesById(@PathVariable Long seriesId) {
         return seriesService.getSeriesById(seriesId);
     }
 
-    /** Create a new series */
+    /**
+     * Create a new series
+     */
     @PostMapping
     public Series createSeries(@RequestBody @Valid Series newSeries) {
         return seriesService.createSeries(newSeries);
     }
 
-    /** Save an existing series */
+    /**
+     * Save an existing series
+     */
     @PutMapping("/{seriesId}")
     public ResponseEntity<Series> saveSeries(@PathVariable Long seriesId, @RequestBody Series series) {
         try {
@@ -47,7 +55,9 @@ public class SeriesController {
         }
     }
 
-    /** Delete a series from the series array */
+    /**
+     * Delete a series from the series array
+     */
     @DeleteMapping("/{seriesId}")
     public void deleteSeries(@PathVariable Long seriesId) {
         seriesService.deleteSeries(seriesId);

@@ -1,9 +1,7 @@
 package co.simplon.asctennisapi.controllers;
 
 import co.simplon.asctennisapi.model.TrainingDay;
-import co.simplon.asctennisapi.model.TrainingGroup;
 import co.simplon.asctennisapi.service.TrainingDayService;
-import co.simplon.asctennisapi.service.TrainingGroupService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,25 +19,33 @@ public class TrainingDayController {
         this.trainingDayService = trainingDayService;
     }
 
-    /** Training day list retrieval */
+    /**
+     * Training day list retrieval
+     */
     @GetMapping
     public List<TrainingDay> getTrainingDays() {
         return trainingDayService.getTrainingDays();
     }
 
-    /** Get one training day with its ID */
+    /**
+     * Get one training day with its ID
+     */
     @GetMapping("/{trainingDayId}")
     public TrainingDay getTrainingDayById(@PathVariable Long trainingDayId) {
         return trainingDayService.getTrainingDayById(trainingDayId);
     }
 
-    /** Create a new training day */
+    /**
+     * Create a new training day
+     */
     @PostMapping
     public TrainingDay createTrainingDay(@RequestBody @Valid TrainingDay newTrainingDay) {
         return trainingDayService.createTrainingDay(newTrainingDay);
     }
 
-    /** Save an existing training day */
+    /**
+     * Save an existing training day
+     */
     @PutMapping("/{trainingDayId}")
     public ResponseEntity<TrainingDay> saveTrainingDay(@PathVariable Long trainingDayId, @RequestBody TrainingDay trainingDay) {
         try {
@@ -49,7 +55,9 @@ public class TrainingDayController {
         }
     }
 
-    /** Delete a training day from the training days array */
+    /**
+     * Delete a training day from the training days array
+     */
     @DeleteMapping("/{trainingDayId}")
     public void deleteTrainingDay(@PathVariable Long trainingDayId) {
         trainingDayService.deleteTrainingDay(trainingDayId);
