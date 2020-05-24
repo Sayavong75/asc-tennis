@@ -1,29 +1,30 @@
-  /* Style ombré et dimension fixe sur les boutons */
-  .btn-success, .btn-danger {
-    box-shadow: 1px 2px 5px #000000;
-    width: 140px;
-    height: 35px;
-  }
+/* Style ombré et dimension fixe sur les boutons */
+.btn-success, .btn-danger {
+  box-shadow: 1px 2px 5px #000000;
+  width: 140px;
+  height: 35px;
+}
 
-  .map-container-9,
-  .map-container-10,
-  .map-container-11 {
-    overflow:hidden;
-    padding-bottom:56.25%;
-    position:relative;
-    height:0;
-  }
-  .map-container-9 iframe,
-  .map-container-10 iframe,
-  .map-container-11 iframe{
-    left:0;
-    top:0;
-    height:100%;
-    width:100%;
-    position:absolute;
-  }
+.map-container-9,
+.map-container-10,
+.map-container-11 {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
 
-  /* Style survol sur les boutons material-icons */
-  .glyphicon-map-marker {
-    cursor: pointer;
-  }
+.map-container-9 iframe,
+.map-container-10 iframe,
+.map-container-11 iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+/* Style survol sur les boutons material-icons */
+.glyphicon-map-marker {
+  cursor: pointer;
+}

@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NavBarService } from '../nav-bar.service';
-import { NavAdminService} from '../nav-admin.service';
+import {Component, OnInit} from '@angular/core';
+
 import {FormBuilder, Validators} from '@angular/forms';
-import {Player} from '../model/player';
-import {AuthentificationService} from '../service/authentification.service';
+import {AuthenticationService} from '../service/authentication.service';
+import {User} from '../model/user';
 
 @Component({
   selector: 'app-login',
@@ -21,36 +20,18 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private loginService: AuthentificationService,
-    public nav: NavBarService,
-    private navAdminService: NavAdminService
-  ) { }
-
-  displayNavBar() {
-    console.log('display navbar');
-    this.nav.show();
-  }
-
-  displayNavBarAdmin() {
-    console.log('display navbarAdmin');
-    this.nav.show();
-    this.navAdminService.addAdminMenu();
-  }
-
-  hideNavBar() {
-    console.log('hide navbar');
-    this.nav.hidden();
+    private loginService: AuthenticationService
+  ) {
   }
 
   ngOnInit(): void {
-    this.displayNavBarAdmin();
   }
 
   onSubmit() {
-    const user = new Player();
+    const user = new User();
     user.username = this.loginForm.value.username;
     user.password = this.loginForm.value.password;
     this.loginService.logIn(user);
+    console.log(JSON.stringify(user));
   }
-
 }

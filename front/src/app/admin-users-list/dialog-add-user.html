@@ -1,0 +1,31 @@
+<!-- MODAL GESTION DES UTILISATEURS - AJOUTER -->
+
+<h1 mat-dialog-title>Ajouter un utilisateur</h1>
+<form>
+  <div mat-dialog-content>
+
+    <!-- USERNAME -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="user.username" placeholder="Username" name="username">
+    </mat-form-field>
+
+    <!-- ROLE -->
+    <mat-form-field>
+      <mat-select [(ngModel)]="user.roleList" placeholder="Rôle" name="roleList">
+        <mat-option *ngFor="let role of roleData" [value]="role">
+          {{ role }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="onNoClick()">Annuler</button>
+    <button mat-raised-button cdkFocusInitial (click)="onAddUser()">Ajouter</button>
+  </div>
+
+  <!-- Copyright 2019 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
+</form>

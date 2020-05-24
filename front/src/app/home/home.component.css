@@ -1,18 +1,18 @@
-  /* Alignement centré de l'image */
-  #photo_snoopy {
-    text-align: center;
+/* Alignement centré de l'image */
+#photo_snoopy {
+  text-align: center;
+}
+
+
+/* ====================
+   Media queries
+   Extra small devices (portrait phones, less than 576px)
+   ====================*/
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (max-width: 576px) {
+  img {
+    width: 100%;
+    height: auto;
   }
-
-
-  /* ====================
-     Media queries
-     Extra small devices (portrait phones, less than 576px)
-     ====================*/
-
-  /* Small devices (landscape phones, 576px and up) */
-  @media screen and (max-width: 576px) {
-    img {
-      width: 100%;
-      height: auto;
-    }
-  }
+}

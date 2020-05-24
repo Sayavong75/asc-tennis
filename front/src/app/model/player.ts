@@ -1,12 +1,12 @@
 import {Ranking} from './ranking';
 import {TrainingGroup} from './trainingGroup';
+import {Role} from './role';
+import {User} from './user';
 
 export class Player {
   id: number;
   lastName: string;
   firstName: string;
-  username: string;
-  password: string;
   email1: string;
   email2: string;
   phoneNumber1: string;
@@ -14,6 +14,7 @@ export class Player {
   trainingCount: number;
   ranking: Ranking;
   trainingGroup: TrainingGroup;
+  appUser: User;
   generalAlertOn: boolean;
   playerAlertOn: boolean;
   statusIsActive: boolean;

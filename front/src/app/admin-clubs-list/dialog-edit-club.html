@@ -42,7 +42,7 @@
     <!-- LIEN URL GOOGLE MAPS -->
     <mat-form-field>
       <input matInput [(ngModel)]="data.urlGoogleMaps" placeholder="Lien URL Google Maps" name="urlGoogleMaps"
-         style="font-size:14px;">
+             style="font-size:14px;">
     </mat-form-field>
 
     <!-- STATUT ACTIF / INACTIF -->
@@ -54,7 +54,8 @@
 
   <div mat-dialog-actions>
     <button mat-raised-button color="primary" (click)="onNoClick()">Annuler</button>
-    <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial (click)="onEditClub(data.id)">Mettre à jour</button>
+    <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial (click)="onEditClub(data.id)">Mettre à jour
+    </button>
   </div>
 
   <!-- Copyright 2019 Google LLC. All Rights Reserved.

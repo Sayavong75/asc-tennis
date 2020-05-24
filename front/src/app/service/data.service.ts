@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Player} from '../model/player';
@@ -8,14 +8,17 @@ import {Series} from '../model/series';
 import {Coach} from '../model/coach';
 import {Club} from '../model/club';
 import {TrainingDay} from '../model/trainingDay';
+import {User} from '../model/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
+  // TODO : créer constante pour localhost 8080 (pour non répétition)
   // PLAYER
   getPlayerList(): Observable<Player[]> {
     return this.httpClient.get<Player[]>('http://localhost:8080/api/players');
@@ -109,6 +112,21 @@ export class DataService {
 
   deleteTrainingDay(trainingDayId): Observable<TrainingDay> {
     return this.httpClient.delete<TrainingDay>(`http://localhost:8080/api/training-days/${trainingDayId}`);
+  }
+
+  // USER
+  getUserList(): Observable<User[]> {
+    return this.httpClient.get<User[]>('http://localhost:8080/api/users');
+  }
+
+  // tslint:disable-next-line:no-shadowed-variable
+  addUser(User) {
+    return this.httpClient.post(`http://localhost:8080/api/users/sign-up`, User);
+  }
+
+  // ROLE
+  getRoleList() {
+    return ['NO_ROLE', 'ROLE_ADMIN', 'ROLE_READER'];
   }
 
 }

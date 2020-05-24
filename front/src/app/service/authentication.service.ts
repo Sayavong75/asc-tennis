@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {environment} from '../../environments/environment';
-import {Player} from '../model/player';
 import {JsonWebToken} from '../model/jwt';
 import * as jwt_decode from 'jwt-decode';
+import {User} from '../model/user';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthentificationService {
+export class AuthenticationService {
 
   userRoles: BehaviorSubject<string[]> = new BehaviorSubject([]);
 
@@ -22,20 +22,26 @@ export class AuthentificationService {
     return sessionStorage.getItem(environment.accessToken) !== null;
   }
 
-  logIn(user: Player) {
+  logIn(user: User) {
+    // console.log('Data: ' + JSON.stringify(user));
     this.httpClient.post<JsonWebToken>(environment.apiUrl + 'users/sign-in', user).subscribe(
       token => {
         sessionStorage.setItem(environment.accessToken, token.token);
 
+        // store user details in session storage to keep user logged in between page refreshes
+        sessionStorage.setItem('currentUser', JSON.stringify(user.username));
+
         this.getUserRoles();
 
-        this.router.navigate(['']);
+        this.router.navigate(['/home']);
       },
-      error => console.log('Error while login'));
+      error => window.alert('Username or password is incorrect'));
   }
 
   logOut() {
     sessionStorage.removeItem(environment.accessToken);
+    sessionStorage.removeItem('currentUser');
+
     this.userRoles.next([]);
     this.router.navigate(['login']);
   }
@@ -47,4 +53,13 @@ export class AuthentificationService {
       this.userRoles.next(authorities.map(authority => authority.authority));
     }
   }
+
+  public getToken(): string {
+    return sessionStorage.getItem(environment.accessToken);
+  }
+
+  public getCurrentUser(): string {
+    return sessionStorage.getItem('currentUser');
+  }
+
 }

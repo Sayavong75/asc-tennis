@@ -36,29 +36,30 @@
 
       <!-- Id Column -->
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id</th>
         <td mat-cell *matCellDef="let ranking"> {{ ranking.id }} </td>
       </ng-container>
 
       <!-- Label Column -->
       <ng-container matColumnDef="label">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Classement </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Classement</th>
         <td mat-cell *matCellDef="let ranking"> {{ ranking.label }} </td>
       </ng-container>
 
       <!-- Series Column -->
       <ng-container matColumnDef="series">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Series </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Series</th>
         <td mat-cell *matCellDef="let ranking"> {{ ranking.series.label }} <span>&nbsp;&nbsp;</span></td>
       </ng-container>
 
       <!-- Action Column -->
       <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action</th>
         <!-- ACTION icônes Editer + Supprimer -->
         <td mat-cell *matCellDef="let ranking">
           <mat-icon (click)="editRankingForm(ranking)" style="color:dimgray;" matTooltip="Modifier">edit</mat-icon>
-          <mat-icon (click)="deleteRankingForm(ranking)" style="color:orangered;" matTooltip="Supprimer">delete</mat-icon>
+          <mat-icon (click)="deleteRankingForm(ranking)" style="color:orangered;" matTooltip="Supprimer">delete
+          </mat-icon>
         </td>
       </ng-container>
 

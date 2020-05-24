@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AdminSessionsViewListComponent } from './admin-sessions-view-list.component';
+import {AdminSessionsViewListComponent} from './admin-sessions-view-list.component';
 
 describe('AdminSessionsViewListComponent', () => {
   let component: AdminSessionsViewListComponent;
@@ -8,9 +8,9 @@ describe('AdminSessionsViewListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminSessionsViewListComponent ]
+      declarations: [AdminSessionsViewListComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

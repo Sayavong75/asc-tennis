@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { NavBarService } from '../nav-bar.service';
-import { NavAdminService} from '../nav-admin.service';
+import {Component, OnInit} from '@angular/core';
+
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {AuthenticationService} from '../service/authentication.service';
+import {User} from '../model/user';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,37 +10,36 @@ import { NavAdminService} from '../nav-admin.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  // public isAdmin = false;
-  public isAdmin = true;
+
+  isLoggedIn = false;
+  isReader: boolean;
+  isAdmin: boolean;
+
+  currentUser: string;
 
   constructor(
-    public nav: NavBarService,
-    private navAdminService: NavAdminService
-  ) { }
+    private breakpointObserver: BreakpointObserver, private loginService: AuthenticationService,
+  ) {
+  }
 
   ngOnInit(): void {
-    // tslint:disable-next-line:triple-equals
-    if (this.navAdminService.subsVar == undefined) {
-      this.navAdminService.subsVar = this.navAdminService.
-        invokeAdminFunction.subscribe(() => {
-        this.showAdminFunction();
-        console.log('show admin');
-      });
-    }
-  }
-  // Fonction pour masquer la barre de navigation
-  hideNavBar() {
-    console.log('hide navbar');
-    this.hideAdminFunction();
-    this.nav.hidden();
-  }
-  // Fonction pour afficher le menu Admin dans la nav-bar
-  showAdminFunction(): void {
-    this.isAdmin = true;
-  }
-  // Fonction pour masquer le menu Admin dans la nav-bar
-  hideAdminFunction(): void {
-    this.isAdmin = false;
+    this.loginService.userRoles.subscribe(userRoles => {
+      this.isLoggedIn = false;
+
+      this.isReader = userRoles.includes('ROLE_READER');
+      this.isAdmin = userRoles.includes('ROLE_ADMIN');
+
+      if (userRoles && userRoles.length > 0) {
+
+        this.isLoggedIn = true;
+
+        this.currentUser = this.loginService.getCurrentUser();
+        this.currentUser = this.currentUser.replace(/\"/g, "");
+      }
+    });
   }
 
+  logOut() {
+    this.loginService.logOut();
+  }
 }
