@@ -25,7 +25,7 @@ public class TrainingGroup {
 
     // RELATION bidirectionnelle vers Player (5)
     @JsonIgnore
-    @OneToMany (mappedBy = "trainingGroup")
+    @OneToMany(mappedBy = "trainingGroup")
     private List<Player> players;
 
     // GETTERS & SETTERS

@@ -25,7 +25,7 @@ public class Ranking {
 
     // RELATION bidirectionnelle vers Player (4)
     @JsonIgnore
-    @OneToMany (mappedBy = "ranking")
+    @OneToMany(mappedBy = "ranking")
     private List<Player> players;
 
     // GETTERS & SETTERS

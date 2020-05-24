@@ -43,7 +43,7 @@ public class Coach {
 
     // RELATION bidirectionnelle vers TrainingGroup (1)
     @JsonIgnore
-    @OneToMany (mappedBy = "coach")
+    @OneToMany(mappedBy = "coach")
     private List<TrainingGroup> trainingGroups;
 
     // GETTERS & SETTERS

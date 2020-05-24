@@ -13,7 +13,7 @@ public class SeriesServiceImpl implements SeriesService {
 
     private SeriesRepository seriesRepository;
 
-    public SeriesServiceImpl (SeriesRepository seriesRepository) {
+    public SeriesServiceImpl(SeriesRepository seriesRepository) {
         this.seriesRepository = seriesRepository;
     }
 
@@ -38,7 +38,7 @@ public class SeriesServiceImpl implements SeriesService {
     }
 
     @Override
-    public Series saveSeries(Long seriesId, Series series) throws EntityNotFoundException{
+    public Series saveSeries(Long seriesId, Series series) throws EntityNotFoundException {
         Optional<Series> dbSeries = seriesRepository.findById(seriesId);
         if (dbSeries.isPresent()) {
             return seriesRepository.save(series);
@@ -48,6 +48,8 @@ public class SeriesServiceImpl implements SeriesService {
     }
 
     @Override
-    public void deleteSeries(Long seriesId) {this.seriesRepository.deleteById(seriesId);}
+    public void deleteSeries(Long seriesId) {
+        this.seriesRepository.deleteById(seriesId);
+    }
 
 }

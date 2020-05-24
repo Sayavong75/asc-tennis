@@ -19,7 +19,8 @@ public class AppUserDto {
     private AppUserDto() {
     }
 
-    public AppUserDto(@NotNull String username, List<Role> roleList) {
+    public AppUserDto(@NotNull Long id, @NotNull String username, List<Role> roleList) {
+        this.id = id;
         this.username = username;
         this.roleList = roleList;
     }
@@ -36,4 +37,3 @@ public class AppUserDto {
         return roleList;
     }
 }
-

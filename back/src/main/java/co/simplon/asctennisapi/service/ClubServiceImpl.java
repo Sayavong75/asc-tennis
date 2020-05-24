@@ -13,7 +13,7 @@ public class ClubServiceImpl implements ClubService {
 
     private ClubRepository clubRepository;
 
-    public ClubServiceImpl (ClubRepository clubRepository) {
+    public ClubServiceImpl(ClubRepository clubRepository) {
         this.clubRepository = clubRepository;
     }
 
@@ -37,8 +37,9 @@ public class ClubServiceImpl implements ClubService {
         return clubRepository.save(newClub);
     }
 
+    // TODO: isPresent vérfier Clubid côté Back
     @Override
-    public Club saveClub(Long clubId, Club club) throws EntityNotFoundException{
+    public Club saveClub(Long clubId, Club club) throws EntityNotFoundException {
         Optional<Club> dbClub = clubRepository.findById(clubId);
         if (dbClub.isPresent()) {
             return clubRepository.save(club);
@@ -48,5 +49,7 @@ public class ClubServiceImpl implements ClubService {
     }
 
     @Override
-    public void deleteClub(Long clubId) {this.clubRepository.deleteById(clubId);}
+    public void deleteClub(Long clubId) {
+        this.clubRepository.deleteById(clubId);
+    }
 }

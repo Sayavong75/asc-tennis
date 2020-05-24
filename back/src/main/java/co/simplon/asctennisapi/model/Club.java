@@ -2,9 +2,9 @@ package co.simplon.asctennisapi.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.NotBlank;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -38,7 +38,7 @@ public class Club {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @Column(columnDefinition="text")
+    @Column(columnDefinition = "text")
     private String urlGoogleMaps;
 
     @Column(nullable = false)
@@ -46,7 +46,7 @@ public class Club {
 
     // RELATION bidirectionnelle vers TrainingDay (3)
     @JsonIgnore
-    @OneToMany (mappedBy = "club")
+    @OneToMany(mappedBy = "club")
     private List<TrainingDay> trainingDays;
 
     // GETTERS & SETTERS

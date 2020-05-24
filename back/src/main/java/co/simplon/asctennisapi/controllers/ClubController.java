@@ -19,25 +19,33 @@ public class ClubController {
         this.clubService = clubService;
     }
 
-    /** Club list retrieval */
+    /**
+     * Club list retrieval
+     */
     @GetMapping
     public List<Club> getClubs() {
         return clubService.getClubs();
     }
 
-    /** Get one club with its ID */
+    /**
+     * Get one club with its ID
+     */
     @GetMapping("/{clubId}")
     public Club getClubById(@PathVariable Long clubId) {
         return clubService.getClubById(clubId);
     }
 
-    /** Create a new club */
+    /**
+     * Create a new club
+     */
     @PostMapping
     public Club createClub(@RequestBody @Valid Club newClub) {
         return clubService.createClub(newClub);
     }
 
-    /** Save an existing club */
+    /**
+     * Save an existing club
+     */
     @PutMapping("/{clubId}")
     public ResponseEntity<Club> saveClub(@PathVariable Long clubId, @RequestBody Club club) {
         try {
@@ -47,7 +55,9 @@ public class ClubController {
         }
     }
 
-    /** Delete a club from the clubs array */
+    /**
+     * Delete a club from the clubs array
+     */
     @DeleteMapping("/{clubId}")
     public void deleteClub(@PathVariable Long clubId) {
         clubService.deleteClub(clubId);

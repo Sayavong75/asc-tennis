@@ -19,25 +19,33 @@ public class RankingController {
         this.rankingService = rankingService;
     }
 
-    /** Ranking list retrieval */
+    /**
+     * Ranking list retrieval
+     */
     @GetMapping
     public List<Ranking> getRankings() {
         return rankingService.getRankings();
     }
 
-    /** Get one ranking with its ID */
+    /**
+     * Get one ranking with its ID
+     */
     @GetMapping("/{rankingId}")
     public Ranking getRankingById(@PathVariable Long rankingId) {
         return rankingService.getRankingById(rankingId);
     }
 
-    /** Create a new ranking */
+    /**
+     * Create a new ranking
+     */
     @PostMapping
     public Ranking createRanking(@RequestBody @Valid Ranking newRanking) {
         return rankingService.createRanking(newRanking);
     }
 
-    /** Save an existing ranking */
+    /**
+     * Save an existing ranking
+     */
     @PutMapping("/{rankingId}")
     public ResponseEntity<Ranking> saveRanking(@PathVariable Long rankingId, @RequestBody Ranking ranking) {
         try {
@@ -47,7 +55,9 @@ public class RankingController {
         }
     }
 
-    /** Delete a ranking from the rankings array */
+    /**
+     * Delete a ranking from the rankings array
+     */
     @DeleteMapping("/{rankingId}")
     public void deleteRanking(@PathVariable Long rankingId) {
         rankingService.deleteRanking(rankingId);

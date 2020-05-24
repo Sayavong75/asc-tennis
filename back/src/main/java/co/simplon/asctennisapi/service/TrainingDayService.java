@@ -9,19 +9,29 @@ import java.util.List;
 @Service
 public interface TrainingDayService {
 
-    /** Training day list retrieval */
+    /**
+     * Training day list retrieval
+     */
     List<TrainingDay> getTrainingDays();
 
-    /** Get one training day with its ID */
+    /**
+     * Get one training day with its ID
+     */
     TrainingDay getTrainingDayById(Long trainingDayId) throws EntityNotFoundException;
 
-    /** Create a new training day */
+    /**
+     * Create a new training day
+     */
     TrainingDay createTrainingDay(TrainingDay newTrainingDay);
 
-    /** Save an existing training day */
+    /**
+     * Save an existing training day
+     */
     TrainingDay saveTrainingDay(Long trainingDayId, TrainingDay trainingDay);
 
-    /** Delete a coach from the training days array */
+    /**
+     * Delete a coach from the training days array
+     */
     void deleteTrainingDay(Long trainingDayId);
 
 }

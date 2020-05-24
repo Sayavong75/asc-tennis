@@ -19,25 +19,33 @@ public class TrainingGroupController {
         this.trainingGroupService = trainingGroupService;
     }
 
-    /** Training group list retrieval */
+    /**
+     * Training group list retrieval
+     */
     @GetMapping
     public List<TrainingGroup> getTrainingGroups() {
         return trainingGroupService.getTrainingGroups();
     }
 
-    /** Get one training group with its ID */
+    /**
+     * Get one training group with its ID
+     */
     @GetMapping("/{trainingGroupId}")
     public TrainingGroup getTrainingGroupById(@PathVariable Long trainingGroupId) {
         return trainingGroupService.getTrainingGroupById(trainingGroupId);
     }
 
-    /** Create a new training group */
+    /**
+     * Create a new training group
+     */
     @PostMapping
     public TrainingGroup createTrainingGroup(@RequestBody @Valid TrainingGroup newTrainingGroup) {
         return trainingGroupService.createTrainingGroup(newTrainingGroup);
     }
 
-    /** Save an existing training group */
+    /**
+     * Save an existing training group
+     */
     @PutMapping("/{trainingGroupId}")
     public ResponseEntity<TrainingGroup> saveTrainingGroup(@PathVariable Long trainingGroupId, @RequestBody TrainingGroup trainingGroup) {
         try {
@@ -47,7 +55,9 @@ public class TrainingGroupController {
         }
     }
 
-    /** Delete a training group from the training groups array */
+    /**
+     * Delete a training group from the training groups array
+     */
     @DeleteMapping("/{trainingGroupId}")
     public void deleteTrainingGroup(@PathVariable Long trainingGroupId) {
         trainingGroupService.deleteTrainingGroup(trainingGroupId);

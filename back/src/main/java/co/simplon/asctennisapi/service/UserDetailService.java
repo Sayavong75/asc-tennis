@@ -1,7 +1,7 @@
 package co.simplon.asctennisapi.service;
 
-import co.simplon.asctennisapi.model.Player;
-import co.simplon.asctennisapi.repository.PlayerRepository;
+import co.simplon.asctennisapi.model.AppUser;
+import co.simplon.asctennisapi.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,13 +15,14 @@ import java.util.Optional;
 public class UserDetailService implements UserDetailsService {
 
     @Autowired
-    private PlayerRepository userRepository;
+    private AppUserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        final Optional<Player> user = userRepository.findByUsername(username);
+        final Optional<AppUser> user = userRepository.findByUsername(username);
+
         if (!user.isPresent()) {
-            throw new UsernameNotFoundException("Player '" + username + "' not found");
+            throw new UsernameNotFoundException("AppUser '" + username + "' not found");
         }
 
         return User

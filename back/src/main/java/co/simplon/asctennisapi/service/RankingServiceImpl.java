@@ -13,7 +13,7 @@ public class RankingServiceImpl implements RankingService {
 
     private RankingRepository rankingRepository;
 
-    public RankingServiceImpl (RankingRepository rankingRepository) {
+    public RankingServiceImpl(RankingRepository rankingRepository) {
         this.rankingRepository = rankingRepository;
     }
 
@@ -38,7 +38,7 @@ public class RankingServiceImpl implements RankingService {
     }
 
     @Override
-    public Ranking saveRanking(Long rankingId, Ranking ranking) throws EntityNotFoundException{
+    public Ranking saveRanking(Long rankingId, Ranking ranking) throws EntityNotFoundException {
         Optional<Ranking> dbRanking = rankingRepository.findById(rankingId);
         if (dbRanking.isPresent()) {
             return rankingRepository.save(ranking);
@@ -48,5 +48,7 @@ public class RankingServiceImpl implements RankingService {
     }
 
     @Override
-    public void deleteRanking(Long rankingId) {this.rankingRepository.deleteById(rankingId);}
+    public void deleteRanking(Long rankingId) {
+        this.rankingRepository.deleteById(rankingId);
+    }
 }

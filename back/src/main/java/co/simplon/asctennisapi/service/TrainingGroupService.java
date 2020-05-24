@@ -9,18 +9,28 @@ import java.util.List;
 @Service
 public interface TrainingGroupService {
 
-    /** Training group list retrieval */
+    /**
+     * Training group list retrieval
+     */
     List<TrainingGroup> getTrainingGroups();
 
-    /** Get one training group with its ID */
+    /**
+     * Get one training group with its ID
+     */
     TrainingGroup getTrainingGroupById(Long trainingGroupId) throws EntityNotFoundException;
 
-    /** Create a new training group */
+    /**
+     * Create a new training group
+     */
     TrainingGroup createTrainingGroup(TrainingGroup newTrainingGroup);
 
-    /** Save an existing training group */
+    /**
+     * Save an existing training group
+     */
     TrainingGroup saveTrainingGroup(Long trainingGroupId, TrainingGroup trainingGroup);
 
-    /** Delete a coach from the training groups array */
+    /**
+     * Delete a coach from the training groups array
+     */
     void deleteTrainingGroup(Long trainingGroupId);
 }
