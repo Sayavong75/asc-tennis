@@ -9,10 +9,15 @@
       <input matInput [(ngModel)]="user.username" placeholder="Username" name="username">
     </mat-form-field>
 
+    <!-- PASSWORD -->
+    <mat-form-field>
+      <input matInput [(ngModel)]="user.password" placeholder="Mot de passe" name="password">
+    </mat-form-field>
+
     <!-- ROLE -->
     <mat-form-field>
       <mat-select [(ngModel)]="user.roleList" placeholder="Rôle" name="roleList">
-        <mat-option *ngFor="let role of roleData" [value]="role">
+        <mat-option *ngFor="let role of roles" [value]="role">
           {{ role }}
         </mat-option>
       </mat-select>

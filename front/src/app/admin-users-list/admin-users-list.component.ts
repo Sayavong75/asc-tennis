@@ -84,8 +84,7 @@ export class AdminUsersListComponent implements OnInit {
 export class DialogAddUser {
 
   user = new User();
-  roles: Role[];
-  roleData = ['NO_ROLE', 'ROLE_ADMIN', 'ROLE_READER'];
+  roles: any = ['NO_ROLE', 'ROLE_ADMIN', 'ROLE_READER'];
 
   constructor(
     private dataService: DataService,
@@ -103,6 +102,13 @@ export class DialogAddUser {
 
   onAddUser() {
     console.log('Data: ' + JSON.stringify(this.user));
+    // La data roleList est au format ArrayList côté Back-End
+    // Avant envoi au Back-End, on ajoute la data roleList dans un tableau
+    const roleArray = []; // Création d'un tableau vide
+    roleArray.push(this.user.roleList); // Ajout de la data interpolée dans le tableau
+    console.log(roleArray);
+    this.user.roleList = roleArray; // Modification de l'objet roleList
+    console.log(this.user);
     this.dataService.addUser(this.user).subscribe();
     this.dialogRef.close();
   }
