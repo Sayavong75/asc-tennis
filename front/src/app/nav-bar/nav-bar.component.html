@@ -6,7 +6,12 @@
     <!-- Highlight the brand/logo/project name of your page -->
     <a class="navbar-brand" [routerLink]="['/home']"><span><i class="glyphicon glyphicon-home"></i></span>ASC Tennis</a>
 
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
     <!-- A standard navigation bar -->
+    <div class="navbar-collapse collapse">
     <ul class="navbar-nav">
 
       <!-- ENTRAÎNEMENTS -->
@@ -66,5 +71,6 @@
         </div>
       </li>
     </ul>
+    </div>
   </nav>
 </div>

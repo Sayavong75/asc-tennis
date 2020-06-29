@@ -26,6 +26,10 @@ export class HomeComponent implements OnInit {
       });
     });
     this.currentUser = this.loginService.getCurrentUser();
+    // tslint:disable-next-line:no-shadowed-variable
+    // @ts-ignore
+    const moment = require('moment');
+    console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
   }
 
 

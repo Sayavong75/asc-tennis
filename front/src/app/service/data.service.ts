@@ -19,7 +19,6 @@ export class DataService {
   constructor(private httpClient: HttpClient) {
   }
 
-  // TODO : créer constante pour localhost 8080 (pour non répétition)
   // PLAYER
   getPlayerList(): Observable<Player[]> {
     return this.httpClient.get<Player[]>(environment.apiUrl + 'players');
@@ -120,9 +119,12 @@ export class DataService {
     return this.httpClient.get<User[]>(environment.apiUrl + 'users');
   }
 
-  // tslint:disable-next-line:no-shadowed-variable
-  addUser(User) {
-    return this.httpClient.post(environment.apiUrl + `users/sign-up`, User);
+  addUser(user) {
+    return this.httpClient.post(environment.apiUrl + `users/sign-up`, user);
+  }
+
+  updateUser(user, username) {
+    return this.httpClient.put(environment.apiUrl + `users/${username}`, user);
   }
 
   // ROLE

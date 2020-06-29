@@ -1,0 +1,40 @@
+<!-- MODAL GESTION DES UTILISATEURS - MODIFIER -->
+
+<h1 mat-dialog-title>Modifier un utilisateur</h1>
+<div mat-dialog-content>
+
+  <!-- ID -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.id" placeholder="Id" disabled>
+  </mat-form-field>
+
+  <!-- USERNAME -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.username" placeholder="Username">
+  </mat-form-field>
+
+  <!-- PASSWORD -->
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.password" placeholder="Mot de passe" type="password">
+  </mat-form-field>
+
+  <!-- ROLE -->
+<!--  <mat-form-field>-->
+<!--    <mat-select [(ngModel)]="data.roleList" placeholder="Rôle">-->
+<!--      <mat-option *ngFor="let role of roles" [value]="role">-->
+<!--        {{role}}-->
+<!--      </mat-option>-->
+<!--    </mat-select>-->
+<!--  </mat-form-field>-->
+
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onNoClick()">Annuler</button>
+  <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial (click)="onEditUser(data.username)">Mettre à jour
+  </button>
+</div>
+
+<!-- Copyright 2019 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

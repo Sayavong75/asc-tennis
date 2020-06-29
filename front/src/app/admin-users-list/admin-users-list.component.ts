@@ -7,7 +7,6 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog
 
 import {DataService} from '../service/data.service';
 import {User} from '../model/user';
-import {Role} from '../model/role';
 
 /**
  * @title Data table with sorting, pagination, and filtering.
@@ -25,6 +24,7 @@ export class AdminUsersListComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   value;
+  user;
   userList: User[] = [];
 
   constructor(
@@ -59,13 +59,27 @@ export class AdminUsersListComponent implements OnInit {
     });
   }
 
-  // Ajouter un classement
+  // Ajouter un utilisateur
   addUserForm() {
     const dialogRef = this.dialog.open(DialogAddUser, {
       width: '465px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.refreshTable();
+    });
+  }
+
+  // Modifier un profil utilisateur
+  editUserForm(user) {
+    const dialogRef = this.dialog.open(DialogEditUser, {
+      width: '465px',
+      data: user,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.user = user;
       console.log('The dialog was closed');
       this.refreshTable();
     });
@@ -114,3 +128,42 @@ export class DialogAddUser {
   }
 }
 
+// BOITE DE DIALOGUE POUR FORMULAIRE MODIFIER
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'dialog-edit-user',
+  templateUrl: 'dialog-edit-user.html'
+})
+// tslint:disable-next-line:component-class-suffix
+export class DialogEditUser {
+
+  userList: User[];
+  roles: any = ['NO_ROLE', ['ROLE_ADMIN', 'ROLE_READER'], 'ROLE_READER'];
+
+  constructor(
+    private dataService: DataService,
+    public dialogRef: MatDialogRef<DialogEditUser>,
+    @Inject(MAT_DIALOG_DATA) public data: User) {
+  }
+
+  // tslint:disable-next-line:use-lifecycle-interface
+  ngOnInit(): void {
+    this.dataService.getUserList().subscribe(
+      users => this.userList = users
+    );
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  onEditUser(username) {
+    console.log('Data: ' + JSON.stringify(this.data));
+    // tslint:disable-next-line:ban-types
+    this.dataService.updateUser(this.data, username).subscribe();
+  }
+}
+
+/** Copyright 2019 Google LLC. All Rights Reserved.
+ * Use of this source code is governed by an MIT-style license that
+ * can be found in the LICENSE file at http://angular.io/license */

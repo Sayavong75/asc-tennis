@@ -1,6 +1,6 @@
 <!-- MODAL GESTION DES ADHÉRENTS - MODIFIER -->
 
-<h1 mat-dialog-title>Modifier un utilisateur</h1>
+<h1 mat-dialog-title>Modifier un adhérent</h1>
 <div mat-dialog-content>
 
   <!-- ID -->
@@ -25,10 +25,6 @@
         {{appUser.username}} [{{appUser.roleList?.join(', ')}}]
       </mat-option>
     </mat-select>
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.appUser.username" placeholder="test">
   </mat-form-field>
 
   <!-- EMAIL 1 -->

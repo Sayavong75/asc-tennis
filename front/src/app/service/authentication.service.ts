@@ -32,7 +32,7 @@ export class AuthenticationService {
         // store user details in session storage to keep user logged in between page refreshes
         this.currentUser = JSON.stringify(user.username);
         this.currentUser = this.currentUser.replace(/\"/g, '');
-        sessionStorage.setItem('CURRENT_USER', this.currentUser);
+        sessionStorage.setItem('current_user', this.currentUser);
 
         this.getUserRoles();
 
@@ -43,13 +43,15 @@ export class AuthenticationService {
 
   logOut() {
     sessionStorage.removeItem(environment.accessToken);
-    sessionStorage.removeItem('CURRENT_USER');
+    sessionStorage.removeItem('current_user');
 
     this.userRoles.next([]);
     this.router.navigate(['login']);
   }
 
   private getUserRoles() {
+    // console.log('environnement : ' + sessionStorage.getItem(environment.accessToken));
+    // console.log('decode environnement : ' + JSON.stringify(jwt_decode(sessionStorage.getItem(environment.accessToken))));
     if (sessionStorage.getItem(environment.accessToken)) {
       const decodedToken = jwt_decode(sessionStorage.getItem(environment.accessToken));
       const authorities: Array<any> = decodedToken.auth;
@@ -62,6 +64,6 @@ export class AuthenticationService {
   }
 
   public getCurrentUser(): string {
-    return sessionStorage.getItem('CURRENT_USER');
+    return sessionStorage.getItem('current_user');
   }
 }

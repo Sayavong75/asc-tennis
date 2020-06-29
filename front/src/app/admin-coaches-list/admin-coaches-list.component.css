@@ -1,15 +1,59 @@
 /* Style champ de recherche Angular Material */
 ::ng-deep .mat-focused .mat-form-field-label {
-  /*change color of label*/
+  /* change color of label */
   color: grey !important;
 }
 
 ::ng-deep.mat-form-field-underline {
-  /*change color of underline*/
+  /* change color of underline */
   background-color: grey !important;
 }
 
 ::ng-deep.mat-form-field-ripple {
-  /*change color of underline when focused*/
+  /* change color of underline when focused */
   background-color: grey !important;;
+}
+
+/* padding-top, padding-right, padding-bottom, padding-left. */
+.mat-cell {
+  padding: 0px 8px 0px 0;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media screen and (max-width: 576px){
+  .mat-table {
+    border: 0;
+    vertical-align: middle
+  }
+
+  /* Masque les en-têtes du tableau original */
+  .mat-table .mat-header-cell {
+    display: none;
+  }
+
+  /* Change la ligne (label + cellule) d'un tableau en bloc conteneur */
+  .mat-table .mat-row {
+    display: block;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    text-align: right;
+    height: auto;
+    width: 200px;
+  }
+
+  /* Change la cellule d'une ligne en bloc conteneur */
+  .mat-table .mat-cell {
+    display: block;
+    text-align: right;
+    margin-right: 10px;
+  }
+
+  /* Applique un label à chaque donnée d'une cellule */
+  .mat-table .mat-cell:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-align: left;
+    display: inline-block;
+  }
 }

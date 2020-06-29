@@ -39,21 +39,21 @@ export class NavBarComponent implements OnInit {
         // this.currentUser = this.currentUser.replace(/\"/g, '');
       }
     });
-    this.dataService.getPlayerList().subscribe(players => {
-      this.players = players;
-    });
+    // this.dataService.getPlayerList().subscribe(players => {
+    //   this.players = players;
+    // });
   }
 
   logOut() {
     this.loginService.logOut();
   }
 
-  getPlayerByUsername(usernameLogin) {
-    for (const player of this.players) {
-      if (player.appUser.username === usernameLogin) {
-        sessionStorage.setItem('CURRENT_PLAYER_FIRSTNAME', player.firstName);
-        return player.firstName;
-      }
-    }
-  }
+  // getPlayerByUsername(usernameLogin) {
+  //   for (const player of this.players) {
+  //     if (player.appUser.username === usernameLogin) {
+  //       sessionStorage.setItem('CURRENT_PLAYER_FIRSTNAME', player.firstName);
+  //       return player.firstName;
+  //     }
+  //   }
+  // }
 }

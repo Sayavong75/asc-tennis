@@ -48,6 +48,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
+// ============ Components ============
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
@@ -77,7 +78,7 @@ import {
 import {AdminSessionsViewListComponent} from './admin-sessions-view-list/admin-sessions-view-list.component';
 import {AdminCoachesListComponent, DialogAddCoach, DialogEditCoach} from './admin-coaches-list/admin-coaches-list.component';
 import {AdminClubsListComponent, DialogAddClub, DialogEditClub} from './admin-clubs-list/admin-clubs-list.component';
-import {AdminUsersListComponent, DialogAddUser} from './admin-users-list/admin-users-list.component';
+import {AdminUsersListComponent, DialogAddUser, DialogEditUser} from './admin-users-list/admin-users-list.component';
 
 import {DataService} from './service/data.service';
 import {AppRoutingModule} from './app-routing.module';
@@ -121,6 +122,7 @@ import {JwtInterceptor} from './authentication/http-interceptor/jwt.interceptor'
     DialogAddTrainingDay,
     DialogEditTrainingDay,
     DialogAddUser,
+    DialogEditUser
   ],
   imports: [
     BrowserModule,
@@ -202,7 +204,8 @@ import {JwtInterceptor} from './authentication/http-interceptor/jwt.interceptor'
     DialogEditClub,
     DialogAddTrainingDay,
     DialogEditTrainingDay,
-    DialogAddUser]
+    DialogAddUser,
+    DialogEditUser]
 })
 export class AppModule {
 }

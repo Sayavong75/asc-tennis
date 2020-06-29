@@ -7,104 +7,136 @@
   <!-- SÉPARATEUR -->
   <hr/>
 
+  <!-- STYLE TABLEAU ANGULAR MATERIAL -->
   <div class="center-block">
-    <table class="table table-hover w-auto">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Management Column -->
+      <ng-container matColumnDef="management">
+        <mat-header-cell *matHeaderCellDef> Gestion </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.management}} </mat-cell>
+      </ng-container>
 
-      <thead class="thead-dark">
-      <tr>
-        <th>Gestion</th>
-        <th></th>
-        <th>Action</th>
-      </tr>
-      </thead>
-
-      <!-- GESTION DES UTILISATEURS -->
-      <tbody>
-      <tr>
-        <td>Utilisateur</td>
-        <td></td>
-        <td>
-          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-users-list']">view_list</i>
-        </td>
-      </tr>
-      </tbody>
-
-      <!-- GESTION DES ADHÉRENTS -->
-      <tbody>
-      <tr>
-        <td>Adhérent</td>
-        <td></td>
-        <td>
-          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-members-list']">view_list</i>
-        </td>
-      </tr>
-      </tbody>
-
-
-      <!-- GESTION DES CLASSEMENTS -->
-      <tbody>
-      <tr>
-        <td>Classement</td>
-        <td></td>
-        <td>
-          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-ranking-list']">view_list</i>
-        </td>
-      </tr>
-      </tbody>
-
-      <!-- GESTION DES GROUPES SEMAINE -->
-      <tbody>
-      <tr>
-      <tr>
-        <td>Groupe semaine</td>
-        <td></td>
-        <td>
+      <!-- Action Column -->
+      <ng-container matColumnDef="action" >
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <!-- ACTION icônes Editer -->
+        <mat-cell *matCellDef="let element" data-label="Action">
           <i class="material-icons hover" style="color:dimgray;" title="Liste"
-             [routerLink]="['/admin-weekly-group-list']">view_list</i>
-        </td>
-      </tr>
-      </tbody>
-
-      <!-- GESTION DES ENTRAÎNEURS -->
-      <tbody>
-      <tr>
-      <tr>
-        <td>Entraîneur</td>
-        <td></td>
-        <td>
-          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-coaches-list']">view_list</i>
-        </td>
-      </tr>
-      </tbody>
-
-      <!-- GESTION DES CLUBS -->
-      <tbody>
-      <tr>
-      <tr>
-        <td>Club</td>
-        <td></td>
-        <td>
-          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-clubs-list']">view_list</i>
-        </td>
-      </tr>
-      </tbody>
-
-      <!-- GESTION DES ENTRAÎNEMENTS -->
-      <tbody>
-      <tr>
-      <tr>
-        <td>Session d'entraînement</td>
-        <td></td>
-        <td>
-          <i class="material-icons hover" style="color:dimgray;" title="Liste"
-             [routerLink]="['/admin-training-sessions-list']">view_list</i>
-          <mat-icon class="material-icons hover" color="warn" title="Liste générale"
+             [routerLink]="[element.routerLinkUrl1]">view_list</i>
+          <mat-icon *ngIf="element.management === 'Session d\'entraînement'" class="material-icons hover" color="warn" title="Liste générale"
                     [routerLink]="['/admin-sessions-view-list']">calendar_today
           </mat-icon>
-      </tr>
-      </tbody>
+        </mat-cell>
+      </ng-container>
 
-    </table>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
   </div>
 
+  <!-- STYLE TABLEAU BOOTSTRAP -->
+<!--  <div class="center-block">-->
+<!--    <table class="table table-hover w-auto">-->
+
+<!--      <thead class="thead-dark">-->
+<!--      <tr>-->
+<!--        <th>Gestion</th>-->
+<!--        <th></th>-->
+<!--        <th>Action</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+
+<!--      &lt;!&ndash; GESTION DES UTILISATEURS &ndash;&gt;-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--        <td>Utilisateur</td>-->
+<!--        <td></td>-->
+<!--        <td>-->
+<!--          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-users-list']">view_list</i>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+
+<!--      &lt;!&ndash; GESTION DES ADHÉRENTS &ndash;&gt;-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--        <td>Adhérent</td>-->
+<!--        <td></td>-->
+<!--        <td>-->
+<!--          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-members-list']">view_list</i>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+
+
+<!--      &lt;!&ndash; GESTION DES CLASSEMENTS &ndash;&gt;-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--        <td>Classement</td>-->
+<!--        <td></td>-->
+<!--        <td>-->
+<!--          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-ranking-list']">view_list</i>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+
+<!--      &lt;!&ndash; GESTION DES GROUPES SEMAINE &ndash;&gt;-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--      <tr>-->
+<!--        <td>Groupe semaine</td>-->
+<!--        <td></td>-->
+<!--        <td>-->
+<!--          <i class="material-icons hover" style="color:dimgray;" title="Liste"-->
+<!--             [routerLink]="['/admin-weekly-group-list']">view_list</i>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+
+<!--      &lt;!&ndash; GESTION DES ENTRAÎNEURS &ndash;&gt;-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--      <tr>-->
+<!--        <td>Entraîneur</td>-->
+<!--        <td></td>-->
+<!--        <td>-->
+<!--          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-coaches-list']">view_list</i>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+
+<!--      &lt;!&ndash; GESTION DES CLUBS &ndash;&gt;-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--      <tr>-->
+<!--        <td>Club</td>-->
+<!--        <td></td>-->
+<!--        <td>-->
+<!--          <i class="material-icons hover" style="color:dimgray;" title="Liste" [routerLink]="['/admin-clubs-list']">view_list</i>-->
+<!--        </td>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+
+<!--      &lt;!&ndash; GESTION DES ENTRAÎNEMENTS &ndash;&gt;-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--      <tr>-->
+<!--        <td>Session d'entraînement</td>-->
+<!--        <td></td>-->
+<!--        <td>-->
+<!--          <i class="material-icons hover" style="color:dimgray;" title="Liste"-->
+<!--             [routerLink]="['/admin-training-sessions-list']">view_list</i>-->
+<!--          <mat-icon class="material-icons hover" color="warn" title="Liste générale"-->
+<!--                    [routerLink]="['/admin-sessions-view-list']">calendar_today-->
+<!--          </mat-icon>-->
+<!--      </tr>-->
+<!--      </tbody>-->
+
+<!--    </table>-->
+<!--  </div>-->
+
 </div>
+
+<!-- Copyright 2019 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

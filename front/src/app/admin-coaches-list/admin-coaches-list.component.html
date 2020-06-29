@@ -37,45 +37,41 @@
       <!-- Id Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Id</th>
-        <td mat-cell *matCellDef="let coach"> {{ coach.id }} </td>
+        <td mat-cell *matCellDef="let coach" data-label="Id"> {{ coach.id }} </td>
       </ng-container>
 
       <!-- LastName Column -->
       <ng-container matColumnDef="lastName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom</th>
-        <td mat-cell *matCellDef="let coach"> {{ coach.lastName }} <span>&nbsp;&nbsp;</span></td>
+        <td mat-cell *matCellDef="let coach" data-label="Nom"> {{ coach.lastName }} </td>
       </ng-container>
 
       <!-- FirstName Column -->
       <ng-container matColumnDef="firstName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Prénom</th>
-        <td mat-cell *matCellDef="let coach"> {{ coach.firstName }} </td>
+        <td mat-cell *matCellDef="let coach" data-label="Prénom"> {{ coach.firstName }} </td>
       </ng-container>
 
       <!-- Status Column -->
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Statut <span>&nbsp;&nbsp;</span></th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Statut</th>
         <ng-container *matCellDef="let coach">
-          <td mat-cell *ngIf="coach.statusIsActive === true ; then activeBlock else inactiveBlock">
-            {{ coach.status }}
+          <!-- Affichage si statut actif -->
+          <td mat-cell *ngIf="coach.statusIsActive === true" data-label="Statut">
+            <span class="glyphicon glyphicon-record" style="color:green;"></span> Actif
+          </td>
+          <!-- Affichage si statut inactif -->
+          <td mat-cell *ngIf="coach.statusIsActive === false" data-label="Statut">
+            <span class="glyphicon glyphicon-record" style="color:red;"></span> Inactif
           </td>
         </ng-container>
-
-        <!-- Affichage de l'icône actif/inactif en fonction du statut de l'entraîneur -->
-        <ng-template #activeBlock>
-          <td><span class="glyphicon glyphicon-record" style="color:green;"></span> Actif</td>
-        </ng-template>
-
-        <ng-template #inactiveBlock>
-          <td><span class="glyphicon glyphicon-record" style="color:red;"></span> Inactif</td>
-        </ng-template>
       </ng-container>
 
       <!-- Action Column -->
-      <ng-container matColumnDef="action">
+      <ng-container matColumnDef="action" >
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Action</th>
         <!-- ACTION icônes Editer -->
-        <td mat-cell *matCellDef="let coach">
+        <td mat-cell *matCellDef="let coach" data-label="Action">
           <mat-icon (click)="editCoachForm(coach)" style="color:dimgray;" matTooltip="Modifier">edit</mat-icon>
         </td>
       </ng-container>
