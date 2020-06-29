@@ -20,7 +20,7 @@
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media screen and (max-width: 576px){
+@media screen and (max-width: 576px) {
   .mat-table {
     border: 0;
     vertical-align: middle

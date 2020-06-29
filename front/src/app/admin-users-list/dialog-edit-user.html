@@ -19,19 +19,20 @@
   </mat-form-field>
 
   <!-- ROLE -->
-<!--  <mat-form-field>-->
-<!--    <mat-select [(ngModel)]="data.roleList" placeholder="Rôle">-->
-<!--      <mat-option *ngFor="let role of roles" [value]="role">-->
-<!--        {{role}}-->
-<!--      </mat-option>-->
-<!--    </mat-select>-->
-<!--  </mat-form-field>-->
+  <!--  <mat-form-field>-->
+  <!--    <mat-select [(ngModel)]="data.roleList" placeholder="Rôle">-->
+  <!--      <mat-option *ngFor="let role of roles" [value]="role">-->
+  <!--        {{role}}-->
+  <!--      </mat-option>-->
+  <!--    </mat-select>-->
+  <!--  </mat-form-field>-->
 
 </div>
 
 <div mat-dialog-actions>
   <button mat-raised-button color="primary" (click)="onNoClick()">Annuler</button>
-  <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial (click)="onEditUser(data.username)">Mettre à jour
+  <button mat-raised-button [mat-dialog-close]="data.id" cdkFocusInitial (click)="onEditUser(data.username)">Mettre à
+    jour
   </button>
 </div>
 

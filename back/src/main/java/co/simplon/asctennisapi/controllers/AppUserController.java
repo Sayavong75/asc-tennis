@@ -91,4 +91,17 @@ public class AppUserController {
         }
     }
 
+    /**
+     * Save an existing appUser
+     */
+    @PutMapping("/{username}")
+    public ResponseEntity<AppUser> saveAppUser(@PathVariable String username, @RequestBody AppUser appUser) {
+        System.out.println("Controller saveUser : " + username);
+        try {
+            return ResponseEntity.ok(this.appUserService.saveAppUser(username, appUser));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 }

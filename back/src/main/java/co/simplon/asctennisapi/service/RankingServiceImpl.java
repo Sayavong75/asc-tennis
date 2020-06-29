@@ -40,7 +40,7 @@ public class RankingServiceImpl implements RankingService {
     @Override
     public Ranking saveRanking(Long rankingId, Ranking ranking) throws EntityNotFoundException {
         Optional<Ranking> dbRanking = rankingRepository.findById(rankingId);
-        if (dbRanking.isPresent()) {
+        if (dbRanking.isPresent() && ranking.getId().equals(rankingId)) {
             return rankingRepository.save(ranking);
         } else {
             throw new EntityNotFoundException("The ranking with ID: " + rankingId + " cannot be found in DB", "Ranking");

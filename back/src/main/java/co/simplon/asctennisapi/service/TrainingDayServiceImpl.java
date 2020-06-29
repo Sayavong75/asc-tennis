@@ -40,7 +40,7 @@ public class TrainingDayServiceImpl implements TrainingDayService {
     @Override
     public TrainingDay saveTrainingDay(Long trainingDayId, TrainingDay trainingDay) throws EntityNotFoundException {
         Optional<TrainingDay> dbTrainingDay = trainingDayRepository.findById(trainingDayId);
-        if (dbTrainingDay.isPresent()) {
+        if (dbTrainingDay.isPresent() && trainingDay.getId().equals(trainingDayId)) {
             return trainingDayRepository.save(trainingDay);
         } else {
             throw new EntityNotFoundException("The training day with ID: " + trainingDayId + " cannot be found in DB", "TrainingDay");

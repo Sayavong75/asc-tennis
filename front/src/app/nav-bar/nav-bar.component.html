@@ -12,65 +12,69 @@
 
     <!-- A standard navigation bar -->
     <div class="navbar-collapse collapse">
-    <ul class="navbar-nav">
+      <ul class="navbar-nav">
 
-      <!-- ENTRAÎNEMENTS -->
-      <li class="nav-item" *ngIf="isLoggedIn">
-        <a class="nav-link" [routerLink]="['/training-sessions-list']"><span class="glyphicon glyphicon-th-list"></span>Entraînements</a>
-      </li>
+        <!-- ENTRAÎNEMENTS -->
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" [routerLink]="['/training-sessions-list']"><span
+            class="glyphicon glyphicon-th-list"></span>Entraînements</a>
+        </li>
 
-      <!-- MESSAGERIE -->
-      <li class="nav-item dropdown" *ngIf="isLoggedIn">
-        <!-- Dropdown link-->
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-envelope"></span>Messagerie</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" [routerLink]="['/home']"><span class="glyphicon glyphicon-user"></span> Mes contacts</a>
-          <a class="dropdown-item" [routerLink]="['/home']"><span class="glyphicon glyphicon-inbox"></span> Mes messages</a>
-        </div>
-      </li>
+        <!-- MESSAGERIE -->
+        <li class="nav-item dropdown" *ngIf="isLoggedIn">
+          <!-- Dropdown link-->
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-envelope"></span>Messagerie</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" [routerLink]="['/home']"><span class="glyphicon glyphicon-user"></span> Mes
+              contacts</a>
+            <a class="dropdown-item" [routerLink]="['/home']"><span class="glyphicon glyphicon-inbox"></span> Mes
+              messages</a>
+          </div>
+        </li>
 
-      <!-- MATCHES PAR ÉQUIPES -->
-      <!-- <li class="nav-item" *ngIf="isLoggedIn">
-        <a class="nav-link" [routerLink]="['/home']"><span class="glyphicon glyphicon-flag"></span>Matches</a>
-      </li> -->
+        <!-- MATCHES PAR ÉQUIPES -->
+        <!-- <li class="nav-item" *ngIf="isLoggedIn">
+          <a class="nav-link" [routerLink]="['/home']"><span class="glyphicon glyphicon-flag"></span>Matches</a>
+        </li> -->
 
-      <!-- ADMINISTRATION -->
-      <li class="nav-item" id="admin" *ngIf="isAdmin">
-        <a class="nav-link" [routerLink]="['/admin']"><span class="glyphicon glyphicon-font"
-                                                            style="color:#00FFFF"></span>Admin</a>
-      </li>
+        <!-- ADMINISTRATION -->
+        <li class="nav-item" id="admin" *ngIf="isAdmin">
+          <a class="nav-link" [routerLink]="['/admin']"><span class="glyphicon glyphicon-font"
+                                                              style="color:#00FFFF"></span>Admin</a>
+        </li>
 
-    </ul>
+      </ul>
 
-    <!--  A navigation bar with icons on right and dropdown-->
-    <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item dropdown" *ngIf="isLoggedIn">
+      <!--  A navigation bar with icons on right and dropdown-->
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item dropdown" *ngIf="isLoggedIn">
 
-        <!-- Dropdown link-->
-        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-          <span class="glyphicon glyphicon-cog"></span>
-          {{ currentUser }}
-          <!-- {{ getPlayerByUsername(currentUser) }} -->
-        </a>
-        <!-- Right-aligned menu-->
-        <div class="dropdown-menu dropdown-menu-right">
+          <!-- Dropdown link-->
+          <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-cog"></span>
+            {{ currentUser }}
+            <!-- {{ getPlayerByUsername(currentUser) }} -->
+          </a>
+          <!-- Right-aligned menu-->
+          <div class="dropdown-menu dropdown-menu-right">
 
-          <!-- LOGOUT -->
-          <a class="dropdown-item" [routerLink]="['login']" (click)="logOut()"><span
-            class="glyphicon glyphicon-off"></span> Déconnexion</a>
+            <!-- LOGOUT -->
+            <a class="dropdown-item" [routerLink]="['login']" (click)="logOut()"><span
+              class="glyphicon glyphicon-off"></span> Déconnexion</a>
 
-          <!-- SÉPARATEUR -->
-          <div class="dropdown-divider"></div>
+            <!-- SÉPARATEUR -->
+            <div class="dropdown-divider"></div>
 
-          <!-- PRÉFÉRENCES -->
-          <a class="dropdown-item" [routerLink]="['/user-profile']"><span class="glyphicon glyphicon-phone-alt"></span>
-            Mes informations</a>
-          <a class="dropdown-item" [routerLink]="['/email-alert-settings']"><span
-            class="glyphicon glyphicon-envelope"></span> Mes alertes mails</a>
+            <!-- PRÉFÉRENCES -->
+            <a class="dropdown-item" [routerLink]="['/user-profile']"><span
+              class="glyphicon glyphicon-phone-alt"></span>
+              Mes informations</a>
+            <a class="dropdown-item" [routerLink]="['/email-alert-settings']"><span
+              class="glyphicon glyphicon-envelope"></span> Mes alertes mails</a>
 
-        </div>
-      </li>
-    </ul>
+          </div>
+        </li>
+      </ul>
     </div>
   </nav>
 </div>

@@ -40,7 +40,7 @@ public class TrainingGroupServiceImpl implements TrainingGroupService {
     @Override
     public TrainingGroup saveTrainingGroup(Long trainingGroupId, TrainingGroup trainingGroup) throws EntityNotFoundException {
         Optional<TrainingGroup> dbTrainingGroup = trainingGroupRepository.findById(trainingGroupId);
-        if (dbTrainingGroup.isPresent()) {
+        if (dbTrainingGroup.isPresent() && trainingGroup.getId().equals(trainingGroupId)) {
             return trainingGroupRepository.save(trainingGroup);
         } else {
             throw new EntityNotFoundException("The training group with ID: " + trainingGroupId + " cannot be found in DB", "TrainingGroup");

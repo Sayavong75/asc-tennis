@@ -44,4 +44,9 @@ public interface AppUserService {
      * @return an Optional object containing user if found, empty otherwise.
      */
     Optional<AppUser> findUserByUserName(String username);
+
+    /**
+     * Save an existing appUser
+     */
+    AppUser saveAppUser(String username, AppUser appUser);
 }

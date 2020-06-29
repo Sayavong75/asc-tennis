@@ -40,7 +40,7 @@ public class CoachServiceImpl implements CoachService {
     @Override
     public Coach saveCoach(Long coachId, Coach coach) throws EntityNotFoundException {
         Optional<Coach> dbCoach = coachRepository.findById(coachId);
-        if (dbCoach.isPresent()) {
+        if (dbCoach.isPresent() && coach.getId().equals(coachId)) {
             return coachRepository.save(coach);
         } else {
             throw new EntityNotFoundException("The coach with ID: " + coachId + " cannot be found in DB", "Coach");

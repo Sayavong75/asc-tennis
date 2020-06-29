@@ -37,11 +37,10 @@ public class ClubServiceImpl implements ClubService {
         return clubRepository.save(newClub);
     }
 
-    // TODO: isPresent vérfier Clubid côté Back
     @Override
     public Club saveClub(Long clubId, Club club) throws EntityNotFoundException {
         Optional<Club> dbClub = clubRepository.findById(clubId);
-        if (dbClub.isPresent()) {
+        if (dbClub.isPresent() && club.getId().equals(clubId)) {
             return clubRepository.save(club);
         } else {
             throw new EntityNotFoundException("The club with ID: " + clubId + " cannot be found in DB", "Club");

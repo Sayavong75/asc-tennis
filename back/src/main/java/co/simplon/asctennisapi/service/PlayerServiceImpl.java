@@ -28,7 +28,8 @@ public class PlayerServiceImpl implements PlayerService {
         if (dbPlayer.isPresent()) {
             return dbPlayer.get();
         } else {
-            throw new EntityNotFoundException("The player with ID: " + playerId + " cannot be found in DB", "Player");
+            throw new EntityNotFoundException("The player with ID: "
+                    + playerId + " cannot be found in DB", "Player");
         }
     }
 
@@ -40,7 +41,7 @@ public class PlayerServiceImpl implements PlayerService {
     @Override
     public Player savePlayer(Long playerId, Player player) throws EntityNotFoundException {
         Optional<Player> dbPlayer = playerRepository.findById(playerId);
-        if (dbPlayer.isPresent()) {
+        if (dbPlayer.isPresent() && player.getId().equals(playerId)) {
             return playerRepository.save(player);
         } else {
             throw new EntityNotFoundException("The player with ID: " + playerId + " cannot be found in DB", "Player");

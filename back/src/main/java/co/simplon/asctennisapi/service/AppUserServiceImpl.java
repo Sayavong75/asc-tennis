@@ -1,5 +1,6 @@
 package co.simplon.asctennisapi.service;
 
+import co.simplon.asctennisapi.exception.EntityNotFoundException;
 import co.simplon.asctennisapi.exception.ExistingUsernameException;
 import co.simplon.asctennisapi.model.AppUser;
 import co.simplon.asctennisapi.repository.AppUserRepository;
@@ -31,9 +32,7 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     public String signin(String username, String password) throws AuthenticationException {
-        System.out.println("AppUser SignIn avant : " + username);
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-        System.out.println("AppUser SignIn après : " + username + appUserRepository.findByUsername(username).get().getRoleList());
         return jwtTokenProvider.createToken(username, appUserRepository.findByUsername(username).get().getRoleList());
     }
 
@@ -58,5 +57,15 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public Optional<AppUser> findUserByUserName(String username) {
         return appUserRepository.findByUsername(username);
+    }
+
+    @Override
+    public AppUser saveAppUser(String username, AppUser appUser) throws EntityNotFoundException {
+        Optional<AppUser> dbAppUser = appUserRepository.findByUsername(username);
+        if (dbAppUser.isPresent() && appUser.getUsername().equals(username)) {
+            return appUserRepository.save(appUser);
+        } else {
+            throw new EntityNotFoundException("The appUser with username: " + username + " cannot be found in DB", "AppUser");
+        }
     }
 }

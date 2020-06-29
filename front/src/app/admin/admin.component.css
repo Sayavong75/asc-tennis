@@ -1,4 +1,4 @@
 /* Ajustement de largeur de la colonne Action */
-  .mat-column-action {
-    flex: 0 0 24%;
-  }
+.mat-column-action {
+  flex: 0 0 24%;
+}

@@ -40,7 +40,7 @@ public class SeriesServiceImpl implements SeriesService {
     @Override
     public Series saveSeries(Long seriesId, Series series) throws EntityNotFoundException {
         Optional<Series> dbSeries = seriesRepository.findById(seriesId);
-        if (dbSeries.isPresent()) {
+        if (dbSeries.isPresent() && series.getId().equals(seriesId)) {
             return seriesRepository.save(series);
         } else {
             throw new EntityNotFoundException("The series group with ID: " + seriesId + " cannot be found in DB", "Series");
